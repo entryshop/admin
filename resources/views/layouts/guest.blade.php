@@ -8,3 +8,9 @@
     @endforeach
     @stack('after_content')
 @endpush
+
+@push('html_attributes')
+    @foreach(admin()->themeVar() as $key => $value)
+        {{$key}}="{{$value}}"
+    @endforeach
+@endpush

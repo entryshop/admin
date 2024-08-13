@@ -20,7 +20,7 @@ class AdminServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../resources/assets/dist/' => public_path('vendor/admin'),
+                __DIR__ . '/../resources/dist/' => public_path('vendor/admin'),
             ], 'admin-assets');
         }
 
