@@ -28,6 +28,7 @@
         "gmaps",
         "gridjs",
         "isotope-layout",
+        "jquery",
         "jsvectormap",
         "leaflet",
         "list.js",
@@ -46,6 +47,7 @@
         "sortablejs",
         "sweetalert2",
         "swiper",
+        "tinymce",
         "toastify-js",
         "wnumb"
     ]
