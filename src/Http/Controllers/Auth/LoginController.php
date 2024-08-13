@@ -26,6 +26,12 @@ class LoginController
         return back()->withInput(request()->all())->withErrors([$loginWith => __('admin::auth.invalid_credentials')]);
     }
 
+    public function logout()
+    {
+        $this->auth()->logout();
+        return redirect(admin()->loginUrl());
+    }
+
     protected function auth()
     {
         return admin()->auth();
