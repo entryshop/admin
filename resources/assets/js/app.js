@@ -1,12 +1,3 @@
-/*
-Template Name: Velzon - Admin & Dashboard Template
-Author: Themesbrand
-Version: 4.1.0
-Website: https://Themesbrand.com/
-Contact: Themesbrand@gmail.com
-File: Main Js File
-*/
-
 (function () {
 	("use strict");
 
@@ -2102,11 +2093,11 @@ File: Main Js File
 		windowLoadContent();
 		counter();
 		initLeftMenuCollapse();
-		initTopbarComponents();
+		// initTopbarComponents();
 		initComponents();
 		resetLayout();
-		pluginData();
-		initLanguage();
+		// pluginData();
+		// initLanguage();
 		isCollapseMenu();
 		initMenuItemScroll();
 	}
@@ -2165,3 +2156,9 @@ if (mybutton) {
 		document.documentElement.scrollTop = 0;
 	}
 }
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
