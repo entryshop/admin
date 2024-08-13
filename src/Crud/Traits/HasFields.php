@@ -1,0 +1,81 @@
+<?php
+
+namespace Entryshop\Admin\Crud\Traits;
+
+use Entryshop\Admin\Crud\CrudField;
+
+/**
+ * @method string|self action($value = null)
+ * @method string|self method($value = null)
+ */
+trait HasFields
+{
+
+    protected $_fields = [];
+
+    /**
+     * @param ...$args
+     * @return CrudField
+     */
+    public function field(...$args)
+    {
+        $cell = CrudField::make(...$args);
+        $cell->crud($this);
+        $this->_fields[$cell->name()] = $cell;
+        return $cell;
+    }
+
+    public function fields($value = null)
+    {
+        if (empty($value)) {
+            return $this->_fields;
+        }
+
+        if (is_array($value)) {
+            foreach ($value as $cell) {
+                $this->field($cell);
+            }
+        }
+
+        return $this;
+    }
+
+    public function store()
+    {
+        $model = app($this->get('model'));
+        $this->saving($model);
+        $model->save();
+        return $this;
+    }
+
+    public function save()
+    {
+        $model = $this->entry();
+        $this->saving($model);
+        $model->save();
+        return $this;
+    }
+
+    public function saving($model)
+    {
+        foreach ($this->_fields as $field) {
+            $name  = $field->name();
+            $value = $field->getValueFromRequest($model);
+            if ($model->isRelation($name)) {
+                $relation     = $model->$name();
+                $relationType = class_basename($relation);
+                switch ($relationType) {
+                    case 'BelongsToMany':
+                    case 'HasMany':
+                        $model->{$name}()->sync($value);
+                        break;
+                    default:
+                        $model->{$name} = $value;
+                        break;
+                }
+            } else {
+                $model->{$name} = $value;
+            }
+        }
+    }
+}
