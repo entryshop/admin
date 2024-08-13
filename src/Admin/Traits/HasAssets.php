@@ -57,7 +57,6 @@ trait HasAssets
             $this->asset('libs/choices.js/public/assets/scripts/choices.min.js'),
             $this->asset('libs/flatpickr/flatpickr.min.js'),
             $this->asset('libs/sweetalert2/sweetalert2.min.js'),
-            $this->asset('js/app.js'),
         ]);
 
         $this->themeVar($this->default_theme_var);

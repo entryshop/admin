@@ -69,12 +69,12 @@
                                             <div class="rounded-circle header-profile-user"
                                                  style="background-color: #ccc; line-height: 32px">
                                                 <span
-                                                        class="text-white">{{mb_substr(auth()->user()?->name, 0, 1)}}</span>
+                                                    class="text-white">{{mb_substr(auth()->user()?->name, 0, 1)}}</span>
                                             </div>
                                         @endif
                                         <span class="text-start ms-xl-2">
                                             <span
-                                                    class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">
+                                                class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">
                                                 {{auth()->user()?->name ?? __('admin::auth.guest')}}
                                             </span>
                                             <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text"></span>
@@ -155,3 +155,7 @@
         {{$key}}="{{$value}}"
     @endforeach
 @endpush
+
+@pushonce('after_scripts')
+    <script src="{{admin()->asset('js/app.js')}}"></script>
+@endpushonce
