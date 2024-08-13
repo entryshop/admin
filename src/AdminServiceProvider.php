@@ -9,6 +9,8 @@ class AdminServiceProvider extends ServiceProvider
 {
     public function register()
     {
+        $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'admin');
+
         $this->app->scoped('admin_panel', function () {
             return AdminPanel::make();
         });

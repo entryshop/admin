@@ -1,5 +1,6 @@
 {
     "name": "entryshop/admin",
+    "type": "library",
     "autoload": {
         "psr-4": {
             "Entryshop\\Admin\\": "src/"

@@ -4,7 +4,7 @@
     @stack('before_content')
     @stack('content')
     @foreach(admin()->children() as $child)
-        {!! $child->render() !!}
+        {!! render($child) !!}
     @endforeach
     @stack('after_content')
 @endpush

@@ -46,7 +46,7 @@ class CrudPanel extends Renderable
     public function url($path = '')
     {
         $path = ltrim($path, '/');
-        return url($this->route() . '/' . $path);
+        return admin()->url($this->route() . '/' . $path);
     }
 
     public function labels($label, $labelPlural = null)

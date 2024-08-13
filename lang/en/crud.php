@@ -1,9 +1,15 @@
 <?php
 
 return [
-    'cancel' => 'Cancel',
-    'create' => 'Create',
-    'delete' => 'Delete',
-    'edit'   => 'Edit',
-    'save'   => 'Save',
+    'actions'        => 'Actions',
+    'cancel'         => 'Cancel',
+    'close'          => 'Close',
+    'create'         => 'Create',
+    'confirm'        => 'Confirm',
+    'edit'           => 'Edit',
+    'delete'         => 'Delete',
+    'delete_confirm' => 'Are you sure to delete this?',
+    'preview'        => 'Preview',
+    'save'           => 'Save',
+    'submit'         => 'Submit',
 ];
