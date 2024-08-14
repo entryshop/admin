@@ -12,6 +12,9 @@ trait HasColumns
 {
     protected $_columns = [];
 
+    const CHILD_POSITION_BEFORE_TABLE = 'before_table';
+    const CHILD_POSITION_AFTER_TABLE  = 'after_table';
+
     public function column(...$args)
     {
         $cell = CrudColumn::make(...$args);

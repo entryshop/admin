@@ -31,7 +31,7 @@ if (!function_exists('render')) {
         if (is_array($value)) {
             $result = '';
             foreach ($value as $item) {
-                $result .= render($$item, ...$args);
+                $result .= render($item, ...$args);
             }
 
             return $result;

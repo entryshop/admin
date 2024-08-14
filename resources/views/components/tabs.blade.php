@@ -1,18 +1,23 @@
+@props([
+    'items' => [],
+    'params' => null,
+])
+
 <ul class="nav nav-tabs mb-3" role="tablist">
-    @foreach($renderable->children() as $child)
+    @foreach($items as $_item)
         <li class="nav-item">
-            <a class="nav-link {{$child->active() ? 'active':''}}" data-bs-toggle="tab" href="#{{$child->key()}}"
+            <a class="nav-link {{$_item->active() ? 'active':''}}" data-bs-toggle="tab" href="#{{$_item->key()}}"
                role="tab" aria-selected="false">
-                {{$child->label()}}
+                {{$_item->label()}}
             </a>
         </li>
     @endforeach
 </ul>
 <!-- Tab panes -->
 <div class="tab-content  text-muted">
-    @foreach($renderable->children() as $child)
-        <div class="tab-pane {{$child->active() ? 'active':''}}" id="{{$child->key()}}" role="tabpanel">
-            {!! render($child) !!}
+    @foreach($items as $_item)
+        <div class="tab-pane {{$_item->active() ? 'active':''}}" id="{{$_item->key()}}" role="tabpanel">
+            {!! render($_item, $params) !!}
         </div>
     @endforeach
 </div>

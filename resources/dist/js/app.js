@@ -569,29 +569,6 @@
 		}
 	}
 
-	function elementInViewport(el) {
-		if (el) {
-			var top = el.offsetTop;
-			var left = el.offsetLeft;
-			var width = el.offsetWidth;
-			var height = el.offsetHeight;
-
-			if (el.offsetParent) {
-				while (el.offsetParent) {
-					el = el.offsetParent;
-					top += el.offsetTop;
-					left += el.offsetLeft;
-				}
-			}
-			return (
-				top >= window.pageYOffset &&
-				left >= window.pageXOffset &&
-				top + height <= window.pageYOffset + window.innerHeight &&
-				left + width <= window.pageXOffset + window.innerWidth
-			);
-		}
-	}
-
 	function initLeftMenuCollapse() {
 		/**
 		 * Vertical layout menu scroll add
@@ -907,8 +884,9 @@
 
 	// two-column sidebar active js
 	function initActiveMenu() {
-		var currentPath = location.pathname == "/" ? "index" : location.pathname.substring(1);
-		currentPath = currentPath.substring(currentPath.lastIndexOf("/") + 1);
+		// var currentPath = location.pathname == "/" ? "index" : location.pathname.substring(1);
+		// currentPath = currentPath.substring(currentPath.lastIndexOf("/") + 1);
+        var currentPath = location.pathname;
 		if (currentPath) {
 			// navbar-nav
 			var a = document.getElementById("navbar-nav").querySelector('[href="' + currentPath + '"]');
@@ -2085,16 +2063,16 @@
 
 	function init() {
 		setDefaultAttribute();
-		twoColumnMenuGenerate();
-		isCustomDropdown();
-		isCustomDropdownResponsive();
+		// twoColumnMenuGenerate();
+		// isCustomDropdown();
+		// isCustomDropdownResponsive();
 		initFullScreen();
-		initModeSetting();
+		// initModeSetting();
 		windowLoadContent();
-		counter();
+		// counter();
 		initLeftMenuCollapse();
 		// initTopbarComponents();
-		initComponents();
+		// initComponents();
 		resetLayout();
 		// pluginData();
 		// initLanguage();

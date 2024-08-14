@@ -129,6 +129,7 @@
             <div class="page-content">
                 <div class="container-fluid">
                     @include('admin::partials.breadcrumbs')
+                    {!! render(admin()->children('before_content')) !!}
                     @stack('before_content')
                     <!-- start page title -->
                     @stack('content')
@@ -137,6 +138,7 @@
                     @endforeach
                     <!-- end page title -->
                     @stack('after_content')
+                    {!! render(admin()->children('after_content')) !!}
                 </div>
             </div>
         </div>
