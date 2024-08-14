@@ -28,18 +28,18 @@ trait HasFields
         return $cell;
     }
 
-    public function fields($value = null)
+    public function fields(...$args)
     {
-        if (empty($value)) {
+        if (!count($args)) {
             return $this->_fields;
         }
 
+        $value = $args[0];
         if (is_array($value)) {
             foreach ($value as $cell) {
                 $this->field($cell);
             }
         }
-
         return $this;
     }
 

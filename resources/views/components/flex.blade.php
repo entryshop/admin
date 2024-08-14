@@ -7,8 +7,10 @@
 ])
 <div class="d-flex flex-{{$direction}} gap-{{$gap}} {{$wrap ? 'flex-wrap':''}}">
     @foreach($items as $item)
-        <div {!! $item->wrapper() !!}>
-            {!! render($item, $params) !!}
-        </div>
+        @if(empty($item->get('hide')))
+            <div {!! $item->wrapper() !!}>
+                {!! render($item, $params) !!}
+            </div>
+        @endif
     @endforeach
 </div>

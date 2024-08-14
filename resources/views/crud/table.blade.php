@@ -23,11 +23,7 @@
             <div data-filters class="d-flex justify-content-between align-items-center">
                 @if(!empty($filters))
                     <form class="d-flex flex-wrap gap-2">
-                        @foreach($renderable->filters() as $filter)
-                            <div>
-                                {!! $filter->render() !!}
-                            </div>
-                        @endforeach
+                        <x-admin::flex :items="$filters" gap="1"/>
                         <div>
                             <button class="btn btn-primary"><i class="ri-search-2-line"></i></button>
                         </div>

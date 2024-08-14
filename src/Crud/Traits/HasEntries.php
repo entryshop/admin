@@ -3,8 +3,6 @@
 
 namespace Entryshop\Admin\Crud\Traits;
 
-use Illuminate\Database\Query\Builder;
-
 /**
  * @method string|self model($value = null)
  * @method string|self route($value = null)
@@ -17,9 +15,6 @@ trait HasEntries
     protected $_entries;
     protected $_entry;
 
-    /**
-     * @return Builder
-     */
     public function entries($value = null)
     {
         if (!empty($value)) {
