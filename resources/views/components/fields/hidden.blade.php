@@ -1,0 +1,5 @@
+@props([
+    'name',
+    'value',
+])
+

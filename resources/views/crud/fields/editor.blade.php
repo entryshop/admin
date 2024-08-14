@@ -4,6 +4,4 @@
 
 <label>{{$renderable->label()}}</label>
 
-<x-admin::fields.tinymce
-    :$id :$name :$value
-/>
+<x-admin::fields.tinymce :$id :$name :$value/>

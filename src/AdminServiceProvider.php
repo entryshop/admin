@@ -9,6 +9,7 @@ class AdminServiceProvider extends ServiceProvider
 {
     public function register()
     {
+        include_once __DIR__.'/macros.php';
         $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'admin');
 
         $this->app->scoped('admin_panel', function () {
@@ -27,4 +28,5 @@ class AdminServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'admin');
         $this->loadTranslationsFrom(__DIR__ . '/../lang', 'admin');
     }
+
 }

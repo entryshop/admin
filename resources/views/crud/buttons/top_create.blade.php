@@ -1,3 +1,3 @@
 <a class="btn btn-primary" href="{{$renderable->crud()->route()}}/create">
-    <i class="ri-add-line"></i> 新建
+    <i class="ri-add-line"></i> @lang('admin::crud.create')
 </a>

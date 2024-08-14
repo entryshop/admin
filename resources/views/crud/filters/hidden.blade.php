@@ -1,1 +1,1 @@
-<input type="hidden" name="{{$name}}" value="{{request($name)}}">
+<x-admin::fields.hidden name="{{$name}}" value="{{request($name)}}"/>
