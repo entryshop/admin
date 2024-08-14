@@ -2,6 +2,8 @@
 
 namespace Entryshop\Admin\Support;
 
+use Illuminate\Support\Str;
+
 /**
  * @method string|self view($value = null)
  * @method string|self key($value = null)
@@ -17,8 +19,9 @@ class Builder
 
     private $__built = false;
 
-    public function __construct(...$args)
+    public function __construct(Renderable $renderable, ...$args)
     {
+        $this->renderable = $renderable;
         if (!empty($args[0]) && is_array($args[0])) {
             foreach ($args[0] as $key => $value) {
                 $this->set($key, $value);
@@ -36,6 +39,13 @@ class Builder
 
     public function set($key, $value)
     {
+        if (!empty($this->renderable)) {
+            $set_method = 'set' . Str::studly($key);
+            if (method_exists($this->renderable, $set_method)) {
+                $this->renderable->{$set_method}($value);
+            }
+        }
+
         $this->variables[$key] = $value;
         return $this->renderable ?? $this;
     }

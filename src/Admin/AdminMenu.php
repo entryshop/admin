@@ -15,12 +15,11 @@ class AdminMenu extends Renderable
     {
         parent::__construct(...$args);
 
-        if ($this->builder->has('children')) {
-            $children = [];
-            foreach ($this->builder->get('children', []) as $child) {
-                $children[] = static::make($child);
+        if (!empty($args[0]['children'])) {
+            $children = $args[0]['children'];
+            foreach ($children as $child) {
+                $this->child($child);
             }
-            $this->builder->set('children', $children);
         }
     }
 

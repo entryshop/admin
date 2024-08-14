@@ -1,7 +1,7 @@
-<div {!! $builder->wrapper() !!}>
-    @foreach($builder->children()??[] as $child)
-        <div {!! $child->wrapper() !!}>
-            {!! $child->render() !!}
+<div {!! $renderable->wrapper() !!}>
+    @foreach($renderable->children() as $child)
+        <div {!! $renderable->wrapper() !!}>
+            {!! render($child) !!}
         </div>
     @endforeach
 </div>

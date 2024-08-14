@@ -22,11 +22,10 @@ class Renderable
     public function __construct(...$args)
     {
         $this->register(...$args);
-        $this->builder = new Builder(...$args);
-        $this->builder->renderable($this);
+        $this->builder = new Builder($this, ...$args);
 
         if (empty($this->key())) {
-            $this->set('key', Str::lower(class_basename(static::class)) . '_' . uniqid());
+            $this->key(Str::lower(class_basename(static::class)) . '_' . uniqid());
         }
     }
 
