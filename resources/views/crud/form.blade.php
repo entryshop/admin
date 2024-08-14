@@ -9,6 +9,7 @@
     @method($renderable->method()??'post')
     <div class="card">
         <div class="card-body">
+            @include('admin::partials.errors')
             <div {!! $renderable->get('wrapper', 'class="d-flex flex-wrap gap-3"') !!}>
                 @foreach($renderable->fields() as $child)
                     <div {!! $child->wrapper() !!}>

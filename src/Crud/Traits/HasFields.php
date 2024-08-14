@@ -3,10 +3,13 @@
 namespace Entryshop\Admin\Crud\Traits;
 
 use Entryshop\Admin\Crud\CrudField;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 
 /**
  * @method string|self action($value = null)
  * @method string|self method($value = null)
+ * @method string|self messages($value = null)
  */
 trait HasFields
 {
@@ -77,5 +80,32 @@ trait HasFields
                 $model->{$name} = $value;
             }
         }
+    }
+
+    public function validate()
+    {
+
+        $rules      = [];
+        $attributes = [];
+
+        foreach ($this->_fields as $field) {
+            $fieldRules = $field->rules();
+            if (!empty($fieldRules)) {
+                $rules[$field->name()]      = $fieldRules;
+                $attributes[$field->name()] = $field->getLabel();
+            }
+        }
+
+        $data = request()->all();
+
+        $messages = $this->get('messages', []);
+
+        $validator = Validator::make($data, $rules, $messages, $attributes);
+
+        if ($validator->fails()) {
+            throw new ValidationException($validator);
+        }
+
+        return $this;
     }
 }

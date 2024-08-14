@@ -76,8 +76,9 @@
         @endforeach
         </tbody>
     </table>
-    @if(method_exists($rows, 'links'))
+    @if(method_exists($rows, 'hasPages') && !empty($rows->hasPages()))
         <div class="card-footer pb-0">
+            @dump($rows->links())
             {{$rows->links()}}
         </div>
     @endif

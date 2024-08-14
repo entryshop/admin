@@ -7,6 +7,7 @@ use Entryshop\Admin\Crud\Traits\CanGuessLabel;
 /**
  * @method string|self multiple($value = null)
  * @method string|self options($value = null)
+ * @method string|self rules($value = null)
  */
 class CrudField extends CrudCell
 {

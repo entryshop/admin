@@ -51,6 +51,7 @@ abstract class CrudController
         $this->_before('form');
         $this->_before('store');
 
+        $this->crud()->validate();
         $this->crud()->store();
 
         $this->_after('form');
@@ -82,6 +83,7 @@ abstract class CrudController
         $this->_before('update', $id);
 
         $this->crud()->findOrFail($id);
+        $this->crud()->validate();
         $this->crud()->save();
 
         $this->_after('form', $id);
