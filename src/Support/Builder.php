@@ -39,20 +39,20 @@ class Builder
 
     public function set($key, $value)
     {
-        if (!empty($this->renderable)) {
+        if (!empty($this->renderable())) {
             $set_method = 'set' . Str::studly($key);
-            if (method_exists($this->renderable, $set_method)) {
-                $this->renderable->{$set_method}($value);
+            if (method_exists($this->renderable(), $set_method)) {
+                $this->renderable()->{$set_method}($value);
             }
         }
 
         $this->variables[$key] = $value;
-        return $this->renderable ?? $this;
+        return $this->renderable();
     }
 
     public function get($key, $default = null)
     {
-        return evaluate($this->variables[$key] ?? $default, $this->renderable ?? $this);
+        return evaluate($this->variables[$key] ?? $default, $this->renderable());
     }
 
     public function push($key, $value)
@@ -61,7 +61,7 @@ class Builder
             $value = [$value];
         }
         $this->variables[$key] = array_merge($this->variables[$key] ?? [], $value);
-        return $this->renderable ?? $this;
+        return $this->renderable;
     }
 
     public function getOrPush($key, $value = null)
@@ -92,7 +92,7 @@ class Builder
         $this->original_variables = $this->variables;
         $built_variable           = [];
         foreach ($this->variables as $key => $variable) {
-            $built_variable[$key] = evaluate($variable, $this->renderable ?? $this);
+            $built_variable[$key] = evaluate($variable, $this->renderable());
         }
         $this->variables = $built_variable;
         $this->__built   = true;
@@ -108,6 +108,7 @@ class Builder
             return $this->get($name);
         }
 
-        return $this->renderable ?? $this;
+        return $this->renderable();
     }
+
 }
