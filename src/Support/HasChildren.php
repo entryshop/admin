@@ -6,6 +6,8 @@ trait HasChildren
 {
     protected $_children = [];
 
+    protected $default_child = Renderable::class;
+
     public function children($position = null)
     {
         if (is_array($position)) {
@@ -16,14 +18,20 @@ trait HasChildren
         }
 
         if (empty($position)) {
-            return array_filter($this->_children, function ($child) use ($position) {
+            $_children = array_filter($this->_children, function ($child) use ($position) {
                 return empty($child->get('position'));
+            });
+        } else {
+            $_children = array_filter($this->_children, function ($child) use ($position) {
+                return $child->get('position') === $position;
             });
         }
 
-        return array_filter($this->_children, function ($child) use ($position) {
-            return $child->get('position') === $position;
+        usort($_children, function ($a, $b) {
+            return $a->get('order') <=> $b->get('order');
         });
+
+        return $_children;
     }
 
     public function child(...$args)
@@ -35,11 +43,11 @@ trait HasChildren
         if ($args[0] instanceof Renderable) {
             $child = $args[0];
         } elseif (is_array($args[0])) {
-            $child = Renderable::make($args[0]);
+            $child = $this->default_child::make($args[0]);
         } elseif (is_string($args[0])) {
-            $child = Renderable::make(['name' => $args[0]]);
+            $child = $this->default_child::make(['name' => $args[0]]);
         } else {
-            $child = Renderable::make(...$args);
+            $child = $this->default_child::make(...$args);
         }
 
         $key = $child->name() ?? $child->key();

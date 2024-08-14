@@ -1,12 +1,19 @@
 <ul class="navbar-nav" id="navbar-nav">
     @foreach($menus as $menu)
         @if(empty($menu->children()))
-            <li class="nav-item">
-                <a href="{{$menu->get('url')}}" class="nav-link menu-link" target="{{$menu->get('target', '_self')}}">
-                    <i class="{{$menu->get('icon')}}"></i>
-                    <span>{{$menu->get('label')}}</span>
-                </a>
-            </li>
+            @if($menu->get('type') == 'divider')
+                <li class="menu-title">
+                    <span data-key="t-menu">{{$menu->get('label')}}</span>
+                </li>
+            @else
+                <li class="nav-item">
+                    <a href="{{$menu->get('url')}}" class="nav-link menu-link"
+                       target="{{$menu->get('target', '_self')}}">
+                        <i class="{{$menu->get('icon')}}"></i>
+                        <span>{{$menu->get('label')}}</span>
+                    </a>
+                </li>
+            @endif
         @else
             <li class="nav-item">
                 <a class="nav-link menu-link" href="#sidebar{{$loop->index}}"

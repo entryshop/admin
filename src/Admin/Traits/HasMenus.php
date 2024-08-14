@@ -3,7 +3,6 @@
 namespace Entryshop\Admin\Admin\Traits;
 
 use Entryshop\Admin\Admin\AdminMenu;
-use Illuminate\Support\Str;
 
 /**
  */
@@ -32,17 +31,15 @@ trait HasMenus
         }
 
         if (is_array($args[0])) {
-            // multiple menu
             if (!empty($args[0][0]) && is_array($args[0][0])) {
                 foreach ($args[0] as $menu) {
                     $this->menu($menu);
                 }
                 return $this;
             }
-
             $menu = AdminMenu::make($args[0]);
 
-            $this->_menus[$menu->get('name', 'menu_' . Str::random())] = $menu;
+            $this->_menus[$menu->name() ?? $menu->key()] = $menu;
 
             return $menu;
         }
@@ -56,8 +53,15 @@ trait HasMenus
             return $this->_menus;
         }
 
-        return array_filter($this->_menus, function ($menu) use ($position) {
+        // filter by position
+        $menus = array_filter($this->_menus, function ($menu) use ($position) {
             return $menu->get('position') === $position;
         });
+
+        usort($menus, function ($a, $b) {
+            return $a->get('order') <=> $b->get('order');
+        });
+
+        return $menus;
     }
 }

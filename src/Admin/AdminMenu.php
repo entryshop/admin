@@ -7,9 +7,11 @@ use Entryshop\Admin\Support\Renderable;
 /**
  * @method string|self url($value = null)
  * @method string|self icon($value = null)
+ * @method string|self order($value = null)
  */
 class AdminMenu extends Renderable
 {
+    protected $default_child = AdminMenu::class;
 
     public function __construct(...$args)
     {
@@ -25,11 +27,11 @@ class AdminMenu extends Renderable
 
     public function main()
     {
-        return $this->builder->set('position', AdminPanel::MENU_POSITION_MAIN);
+        return $this->set('position', AdminPanel::MENU_POSITION_MAIN);
     }
 
     public function user()
     {
-        return $this->builder->set('position', AdminPanel::MENU_POSITION_USER);
+        return $this->set('position', AdminPanel::MENU_POSITION_USER);
     }
 }
