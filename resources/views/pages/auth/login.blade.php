@@ -56,7 +56,7 @@
                                     </div>
 
                                     <div class="mt-4">
-                                        <button class="btn btn-success w-100"
+                                        <button class="btn btn-primary w-100"
                                                 type="submit">@lang('admin::auth.login')</button>
                                     </div>
                                 </form>
