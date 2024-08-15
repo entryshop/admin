@@ -6,7 +6,7 @@ trait CanGuessLabel
 {
     public function bootCanGuessLabel()
     {
-        if ($this->builder->get('label')) {
+        if ($this->get('label')) {
             return;
         }
 
@@ -14,7 +14,7 @@ trait CanGuessLabel
             return;
         }
 
-        $this->builder->set('label', __($this->crud()->get('lang') . '.' . $this->name()));
+        $this->set('label', $this->crud()->trans($this->name()));
     }
 
     public function getLabel()

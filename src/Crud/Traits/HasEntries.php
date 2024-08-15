@@ -3,6 +3,8 @@
 
 namespace Entryshop\Admin\Crud\Traits;
 
+use Illuminate\Support\Str;
+
 /**
  * @method string|self model($value = null)
  * @method string|self route($value = null)
@@ -47,11 +49,20 @@ trait HasEntries
 
     public function title()
     {
-        return $this->builder->get('labelPlural', $this->builder->get('label'));
+        return $this->get('labelPlural', $this->get('label'));
+    }
+
+    public function labels($label, $labelPlural = null)
+    {
+        return $this->set('label', $label)->set('labelPlural', $labelPlural ?? $label);
     }
 
     public function trans($key)
     {
-        return __($this->builder->get('lang') . '.' . $key);
+        $lang_key = $this->get('lang') . '.' . $key;
+        if (trans()->has($lang_key)) {
+            return trans($lang_key);
+        }
+        return Str::headline($key);
     }
 }

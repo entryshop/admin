@@ -45,14 +45,15 @@ class CrudPanel extends Renderable
         return $this->set('view', 'admin::crud.show');
     }
 
-    public function url($path = '')
+    public function url($path = '', $params = [])
     {
-        $path = ltrim($path, '/');
-        return admin()->url($this->route() . '/' . $path);
+        $path = '/' . ltrim($path, '/');
+        return admin()->url($this->route() . $path, $params);
     }
 
-    public function labels($label, $labelPlural = null)
+    public function path($path = '', $params = [])
     {
-        return $this->set('label', $label)->set('labelPlural', $labelPlural ?? $label);
+        $path = '/' . ltrim($path, '/');
+        return admin()->path($this->route() . $path, $params);
     }
 }
