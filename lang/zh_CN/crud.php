@@ -11,6 +11,7 @@ return [
     'edit'           => '编辑',
     'delete'         => '删除',
     'delete_confirm' => '确定要删除吗?',
+    'please_select'  => '请选择',
     'preview'        => '预览',
     'save'           => '保存',
     'submit'         => '提交',

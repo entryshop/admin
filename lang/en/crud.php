@@ -11,6 +11,7 @@ return [
     'edit'           => 'Edit',
     'delete'         => 'Delete',
     'delete_confirm' => 'Are you sure to delete this?',
+    'please_select'  => 'Please select',
     'preview'        => 'Preview',
     'save'           => 'Save',
     'submit'         => 'Submit',

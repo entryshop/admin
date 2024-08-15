@@ -24,7 +24,7 @@
 >
     @if(!empty($options))
         @if($allow_null)
-            <option value="">{{$placeholder ?? '--'}}</option>
+            <option value="">{{$placeholder ?? __('admin::crud.please_select')}}</option>
         @endif
         @foreach($options as $_key => $_label)
             <option value="{{$_key}}"
