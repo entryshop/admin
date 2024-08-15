@@ -8,8 +8,9 @@ use Entryshop\Admin\Admin\AdminMenu;
  */
 trait HasMenus
 {
-    const MENU_POSITION_MAIN = 'main';
-    const MENU_POSITION_USER = 'user';
+    const MENU_POSITION_MAIN     = 'main';
+    const MENU_POSITION_USER     = 'user';
+    const HOOK_ACTION_ADMIN_MENU = 'hook_action_admin_menu';
 
     protected $_menus = [];
 
@@ -47,16 +48,20 @@ trait HasMenus
         return $this;
     }
 
+    public function bootHasMenus()
+    {
+        hook_action(self::HOOK_ACTION_ADMIN_MENU);
+    }
+
     public function menus($position = null)
     {
         if (empty($position)) {
-            return $this->_menus;
+            $menus = $this->_menus;
+        } else {
+            $menus = array_filter($this->_menus, function ($menu) use ($position) {
+                return $menu->get('position') === $position;
+            });
         }
-
-        // filter by position
-        $menus = array_filter($this->_menus, function ($menu) use ($position) {
-            return $menu->get('position') === $position;
-        });
 
         usort($menus, function ($a, $b) {
             return $a->get('order') <=> $b->get('order');

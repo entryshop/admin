@@ -2,6 +2,7 @@
 
 namespace Entryshop\Admin\Admin\Traits;
 
+use Entryshop\Admin\Admin\AdminPanel;
 use Illuminate\Support\Facades\Route;
 
 /**
@@ -53,8 +54,21 @@ trait HasRoutes
         admin()->loginUrl(admin()->url('login'));
         admin()->set('homeUrl', admin()->url('/'));
         admin()->logoutUrl(admin()->url('logout'));
-
         $this->routeGroup(__DIR__ . '/../../../routes/auth.php');
+        add_hook_action(AdminPanel::HOOK_ACTION_ADMIN_MENU, function() {
+            admin()->menu('profile')
+                ->user()
+                ->label('个人设置')
+                ->url(admin()->path('profile'))
+                ->icon('mdi mdi-account-circle');
+
+            admin()->menu('logout')
+                ->user()
+                ->label('退出登录')
+                ->order(100)
+                ->url(admin()->logoutUrl())
+                ->icon('mdi mdi-logout');
+        });
         return $this;
     }
 

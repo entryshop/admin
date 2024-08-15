@@ -5,7 +5,6 @@ namespace Entryshop\Hook\Providers;
 use Entryshop\Hook\Console\HookListeners;
 use Entryshop\Hook\Hook;
 use Illuminate\Support\Facades\Blade;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\ServiceProvider;
 
 class HookServiceProvider extends ServiceProvider
@@ -36,7 +35,6 @@ class HookServiceProvider extends ServiceProvider
     protected function bootHookDirectives()
     {
         Blade::directive('hook', function ($parameter) {
-            Log::debug($parameter);
             $parameter  = trim($parameter, '()');
             $parameters = explode(',', $parameter);
             $name       = trim($parameters[0], "'");
