@@ -36,12 +36,11 @@ class Renderable
 
     public function render(...$args)
     {
+        $this->boot();
         if ($this->builder->get('hide')) {
             return '';
         }
-
         if ($this->builder->has('display')) {
-            $this->boot();
             return $this->builder->get('display');
         }
         return view($this->getView(...$args), $this->getViewData(...$args));
@@ -49,20 +48,20 @@ class Renderable
 
     public function getView(...$args)
     {
+        $this->boot();
         if ($this->builder->get('hide')) {
             return 'admin::hidden';
         }
-
         return $this->view() ?? $this->default_view;
     }
 
     public function getViewData(...$args)
     {
+        $this->boot();
         $data = [
             'builder'    => $this->builder,
             'renderable' => $this,
         ];
-        $this->boot();
         if (!empty($args[0]) && is_array($args[0])) {
             $data = array_merge($data, $args[0]);
         }
