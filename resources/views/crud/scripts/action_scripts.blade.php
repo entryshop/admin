@@ -29,8 +29,8 @@
                     icon: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#d33",
-                    confirmButtonText: $(this).data('confirm-ok') || "确认",
-                    cancelButtonText: $(this).data('confirm-cancel') || "取消"
+                    confirmButtonText: $(this).data('confirm-ok') || "{{__('admin::crud.confirm_ok')}}",
+                    cancelButtonText: $(this).data('confirm-cancel') || "{{__('admin::crud.confirm_cancel')}}"
                 }).then((result) => {
                     if (result.isConfirmed) {
                         runAction(action, method, dataParamAttributes);

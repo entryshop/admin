@@ -7,6 +7,7 @@ use Entryshop\Admin\Admin\Traits\HasAssets;
 use Entryshop\Admin\Admin\Traits\HasBrand;
 use Entryshop\Admin\Admin\Traits\HasMenus;
 use Entryshop\Admin\Admin\Traits\HasRoutes;
+use Entryshop\Admin\Admin\Traits\HasToasts;
 use Entryshop\Admin\Support\Renderable;
 
 /**
@@ -19,6 +20,7 @@ class AdminPanel extends Renderable
     use HasBrand;
     use HasMenus;
     use HasRoutes;
+    use HasToasts;
 
     protected $default_view = 'admin::layouts.app';
 

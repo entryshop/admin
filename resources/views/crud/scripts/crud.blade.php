@@ -30,13 +30,10 @@
                     type: 'POST',
                     data: form.serialize(),
                     success: function (response) {
-                        // reset form
                         form.trigger('reset');
-
                         if (modal) {
                             modal.modal('hide');
                         }
-
                         runActionResponse(response);
                     }
                 })

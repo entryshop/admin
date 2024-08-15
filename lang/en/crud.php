@@ -6,6 +6,8 @@ return [
     'close'          => 'Close',
     'create'         => 'Create',
     'confirm'        => 'Confirm',
+    'confirm_cancel' => 'Cancel',
+    'confirm_ok'     => 'Confirm',
     'edit'           => 'Edit',
     'delete'         => 'Delete',
     'delete_confirm' => 'Are you sure to delete this?',

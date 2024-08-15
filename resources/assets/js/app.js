@@ -2068,7 +2068,7 @@
 		// isCustomDropdownResponsive();
 		initFullScreen();
 		// initModeSetting();
-		windowLoadContent();
+		// windowLoadContent();
 		// counter();
 		initLeftMenuCollapse();
 		// initTopbarComponents();

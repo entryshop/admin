@@ -1,4 +1,4 @@
-<a role="button" class="text-danger"
+<a role="button" class="badge bg-danger-subtle text-danger"
    data-confirm="@lang('admin::crud.delete_confirm')"
    data-action="{{$renderable->crud()->url($row->getKey())}}"
    data-method="delete">

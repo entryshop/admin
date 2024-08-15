@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary">提交</button>
+            <button type="submit" class="btn btn-primary">@lang('admin::crud.submit')</button>
         </div>
     </div>
 </form>

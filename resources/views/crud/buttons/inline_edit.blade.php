@@ -1,3 +1,5 @@
-<a href="{{$renderable->crud()->url($row->getKey().'/edit')}}" target="{{$renderable->get('target', '_self')}}">
+<a class="badge bg-primary-subtle text-primary"
+   href="{{$renderable->crud()->url($row->getKey().'/edit')}}"
+   target="{{$renderable->get('target', '_self')}}">
     <i class="ri-edit-line"></i> {{$renderable->get('label', __('admin::crud.edit'))}}
 </a>

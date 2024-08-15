@@ -59,10 +59,10 @@
                                                  src="{{auth()->user()?->avatar}}"
                                                  alt="{{auth()->user()?->name}}">
                                         @else
-                                            <div class="rounded-circle header-profile-user"
-                                                 style="background-color: #ccc; line-height: 32px">
-                                                <span
-                                                        class="text-white">{{mb_substr(auth()->user()?->name, 0, 1)}}</span>
+                                            <div class="avatar-xs">
+                                                <div class="avatar-title rounded-circle text-white bg-primary">
+                                                    <span>{{mb_substr(auth()->user()?->name, 0, 1)}}</span>
+                                                </div>
                                             </div>
                                         @endif
                                         <span class="text-start ms-xl-2">
@@ -88,11 +88,11 @@
                 <!-- Light Logo-->
                 <a href="{{admin()->homeUrl()}}" class="logo logo-light">
                 <span class="logo-sm">
-                    <img src="{{admin()->get('miniLogo', admin()->logo())}}" alt="" height="34" width="50"
+                    <img src="{{admin()->get('miniLogo', admin()->logo())}}" alt="Logo" height="34" width="50"
                          class="object-fit-contain">
                 </span>
                     <span class="logo-lg">
-                    <img src="{{admin()->logo()}}" alt="" height="34" width="160" class="object-fit-contain">
+                    <img src="{{admin()->logo()}}" alt="Logo" height="34" width="200" class="object-fit-contain">
                 </span>
                     {{admin()->logoText()}}
                 </a>

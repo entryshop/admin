@@ -13,4 +13,5 @@
 @endforeach
 
 @include('admin::partials.toasts')
+
 @stack('after_scripts')
