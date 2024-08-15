@@ -8,4 +8,3 @@
 <span class="@if(!empty($color)) badge bg-{{$color}}-subtle text-{{$color}} @endif">
     {{$label}}
 </span>
-
