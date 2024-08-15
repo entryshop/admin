@@ -10,7 +10,7 @@
                         <div class="navbar-brand-box horizontal-logo">
                             <a href="{{admin()->homeUrl()}}" class="logo logo-dark">
                             <span class="logo-sm">
-                                <img src="{{admin()->miniLogo()}}" alt="" height="22">
+                                <img src="{{admin()->get('miniLogo', admin()->logo())}}" alt="" height="22">
                                 {{admin()->getLogoText()}}
                             </span>
                                 <span class="logo-lg">
@@ -20,7 +20,7 @@
 
                             <a href="{{admin()->homeUrl()}}" class="logo logo-light">
                         <span class="logo-sm">
-                            <img src="{{admin()->miniLogo()}}" alt="" height="22">
+                            <img src="{{admin()->get('miniLogo', admin()->logo())}}" alt="" height="22">
                             {{admin()->getLogoText()}}
                         </span>
                                 <span class="logo-lg">
@@ -62,12 +62,12 @@
                                             <div class="rounded-circle header-profile-user"
                                                  style="background-color: #ccc; line-height: 32px">
                                                 <span
-                                                    class="text-white">{{mb_substr(auth()->user()?->name, 0, 1)}}</span>
+                                                        class="text-white">{{mb_substr(auth()->user()?->name, 0, 1)}}</span>
                                             </div>
                                         @endif
                                         <span class="text-start ms-xl-2">
                                             <span
-                                                class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">
+                                                    class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">
                                                 {{auth()->user()?->name ?? __('admin::auth.guest')}}
                                             </span>
                                             <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text"></span>
@@ -88,7 +88,8 @@
                 <!-- Light Logo-->
                 <a href="{{admin()->homeUrl()}}" class="logo logo-light">
                 <span class="logo-sm">
-                    <img src="{{admin()->miniLogo()}}" alt="" height="34" width="50" class="object-fit-contain">
+                    <img src="{{admin()->get('miniLogo', admin()->logo())}}" alt="" height="34" width="50"
+                         class="object-fit-contain">
                 </span>
                     <span class="logo-lg">
                     <img src="{{admin()->logo()}}" alt="" height="34" width="160" class="object-fit-contain">

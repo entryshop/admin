@@ -3,7 +3,7 @@
     //Google Font
     @import url('https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;700&display=swap');
 
-    [data-theme="galaxy"] { 
+    [data-theme="galaxy"] {
 
         $primary:                   #8c68cd;
         $secondary:                 #4788ff;
@@ -19,7 +19,7 @@
         $body-bg-image-1:                                 url('../images/chat-bg-pattern.png');
         $body-bg-image-2:                                 url('../images/galaxy/img-4.png');
         $body-bg-image-3:                                 url('../images/galaxy/img-5.png');
-        
+
         //Typography
         $font-sizes: (
             "10":          0.625rem,
@@ -37,7 +37,7 @@
             "21":          1.3125rem,
             "22":          1.375rem,
             "23":          0.8125rem,
-            "24":          1.5rem,            
+            "24":          1.5rem,
             "36":          2.25rem,
             "48":          3rem,
         );
@@ -53,7 +53,7 @@
         // Font Family
         --#{$prefix}font-family-primary:                                     'Saira', sans-serif;
         --#{$prefix}font-family-secondary:                                   'Saira', sans-serif;
-        
+
         --#{$prefix}grid-gutter-width:                              1.5rem;
 
         --#{$prefix}body-bg:                                        transparent;
@@ -68,16 +68,16 @@
         --#{$prefix}card-border-width-custom:                       1px;
         --#{$prefix}card-header-border-width:                       1px;
         --#{$prefix}card-shadow:                                    #{$box-shadow};
-        
+
         .card {
             --#{$prefix}card-bg:                                        transparent;
             --#{$prefix}card-cap-bg:                                    transparent;
         }
-        
+
         .list-group {
             --#{$prefix}list-group-bg:                                        transparent;
         }
- 
+
         //sidebar menu
         --#{$prefix}vertical-menu-item-font-size:                   0.9375rem;
         --#{$prefix}vertical-menu-sub-item-font-size:               0.813rem;
@@ -130,7 +130,7 @@
         --#{$prefix}topbar-search-bg:                                   #f3f3f9;
         --#{$prefix}topbar-user-bg:                                     #f3f3f9;
         --#{$prefix}topbar-search-color:                                #495057;
-        
+
         // Topbar - Dark
         &[data-topbar="dark"] {
             --#{$prefix}header-bg:                                      #2c3a4e;
@@ -143,17 +143,17 @@
             --#{$prefix}topbar-search-color:                            #{$white};
         }
 
-        //page title 
+        //page title
         --#{$prefix}page-title-box-shadow:                              0 1px 2px rgba(56, 65, 74, 0.15);
         --#{$prefix}page-title-border:                                  none;
 
         //footer
         --#{$prefix}footer-bg:                                          #{$white};
         --#{$prefix}footer-color:                                       #98a6ad;
-        
+
         //Boxed layout
         --#{$prefix}boxed-body-bg:                                      #e5e5f2;
-        
+
         --#{$prefix}timeline-color:                                     var(--#{$prefix}secondary-bg);
 
         --#{$prefix}chat-primary-bg:                                    var(--#{$prefix}light);
@@ -170,8 +170,8 @@
             "dark":             $dark,
             "light":            $light
         );
-        
-        @each $name, $value in $custom-theme-colors {   
+
+        @each $name, $value in $custom-theme-colors {
             --#{$prefix}#{$name}:                                        #{$value};
             --#{$prefix}#{$name}-rgb:                                    #{to-rgb($value)};
             --#{$prefix}#{$name}-bg-subtle:                              #{rgba($value, 0.15)};
@@ -184,11 +184,11 @@
         --#{$prefix}link-hover-color:                                   #{shade-color($primary, 20%)};
         --#{$prefix}link-hover-color-rgb:                               #{to-rgb(shade-color($primary, 20%))};
 
-        @each $name, $value in $font-sizes { 
+        @each $name, $value in $font-sizes {
             --#{$prefix}font-#{$name}:          #{$value};
         }
-    
-        @each $name, $value in $font-weights { 
+
+        @each $name, $value in $font-weights {
             --#{$prefix}font-weight-#{$name}:   #{$value};
         }
 
@@ -223,15 +223,15 @@
                 }
 
                 &[for="themeColor-02"] {
-                    background-color: $green-600; 
+                    background-color: $green-600;
                 }
 
                 &[for="themeColor-03"] {
-                    background-color: #f4a261; 
+                    background-color: #f4a261;
                 }
 
                 &[for="themeColor-04"] {
-                    background-color: $blue-600; 
+                    background-color: $blue-600;
                 }
             }
         }
@@ -391,7 +391,7 @@
         @media (max-width: 767.98px) {
             &[data-topbar="light"] {
                 .app-menu {
-                    background-color: $white;
+                    //background-color: $white;
                 }
             }
 
