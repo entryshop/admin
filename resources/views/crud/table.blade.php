@@ -62,7 +62,7 @@
             </thead>
             <tbody>
             @foreach($rows as $row)
-                <tr>
+                <tr {!! $renderable->get('row_attrs') !!} data-id="{{$row->getKey()}}">
                     @if(count($bulk_buttons))
                         <td>
                             <div class="form-check">

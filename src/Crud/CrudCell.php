@@ -45,5 +45,4 @@ class CrudCell extends Renderable
         $this->_crud = $value;
         return $this;
     }
-
 }

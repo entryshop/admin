@@ -9,7 +9,6 @@
                 return;
             }
 
-            console.log(dataParamAttributes.bulk);
             if (dataParamAttributes.bulk) {
                 // get selected ids
                 let ids = getSelectedRows(dataParamAttributes.bulk);
