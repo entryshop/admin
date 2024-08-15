@@ -88,10 +88,10 @@
                 <!-- Light Logo-->
                 <a href="{{admin()->homeUrl()}}" class="logo logo-light">
                 <span class="logo-sm">
-                    <img src="{{admin()->miniLogo()}}" alt="" height="34">
+                    <img src="{{admin()->miniLogo()}}" alt="" height="34" width="50" class="object-fit-contain">
                 </span>
                     <span class="logo-lg">
-                    <img src="{{admin()->logo()}}" alt="" height="34">
+                    <img src="{{admin()->logo()}}" alt="" height="34" width="160" class="object-fit-contain">
                 </span>
                     {{admin()->logoText()}}
                 </a>
