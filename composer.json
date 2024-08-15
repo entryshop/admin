@@ -3,10 +3,12 @@
     "type": "library",
     "autoload": {
         "psr-4": {
-            "Entryshop\\Admin\\": "src/"
+            "Entryshop\\Admin\\": "src/",
+            "Entryshop\\Hook\\": "hook/"
         },
         "files": [
-            "src/helpers.php"
+            "src/helpers.php",
+            "hook/helpers.php"
         ]
     },
     "extra": {
