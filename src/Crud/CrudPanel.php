@@ -2,6 +2,7 @@
 
 namespace Entryshop\Admin\Crud;
 
+use Entryshop\Admin\Crud\Traits\AsContainer;
 use Entryshop\Admin\Crud\Traits\HasButtons;
 use Entryshop\Admin\Crud\Traits\HasColumns;
 use Entryshop\Admin\Crud\Traits\HasEntries;
@@ -11,6 +12,7 @@ use Entryshop\Admin\Support\Renderable;
 
 class CrudPanel extends Renderable
 {
+    use AsContainer;
     use HasButtons;
     use HasColumns;
     use HasEntries;
