@@ -16,11 +16,12 @@ trait HasAssets
     protected $uploadUrl = '/admin/upload';
 
     protected $default_theme_var = [
-        'data-layout'        => "vertical", // horizontal
-        'data-topbar'        => "light",
-        'data-sidebar'       => "dark",
-        'data-theme'         => "default",
-        'data-theme-colors'  => "default",
+        'data-layout'       => "vertical", // horizontal
+        'data-topbar'       => "light",
+        'data-sidebar-size' => 'lg',
+        'data-sidebar'      => "dark",
+        'data-theme'        => "default",
+        'data-theme-colors' => "default",
     ];
 
     public function bootHasAssets()
@@ -56,7 +57,7 @@ trait HasAssets
             $this->asset('libs/sweetalert2/sweetalert2.min.js'),
         ]);
 
-        $this->themeVar($this->default_theme_var);
+        $this->themeVar(array_merge($this->default_theme_var, $data));
 
         return $this;
     }

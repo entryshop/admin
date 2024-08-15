@@ -2062,7 +2062,7 @@
 	}
 
 	function init() {
-		setDefaultAttribute();
+		// setDefaultAttribute();
 		// twoColumnMenuGenerate();
 		// isCustomDropdown();
 		// isCustomDropdownResponsive();
