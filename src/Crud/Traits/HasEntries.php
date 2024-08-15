@@ -49,4 +49,9 @@ trait HasEntries
     {
         return $this->builder->get('labelPlural', $this->builder->get('label'));
     }
+
+    public function trans($key)
+    {
+        return __($this->builder->get('lang') . '.' . $key);
+    }
 }

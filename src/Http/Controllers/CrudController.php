@@ -2,11 +2,12 @@
 
 namespace Entryshop\Admin\Http\Controllers;
 
+use Entryshop\Admin\Crud\CrudPanel;
 use Illuminate\Support\Str;
 
 abstract class CrudController
 {
-    protected $_crud;
+    protected CrudPanel $_crud;
 
     public $model;
     public $route;
@@ -161,17 +162,19 @@ abstract class CrudController
     protected function getCrudDefaults()
     {
         return [
-            'model'       => $this->model,
-            'route'       => $this->route,
-            'lang'        => $this->lang,
-            'label'       => $this->label,
-            'labelPlural' => $this->labelPlural,
+            'model' => $this->model,
+            'route' => $this->route,
+            'lang'  => $this->lang,
         ];
     }
 
     public function crud()
     {
-        return $this->_crud ??= crud($this->getCrudDefaults());
+        if (empty($this->_crud)) {
+            $this->_crud = crud($this->getCrudDefaults());
+            $this->crud()->labels($this->label ?? $this->crud()->trans('label'), $this->labelPlural ?? $this->crud()->trans('labelPlural'));
+        }
+        return $this->_crud;
     }
 
 }

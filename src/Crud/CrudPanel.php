@@ -7,7 +7,6 @@ use Entryshop\Admin\Crud\Traits\HasColumns;
 use Entryshop\Admin\Crud\Traits\HasEntries;
 use Entryshop\Admin\Crud\Traits\HasFields;
 use Entryshop\Admin\Crud\Traits\HasFilters;
-use Entryshop\Admin\Support\HasSections;
 use Entryshop\Admin\Support\Renderable;
 
 class CrudPanel extends Renderable
@@ -52,6 +51,6 @@ class CrudPanel extends Renderable
 
     public function labels($label, $labelPlural = null)
     {
-        return $this->set('lable', $label)->set('labelPlural', $labelPlural ?? $label);
+        return $this->set('label', $label)->set('labelPlural', $labelPlural ?? $label);
     }
 }
