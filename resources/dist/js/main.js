@@ -8,6 +8,10 @@
     }
 
     function initLayout() {
+
+        // set sidebar size from session storage
+        setDefaultAttribute('data-sidebar-size');
+
         if (document.getElementById("topnav-hamburger-icon")) {
             document.getElementById("topnav-hamburger-icon").addEventListener("click", _toggleHamburgerMenu);
         }
@@ -26,6 +30,13 @@
     function _setAttribute(key, value) {
         sessionStorage.setItem(key, value);
         document.documentElement.setAttribute(key, value);
+    }
+
+    function setDefaultAttribute(key) {
+        let value = sessionStorage.getItem("data-sidebar-size");
+        if (value) {
+            document.documentElement.setAttribute(key, value);
+        }
     }
 
     function _toggleHamburgerMenu() {
