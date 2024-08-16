@@ -32,7 +32,7 @@
                                        data-bs-toggle="collapse" role="button">
                                         {{$child->get('label')}}
                                     </a>
-                                    <div class="menu-dropdown collapse" id="sidebar{{$child->key()}}" style="">
+                                    <div class="menu-dropdown collapse" id="sidebar{{$child->key()}}">
                                         <ul class="nav nav-sm flex-column">
                                             @foreach($child->children() as $sub_child)
                                                 <li class="nav-item">

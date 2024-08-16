@@ -1,4 +1,6 @@
-<img src="{{$value}}" alt=""
-     @if(isset($width)) width="{{$width}}" @endif
-     @if(isset($height)) height="{{$height}}" @endif
->
+<x-admin::columns.image
+    :src="$value"
+    :width="$width??null"
+    :height="$height??null"
+    :object_fit="$object_fit??'contain'"
+/>

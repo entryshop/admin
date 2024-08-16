@@ -1,11 +1,11 @@
 @props([
     'size' => null,
-    'action',
+    'color' => 'primary',
     'data' => [],
+    'action',
     'label',
     'icon',
-    'color' => 'primary',
-    'href'=>null,
+    'href',
     'target',
 ])
 @php
@@ -14,17 +14,9 @@
     } else {
         $element = 'button';
     }
-    foreach ($__data['attributes'] as $key => $value) {
-        if(\Illuminate\Support\Str::startsWith($key, 'data-')) {
-            $data[$key] = $value;
-        }
-    }
 @endphp
 
-<{{$element}} class="btn {{$size? 'btn-'.$size:''}} btn-{{$color}}"
-@foreach($data as $key => $value)
-    {{$key}}="{{$value}}"
-@endforeach
+<{{$element}} class="btn {{$size? 'btn-'.$size:''}} btn-{{$color}}" {!! $attributes??'' !!}
 @if(!empty($href))
     href="{{$href}}" target="{{$target ?? '_self'}}"
 @endif

@@ -54,14 +54,8 @@ trait HasRoutes
         admin()->loginUrl(admin()->url('login'));
         admin()->set('homeUrl', admin()->url('/'));
         admin()->logoutUrl(admin()->url('logout'));
-        $this->routeGroup(__DIR__ . '/../../../routes/auth.php');
-        add_hook_action(AdminPanel::HOOK_ACTION_ADMIN_MENU, function() {
-            admin()->menu('profile')
-                ->user()
-                ->label('个人设置')
-                ->url(admin()->path('profile'))
-                ->icon('mdi mdi-account-circle');
-
+        Route::group(['prefix' => config('admin.route.prefix'), 'middleware' => ['web']], __DIR__ . '/../../../routes/auth.php');
+        add_hook_action(AdminPanel::HOOK_ACTION_ADMIN_MENU, function () {
             admin()->menu('logout')
                 ->user()
                 ->label('退出登录')
@@ -72,12 +66,25 @@ trait HasRoutes
         return $this;
     }
 
-    public function routeGroup($value)
+    public function routeGroup(...$args)
     {
-        Route::group([
+        $params = [];
+        $value  = null;
+
+        if (count($args) === 1) {
+            $value = $args[0];
+        }
+
+        if (count($args) >= 2) {
+            $value  = $args[1];
+            $params = $args[0];
+        }
+
+        $params = array_merge_recursive([
             'prefix'     => config('admin.route.prefix'),
-            'middleware' => config('admin.route.middleware'),
-        ], $value);
+            'middleware' => ['web', 'auth:' . config('admin.auth.guard')],
+        ], $params);
+        Route::group($params, $value);
         return $this;
     }
 }

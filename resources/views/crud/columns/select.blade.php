@@ -2,9 +2,7 @@
     $options ??=[];
     $colors ??=[];
     $label = $options[$value] ?? $value;
-    $color = $colors[$value] ?? ($colors['__default'] ?? null);
+    $color = $colors[$value] ?? ($colors['_default'] ?? ($color??null));
 @endphp
 
-<span class="@if(!empty($color)) badge bg-{{$color}}-subtle text-{{$color}} @endif">
-    {{$label}}
-</span>
+<x-admin::columns.label :$label :$color/>

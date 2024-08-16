@@ -21,10 +21,4 @@ class CrudFilter extends CrudCell
     {
         return $this->set('operator', 'like');
     }
-
-    public function select($options)
-    {
-        return $this->type('select')->set('options', $options);
-    }
-
 }

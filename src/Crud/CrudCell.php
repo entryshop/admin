@@ -37,6 +37,11 @@ class CrudCell extends Renderable
         }
     }
 
+    public function select($options)
+    {
+        return $this->type('select')->set('options', $options);
+    }
+
     public function crud($value = null)
     {
         if (empty($value)) {
@@ -45,4 +50,5 @@ class CrudCell extends Renderable
         $this->_crud = $value;
         return $this;
     }
+
 }
