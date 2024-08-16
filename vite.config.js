@@ -43,7 +43,6 @@ export default defineConfig({
                 ],
                 refresh: [
                     ...refreshPaths,
-                    'resources/views/**',
                 ],
             }
         ),

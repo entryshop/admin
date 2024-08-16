@@ -26,13 +26,13 @@
 
 @if($value ?? false)
     @if($yes_icon)
-        <i class="{{$yes_icon}} text-{{$yes_color}}"></i>
+        <i class="{{$yes_icon}} text-{{$yes_color}} align-bottom"></i>
     @else
         <span class="text-{{$yes_color}}">{!! $yes_text ?? 'Y'  !!}</span>
     @endif
 @else
     @if($no_icon)
-        <i class="{{$no_icon}} text-{{$no_color}}"></i>
+        <i class="{{$no_icon}} text-{{$no_color}} align-bottom"></i>
     @else
         <span class="text-{{$no_color}}">{!! $no_text ?? 'N'  !!}</span>
     @endif

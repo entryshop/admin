@@ -67,7 +67,7 @@
                                         @endif
                                         <span class="text-start ms-xl-2">
                                             <span
-                                                    class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">
+                                                class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">
                                                 {{auth()->user()?->name ?? __('admin::auth.guest')}}
                                             </span>
                                             <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text"></span>
@@ -138,11 +138,6 @@
         </div>
     </div>
     <!-- End page -->
-    <!--start back-to-top-->
-    <button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">
-        <i class="ri-arrow-up-line"></i>
-    </button>
-    <!--end back-to-top-->
 @endpush
 
 @push('html_attributes')
@@ -152,5 +147,5 @@
 @endpush
 
 @pushonce('after_scripts')
-    <script src="{{admin()->asset('js/app.js')}}"></script>
+    <script src="{{admin()->asset('js/main.js')}}"></script>
 @endpushonce

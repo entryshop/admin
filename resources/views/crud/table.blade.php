@@ -44,7 +44,7 @@
         {!! render($section_before_table) !!}
     @endif
     <div class="table-responsive">
-        <table class="table mb-0 table-hover" id="{{$name}}">
+        <table class="table mb-0 table-hover table-crud" id="{{$name}}">
             <thead>
             @if(count($bulk_buttons))
                 <th class="w-24px">
@@ -94,5 +94,12 @@
     @endif
 </div>
 
+@pushonce('styles')
+    <style>
+        .table-crud td {
+            vertical-align: middle;
+        }
+    </style>
+@endpushonce
 @include('admin::crud.scripts.crud')
 @include('admin::crud.scripts.table_scripts')

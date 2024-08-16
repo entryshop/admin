@@ -26,10 +26,30 @@
                 <div class="collapse menu-dropdown" id="sidebar{{$loop->index}}">
                     <ul class="nav nav-sm flex-column">
                         @foreach($menu->children() as $child)
-                            <li class="nav-item {{$child->active() ? 'active' : ''}}">
-                                <a href="{{$child->get('url')}}" target="{{$child->get('target', '_self')}}"
-                                   class="nav-link">{{$child->get('label')}}</a>
-                            </li>
+                            @if($child->children())
+                                <li class="nav-item">
+                                    <a href="#sidebar{{$child->key()}}" class="nav-link"
+                                       data-bs-toggle="collapse" role="button">
+                                        {{$child->get('label')}}
+                                    </a>
+                                    <div class="menu-dropdown collapse" id="sidebar{{$child->key()}}" style="">
+                                        <ul class="nav nav-sm flex-column">
+                                            @foreach($child->children() as $sub_child)
+                                                <li class="nav-item">
+                                                    <a href="{{$sub_child->get('url')}}" class="nav-link">
+                                                        {{$sub_child->get('label')}}
+                                                    </a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                </li>
+                            @else
+                                <li class="nav-item">
+                                    <a href="{{$child->get('url')}}" target="{{$child->get('target', '_self')}}"
+                                       class="nav-link">{{$child->get('label')}}</a>
+                                </li>
+                            @endif
                         @endforeach
                     </ul>
                 </div>

@@ -1,6 +1,6 @@
 //
 // _horizontal.scss
-// 
+//
 
 [data-layout="horizontal"] {
 
@@ -78,7 +78,7 @@
                     color: var(--#{$prefix}topnav-item-active-color);
                     &:after {
                         color: var(--#{$prefix}topnav-item-active-color);
-                    }   
+                    }
                     .icon-dual {
                         color: var(--#{$prefix}topnav-item-active-color);
                         fill: rgba(var(--#{$prefix}primary-rgb), 0.10);

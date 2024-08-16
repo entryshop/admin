@@ -15,7 +15,7 @@
 
 @stack('styles')
 
-<style>
+<style nonce="{{admin()->csp()}}">
     :root {
     @foreach(admin()->cssVar() as $style_key => $style_value)
     {{$style_key}}: {{$style_value}};
