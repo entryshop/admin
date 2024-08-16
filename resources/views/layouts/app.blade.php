@@ -42,13 +42,8 @@
 
                     <div class="d-flex align-items-center">
 
-                        <div class="ms-1 header-item d-none d-sm-flex">
-                            <button type="button"
-                                    class="btn btn-icon btn-topbar material-shadow-none btn-ghost-secondary rounded-circle"
-                                    data-toggle="fullscreen">
-                                <i class='bx bx-fullscreen fs-22'></i>
-                            </button>
-                        </div>
+                        <!-- top right menu -->
+                        {!! render(admin()->children('top_right_components')) !!}
 
                         <div class="dropdown ms-sm-3 header-item topbar-user">
                             <button type="button" class="btn material-shadow-none" id="page-header-user-dropdown"
@@ -67,7 +62,7 @@
                                         @endif
                                         <span class="text-start ms-xl-2">
                                             <span
-                                                class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">
+                                                    class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">
                                                 {{auth()->user()?->name ?? __('admin::auth.guest')}}
                                             </span>
                                             <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text"></span>

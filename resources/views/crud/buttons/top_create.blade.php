@@ -1,3 +1,7 @@
-<a class="btn btn-primary btn-md" href="{{$renderable->crud()->route()}}/create">
-    <i class="ri-add-line"></i> @lang('admin::crud.create')
-</a>
+<x-admin::buttons.action_button
+    size="md"
+    color="primary"
+    icon="ri-add-line"
+    href="{{$renderable->crud()->url('/create')}}"
+    :label="__('admin::crud.create')"
+/>

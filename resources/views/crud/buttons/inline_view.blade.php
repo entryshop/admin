@@ -1,4 +1,7 @@
-<a role="button" class="btn btn-xs btn-ghost-primary"
-   href="{{$renderable->crud()->route()}}/{{$row->getKey()}}">
-    <i class="ri-eye-line align-bottom"></i> {{$renderable->get('label', __('admin::crud.preview'))}}
-</a>
+<x-admin::buttons.action_button
+    size="xs"
+    color="ghost-primary"
+    icon="ri-eye-line"
+    href="{{$renderable->crud()->url($row->getKey())}}"
+    :label="__('admin::crud.preview')"
+/>
