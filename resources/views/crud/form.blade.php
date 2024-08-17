@@ -23,3 +23,6 @@
         </div>
     </div>
 </form>
+
+
+@include('admin::crud.scripts.crud')
