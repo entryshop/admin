@@ -13,6 +13,7 @@ class Renderable
     use BootTraits;
     use Makable;
     use HasChildren;
+    use HasContext;
     use HasAttributes;
 
     protected $default_view;
