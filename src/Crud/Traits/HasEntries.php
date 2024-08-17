@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
  * @method string|self route($value = null)
  * @method string|self label($value = null)
  * @method string|self labelPlural($value = null)
- * @method string|self lang($value = null) set language prefix
+ * @method string|self lang($value = null) Set language prefix
  */
 trait HasEntries
 {

@@ -75,7 +75,7 @@
                         <td>{!! $column->render(['row' => $row]) !!}</td>
                     @endforeach
                     @if(!empty($inline_buttons))
-                        <td>
+                        <td class="inline-buttons">
                             <x-admin::flex :items="$inline_buttons" gap="2" :params="['row'=>$row]"/>
                         </td>
                     @endif
@@ -106,6 +106,10 @@
 
         .table-crud tr[data-action] {
             cursor: pointer;
+        }
+
+        .table-crud td.inline-buttons {
+            white-space: nowrap;
         }
     </style>
 @endpushonce
