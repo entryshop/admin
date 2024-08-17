@@ -36,6 +36,7 @@
                     @endif
                 @endforeach
                 @if(in_array($_key,array_keys($value))) selected @endif
+                @if(in_array($_key, $value)) selected @endif
             @else
                 {{$value == $_key ? 'selected':''}}
             @endif
