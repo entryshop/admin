@@ -65,6 +65,16 @@ if (!function_exists('evaluate')) {
     }
 }
 
+if (!function_exists('to_json')) {
+    function to_json($string)
+    {
+        if ('string' === gettype($string)) {
+            return json_decode($string, true);
+        }
+        return $string;
+    }
+}
+
 if (!function_exists('interpolate')) {
     function interpolate($template = null, $data = [])
     {
@@ -137,3 +147,4 @@ if (!function_exists('interpolate')) {
         }, $template);
     }
 }
+

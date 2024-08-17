@@ -28,13 +28,17 @@
         @endif
         @foreach($options as $_key => $_label)
             <option value="{{$_key}}"
-                    @if($multiple)
-                        @foreach($value??[] as $item)
-                            @if(data_get($item, 'id') === $_key) selected @endif
-                    @endforeach
+            @if($multiple)
+                @foreach($value??[] as $item)
+                    @if(data_get($item, 'id') == $_key)
+                        selected
+                        @break
+                    @endif
+                @endforeach
+                @if(in_array($_key,array_keys($value))) selected @endif
             @else
                 {{$value == $_key ? 'selected':''}}
-                    @endif
+            @endif
             >{!! $_label !!}</option>
         @endforeach
     @endif
