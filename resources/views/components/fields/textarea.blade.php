@@ -2,6 +2,7 @@
     'class' => '',
     'name' => '',
     'id' => '',
+    'value' =>'',
     'rows' => 3,
 ])
 <textarea id="{{$id}}" class="{{$class}}" name="{{$name}}"
