@@ -4,26 +4,17 @@ namespace Entryshop\Admin\Crud;
 
 /**
  * @method string|self icon($value = null)
+ * @method string|self href($value = null)
+ * @method string|self confirm($value = null)
+ * @method string|self action($value = null)
+ * @method string|self method($value = null)
+ * @method string|self color($value = null)
+ * @method string|self size($value = null)
  */
 class CrudButton extends CrudCell
 {
     protected $view_namespace = 'admin::crud.buttons.';
     protected $default_type = 'button';
-
-    public function action($value)
-    {
-        return $this->attr('data-action', $value);
-    }
-
-    public function color($value)
-    {
-        return $this->class('btn')->class('btn-' . $value);
-    }
-
-    public function confirm($title, $text = null)
-    {
-        return $this->attr('data-confirm', $title)->attr('data-confirm-text', $text);
-    }
 
     public function top($type = null)
     {
@@ -48,5 +39,4 @@ class CrudButton extends CrudCell
         }
         return $this;
     }
-
 }

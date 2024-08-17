@@ -1,5 +1,0 @@
-@props([
-    'name',
-    'value',
-])
-

@@ -99,6 +99,10 @@
         .table-crud td {
             vertical-align: middle;
         }
+
+        .table-crud th {
+            white-space: nowrap;
+        }
     </style>
 @endpushonce
 @include('admin::crud.scripts.crud')

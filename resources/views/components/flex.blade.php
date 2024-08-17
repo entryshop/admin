@@ -1,7 +1,7 @@
 @props([
-    'direction'=>'row',
+    'direction' => 'row',
     'wrap' => true,
-    'gap'=>3,
+    'gap' => 3,
     'params' => null,
     'items' => [],
 ])

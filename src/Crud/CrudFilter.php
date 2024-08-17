@@ -21,4 +21,9 @@ class CrudFilter extends CrudCell
     {
         return $this->set('operator', 'like');
     }
+
+    public function search()
+    {
+        return $this->set('operator', 'search');
+    }
 }

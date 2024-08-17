@@ -6,4 +6,4 @@
     'value' => null,
 ])
 
-<input id="{{$id}}" class="{{$class}}" type="text" name="{{$name}}" value="{{$value}}">
+<input id="{{$id}}" class="{{$class}}" type="{{$type}}" name="{{$name}}" value="{{$value}}">

@@ -43,6 +43,9 @@ trait HasFilters
                 case 'like':
                     $this->entries()->where($name, 'like', '%' . request($name) . '%');
                     break;
+                case 'search':
+                    $this->entries()->search(request($name));
+                    break;
                 default:
                     $this->entries()->where($name, request($name));
                     break;
