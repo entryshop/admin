@@ -63,6 +63,12 @@ trait HasEntries
         if (trans()->has($lang_key)) {
             return trans($lang_key);
         }
+
+        // load common lang
+        if (trans()->has('admin::crud.attributes.' . $key)) {
+            return trans('admin::crud.attributes.' . $key);
+        }
+
         return Str::headline($key);
     }
 }

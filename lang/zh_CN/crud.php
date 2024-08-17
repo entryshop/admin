@@ -15,4 +15,9 @@ return [
     'preview'        => '预览',
     'save'           => '保存',
     'submit'         => '提交',
+    'attributes'     => [
+        'created_at' => '创建时间',
+        'updated_at' => '更新时间',
+        'search'     => '搜索',
+    ],
 ];

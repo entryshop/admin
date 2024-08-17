@@ -20,6 +20,10 @@ trait CanShow
 
         $this->_after();
 
+        if (request()->ajax()) {
+            return admin()->response()->redirect($this->crud()->url($id))->send();
+        }
+
         return admin()->render();
     }
 }

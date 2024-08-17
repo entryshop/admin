@@ -25,7 +25,7 @@ trait HasRoutes
 
         $path = ltrim($path, '/');
 
-        return url(config('admin.route.prefix') . '/' . $path, $params);
+        return url()->query(config('admin.route.prefix') . '/' . $path, $params);
     }
 
     public function path($path, $params = [])

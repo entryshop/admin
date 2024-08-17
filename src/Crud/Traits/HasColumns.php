@@ -40,4 +40,9 @@ trait HasColumns
 
         return $this;
     }
+
+    public function row_link($value = null)
+    {
+        return $this->row_attrs('data-method="get" data-action="' . $value . '"');
+    }
 }

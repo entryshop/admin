@@ -23,6 +23,10 @@ trait CanEdit
 
         $this->_after();
 
+        if (request()->ajax()) {
+            return admin()->response()->redirect($this->crud()->url($id . '/edit'))->send();
+        }
+
         return admin()->render();
     }
 

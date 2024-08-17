@@ -1,7 +1,7 @@
 @pushonce('scripts')
     <script nonce="{{admin()->csp()}}">
-        $('[data-action]').on('click', function () {
-
+        $('[data-action]').on('click', function (event) {
+            event.stopPropagation();
             let dataParamAttributes = $(this).data();
             let action = dataParamAttributes.action;
             let method = dataParamAttributes.method ?? 'post';

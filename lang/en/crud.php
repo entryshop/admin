@@ -15,4 +15,9 @@ return [
     'preview'        => 'Preview',
     'save'           => 'Save',
     'submit'         => 'Submit',
+    'attributes'     => [
+        'created_at' => 'Created At',
+        'updated_at' => 'Updated At',
+        'search'     => 'Search',
+    ],
 ];

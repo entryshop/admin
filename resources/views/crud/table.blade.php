@@ -47,7 +47,7 @@
         <table class="table mb-0 table-hover table-crud" id="{{$name}}">
             <thead>
             @if(count($bulk_buttons))
-                <th class="w-24px">
+                <th class="w-34px">
                     <div class="form-check">
                         <input class="form-check-input row-select-all" type="checkbox">
                     </div>
@@ -62,7 +62,7 @@
             </thead>
             <tbody>
             @foreach($rows as $row)
-                <tr {!! $renderable->get('row_attrs') !!} data-id="{{$row->getKey()}}">
+                <tr {!! interpolate($renderable->get('row_attrs'), ['row'=>$row]) !!} data-id="{{$row->getKey()}}">
                     @if(count($bulk_buttons))
                         <td>
                             <div class="form-check">
@@ -102,6 +102,10 @@
 
         .table-crud th {
             white-space: nowrap;
+        }
+
+        .table-crud tr[data-action] {
+            cursor: pointer;
         }
     </style>
 @endpushonce
