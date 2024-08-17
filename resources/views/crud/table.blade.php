@@ -76,7 +76,7 @@
                     @endforeach
                     @if(!empty($inline_buttons))
                         <td class="inline-buttons">
-                            <x-admin::flex :items="$inline_buttons" gap="2" :params="['row'=>$row]"/>
+                            <x-admin::flex :wrap="false" :items="$inline_buttons" gap="2" :params="['row'=>$row]"/>
                         </td>
                     @endif
                 </tr>
