@@ -6,8 +6,12 @@ trait HasContext
 {
     protected array $_context = [];
 
-    public function setContext($key, $value)
+    public function setContext($key, $value = null)
     {
+        if (is_array($key)) {
+            $this->_context = array_merge($this->_context, $key);
+            return $this;
+        }
         $this->_context[$key] = $value;
         return $this;
     }
