@@ -95,7 +95,7 @@
 </div>
 
 @pushonce('styles')
-    <style>
+    <style nonce="{{admin()->csp()}}">
         .table-crud td {
             vertical-align: middle;
         }
