@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 
 trait CanCallMethods
 {
-    private function __callMethods($startWith, ...$args)
+    protected function __callMethods($startWith, ...$args)
     {
         $self = static::class;
 
@@ -18,7 +18,5 @@ trait CanCallMethods
         foreach ($methods as $method) {
             $this->$method(...$args);
         }
-
-        $this->setContext('called_methods', 'yes');
     }
 }

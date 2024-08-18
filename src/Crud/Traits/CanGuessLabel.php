@@ -17,6 +17,15 @@ trait CanGuessLabel
         $this->set('label', $this->crud()->trans($this->name()));
     }
 
+    public function label($value = null)
+    {
+        if (empty($value)) {
+            return $this->getLabel();
+        }
+
+        return parent::label($value);
+    }
+
     public function getLabel()
     {
         $this->bootCanGuessLabel();

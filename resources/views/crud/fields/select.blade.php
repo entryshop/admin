@@ -8,8 +8,6 @@
     $id =   $key ?? $name;
 @endphp
 
-<label for="{{$id}}">{{$label}}</label>
-
 @include('admin::components.fields.select', [
     'name' => $name,
     'id' => $id,

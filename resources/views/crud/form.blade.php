@@ -13,7 +13,11 @@
             <div {!! $renderable->get('wrapper', 'class="d-flex flex-wrap gap-3"') !!}>
                 @foreach($renderable->fields() as $child)
                     <div {!! $child->wrapper() !!}>
-                        {!! $child->render(['entity' => $entity, 'value' => $child->value()]) !!}
+                        <label for="{{$key}}">{{$child->label()}}</label>
+                        {!! render($child, ['entity' => $entity]) !!}
+                        @error($name)
+                        <p class="text-danger mt-1 flex-grow-0">{{ $message }}</p>
+                        @enderror
                     </div>
                 @endforeach
             </div>

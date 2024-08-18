@@ -4,11 +4,12 @@ namespace Entryshop\Admin\Http\Controllers;
 
 use Entryshop\Admin\Crud\CrudPanel;
 use Entryshop\Admin\Http\Controllers\Traits\CanRunAction;
-use Illuminate\Support\Str;
+use Entryshop\Admin\Support\CanCallMethods;
 
 abstract class CrudController
 {
     use CanRunAction;
+    use CanCallMethods;
 
     /**
      * @var CrudPanel crud panel
@@ -42,11 +43,7 @@ abstract class CrudController
 
     public function __construct()
     {
-        foreach (get_class_methods($this) as $method) {
-            if (Str::startsWith($method, 'setup')) {
-                $this->{$method}();
-            }
-        }
+        $this->__callMethods('setup');
     }
 
     protected function getCrudDefaults()

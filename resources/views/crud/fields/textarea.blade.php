@@ -1,2 +1,1 @@
-<label for="{{$key}}">{{$label}}</label>
-<x-admin::fields.textarea :$name :value="$value??null" :id="$key" class="form-control"/>
+<x-admin::fields.textarea :$name :value="old($name, $value??null)" :id="$key" class="form-control"/>

@@ -2,6 +2,7 @@
 
 namespace Entryshop\Admin\Crud;
 
+use Closure;
 use Entryshop\Admin\Crud\Traits\CanGuessLabel;
 
 /**
@@ -16,13 +17,18 @@ class CrudField extends CrudCell
     protected $view_namespace = 'admin::crud.fields.';
     protected $default_type = 'text';
 
-    public function value($value = null)
+    public function buildFieldValue(...$args)
     {
-        if (empty($value)) {
-            return $this->get('value', data_get($this->crud()->entity(), $this->name()));
+        $original_value = $this->getOriginal('value');
+        if ($original_value instanceof Closure) {
+            return;
         }
 
-        return $this->set('value', $value);
+        $entity = $args[0]['entity'] ?? $this->crud()->entity();
+        if (!empty($entity)) {
+            $value = data_get($entity, $this->name());
+            $this->set('value', $value);
+        }
     }
 
     public function getValueFromRequest($model = null)

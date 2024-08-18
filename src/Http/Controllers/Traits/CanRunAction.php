@@ -25,19 +25,4 @@ trait CanRunAction
     {
         $this->_call('after', $action ?? $this->data['action'], ...$args);
     }
-
-    public function runAction($action)
-    {
-        $this->data['action'] = $action;
-
-        $this->_before();
-
-        if (method_exists($this, 'action' . $action)) {
-            $result = $this->{'action' . $action}();
-            $this->_after($action, $result);
-            return $result;
-        }
-
-        abort(404);
-    }
 }
