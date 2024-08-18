@@ -8,6 +8,7 @@ use Entryshop\Admin\Admin\Traits\HasBrand;
 use Entryshop\Admin\Admin\Traits\HasMenus;
 use Entryshop\Admin\Admin\Traits\HasRoutes;
 use Entryshop\Admin\Admin\Traits\HasToasts;
+use Entryshop\Admin\Support\HasContext;
 use Entryshop\Admin\Support\Renderable;
 
 /**

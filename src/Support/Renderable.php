@@ -9,10 +9,11 @@ namespace Entryshop\Admin\Support;
 class Renderable
 {
     use BootTraits;
-    use Makable;
-    use HasChildren;
     use HasAttributes;
+    use HasChildren;
+    use HasContext;
     use HasVariables;
+    use Makable;
 
     protected $default_view;
 
