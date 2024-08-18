@@ -12,12 +12,33 @@ class UploadController
     public function __invoke()
     {
         if (!request()->hasFile('file')) {
+            return request()->all();
             return $this->error('File not found');
         }
-        $url = Storage::url(request()->file('file')->store('uploads'));
-        $key = request('key') ?? 'url';
-        return $this->success([
-            $key => $url,
-        ]);
+
+        $file = request()->file('file');
+
+        if (is_array($file)) {
+            $result = [];
+            foreach ($file as $item) {
+                $result[] = $this->upload($item);
+            }
+            return $this->success($result);
+        }
+
+        $result = $this->upload($file);
+
+        return $this->success($result);
+    }
+
+    protected function upload($file, $key = 'url')
+    {
+        $url = Storage::url($file->store('uploads'));
+        return [
+            $key   => $url,
+            'name' => $file->getClientOriginalName(),
+            'size' => $file->getSize(),
+            'type' => $file->getMimeType(),
+        ];
     }
 }

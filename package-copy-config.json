@@ -1,5 +1,6 @@
 {
     "packagesToCopy": [
+        "@alpinejs/csp",
         "@ckeditor/ckeditor5-build-classic",
         "@simonwep/pickr",
         "@tarekraafat/autocomplete.js",
@@ -49,6 +50,7 @@
         "swiper",
         "tinymce",
         "toastify-js",
+        "vue",
         "wnumb"
     ]
 }

@@ -29,17 +29,21 @@
         @foreach($options as $_key => $_label)
             <option value="{{$_key}}"
             @if($multiple)
-                @foreach($value??[] as $item)
-                    @if(data_get($item, 'id') == $_key)
-                        selected
-                        @break
-                    @endif
-                @endforeach
-                @if(in_array($_key,array_keys($value??[]))) selected @endif
-                @if(in_array($_key, $value??[])) selected @endif
+
+                @if(is_array($value??[]))
+                    @if(in_array($_key,array_keys($value??[]))) selected @endif
+                    @if(in_array($_key, $value??[])) selected @endif
+                @else
+                    @foreach($value??[] as $item)
+                        @if(data_get($item, 'id') == $_key)
+                            selected
+                            @break
+                        @endif
+                    @endforeach
+                @endif
             @else
                 {{$value == $_key ? 'selected':''}}
-            @endif
+                @endif
             >{!! $_label !!}</option>
         @endforeach
     @endif
@@ -54,7 +58,7 @@
             placeholder: true,
             placeholderValue: '{{$placeholder}}',
             @endif
-                    @if($max)
+                @if($max)
             maxItemCount: {{$max}},
             @endif
         });
