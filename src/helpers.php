@@ -21,6 +21,13 @@ if (!function_exists('crud')) {
     }
 }
 
+if (!function_exists('renderable')) {
+    function renderable(...$args)
+    {
+        return Renderable::make(...$args);
+    }
+}
+
 if (!function_exists('render')) {
     function render($value, ...$args)
     {

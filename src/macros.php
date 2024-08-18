@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 if (!Route::hasMacro('crud')) {
-    Route::macro('crud', function ($name, $controller) {
-        Route::resource($name, $controller);
+    Route::macro('crud', function ($name, $controller, array $options = []) {
+        Route::resource($name, $controller, $options);
         $controllerReflection = new ReflectionClass($controller);
         foreach ($controllerReflection->getMethods() as $method) {
             if (!$method->isPublic()) {

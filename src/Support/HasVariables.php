@@ -8,8 +8,14 @@ trait HasVariables
     protected $original_variables = [];
     private $__built = false;
 
-    public function set($key, $value)
+    public function set($key, $value = null)
     {
+        if (is_array($key)) {
+            foreach ($key as $_key => $_value) {
+                $this->set($_key, $_value);
+            }
+            return $this;
+        }
         $this->variables[$key] = $value;
         return $this;
     }

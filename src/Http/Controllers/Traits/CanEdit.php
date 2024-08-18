@@ -4,8 +4,10 @@ namespace Entryshop\Admin\Http\Controllers\Traits;
 
 trait CanEdit
 {
-    public function edit($id)
+    public function edit(...$args)
     {
+        $id = array_pop($args);
+
         $this->data['action']   = 'edit';
         $this->data['id']       = $id;
         $this->data['back_url'] = $this->crud()->url();
@@ -30,8 +32,10 @@ trait CanEdit
         return admin()->render();
     }
 
-    public function update($id)
+    public function update(...$args)
     {
+        $id = array_pop($args);
+
         $this->data['action'] = 'update';
         $this->data['id']     = $id;
 

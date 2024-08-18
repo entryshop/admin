@@ -7,8 +7,8 @@
 @endphp
 
 <x-admin::buttons.action_button
-    :size="$size??null"
-    :color="$color??null"
+    :size="$size??'xs'"
+    :color="$color??'ghost-primary'"
     :icon="$icon??null"
     :data-method="$method??null"
     :data-confirm="$confirm??null"

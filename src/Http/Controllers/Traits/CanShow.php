@@ -4,8 +4,10 @@ namespace Entryshop\Admin\Http\Controllers\Traits;
 
 trait CanShow
 {
-    public function show($id)
+    public function show(...$args)
     {
+        $id = array_pop($args);
+
         $this->data['action']   = 'show';
         $this->data['id']       = $id;
         $this->data['back_url'] = $this->crud()->url();

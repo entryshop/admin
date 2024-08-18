@@ -2,6 +2,8 @@
 
 namespace Entryshop\Admin\Support;
 
+use Illuminate\Support\Str;
+
 /**
  * @method string|self view($value = null) Get/set view file
  * @method string|self display($value = null) Get/set display content
@@ -24,6 +26,11 @@ class Renderable
             foreach ($args[0] as $key => $value) {
                 $this->set($key, $value);
             }
+        }
+
+        // set default key
+        if (empty($this->key())) {
+            $this->key($this->name() ?? Str::slug(class_basename(static::class)) . '_' . uniqid());
         }
     }
 
@@ -56,13 +63,16 @@ class Renderable
 
     public function getViewData(...$args)
     {
+        $this->boot();
+
         $data = [
             'renderable' => $this,
         ];
-        $this->boot();
+
         if (!empty($args[0]) && is_array($args[0])) {
+            $this->setContext($args[0]);
             $data = array_merge($data, $args[0]);
         }
-        return array_merge($data, $this->variables());
+        return array_merge($this->variables(), $data);
     }
 }

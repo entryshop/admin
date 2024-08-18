@@ -4,8 +4,10 @@ namespace Entryshop\Admin\Http\Controllers\Traits;
 
 trait CanDelete
 {
-    public function destroy($id)
+    public function destroy(...$args)
     {
+        $id = array_pop($args);
+
         $this->data['action'] = 'delete';
         $this->_before();
 

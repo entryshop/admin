@@ -36,6 +36,9 @@ class CrudField extends CrudCell
                     $value = data_get($model, $name);
                 }
                 break;
+            case 'switch':
+                $value = request($name) ? 1 : 0;
+                break;
             default:
                 $value = request($name);
                 break;
