@@ -27,7 +27,7 @@ class CrudPanel extends Renderable
             $name = $args[0];
         }
 
-        $this->builder->set('name', $name ?? 'crud_' . uniqid());
+        $this->set('name', $name ?? 'crud_' . uniqid());
     }
 
     public function form()

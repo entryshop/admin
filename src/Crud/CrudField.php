@@ -19,16 +19,16 @@ class CrudField extends CrudCell
     public function value($value = null)
     {
         if (empty($value)) {
-            return $this->builder->get('value', data_get($this->crud()->entry(), $this->name()));
+            return $this->get('value', data_get($this->crud()->entry(), $this->name()));
         }
 
-        return $this->builder->set('value', $value);
+        return $this->set('value', $value);
     }
 
     public function getValueFromRequest($model = null)
     {
         $name = $this->name();
-        switch ($this->builder->get('type')) {
+        switch ($this->get('type')) {
             case 'file':
                 if (request()->hasFile($name)) {
                     $value = \Storage::url(request()->file($name)->store('uploads'));

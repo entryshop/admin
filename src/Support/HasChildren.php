@@ -27,6 +27,7 @@ trait HasChildren
             });
         }
 
+
         usort($_children, function ($a, $b) {
             return $a->get('order') <=> $b->get('order');
         });

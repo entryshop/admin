@@ -8,7 +8,9 @@ class LoginController
 {
     public function showLoginForm()
     {
-        admin()->guest()->child(AdminPage::make()->type('auth.login'));
+        admin()->guest();
+        $page = AdminPage::make()->type('auth.login');
+        admin()->child($page);
         return admin()->render();
     }
 

@@ -12,8 +12,8 @@ trait HasViewNamespace
     public function view($value = null)
     {
         if (empty($value)) {
-            return $this->builder->get('view', $this->view_namespace . $this->builder->get('type', $this->default_type));
+            return $this->get('view', $this->view_namespace . $this->get('type', $this->default_type));
         }
-        return $this->builder->set('view', $value);
+        return parent::view($value);
     }
 }

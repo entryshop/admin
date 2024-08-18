@@ -26,7 +26,7 @@ class AdminPanel extends Renderable
 
     public function guest()
     {
-        $this->builder->set('view', 'admin::layouts.guest');
+        $this->set('view', 'admin::layouts.guest');
         return $this;
     }
 }

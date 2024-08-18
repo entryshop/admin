@@ -22,7 +22,7 @@ class CrudColumn extends CrudCell
     {
         if (!empty($args[0]['row'])) {
             $row = $args[0]['row'];
-            $this->builder->set('value', data_get($row, $this->builder->get('name')));
+            $this->set('value', data_get($row, $this->get('name')));
         }
 
         return parent::render(...$args);

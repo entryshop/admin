@@ -70,27 +70,27 @@ trait HasAssets
             $value = $args[0] ?? null;
         }
 
-        return $this->builder->getOrPush('themeVar', $value);
+        return $this->getOrPush('themeVar', $value);
     }
 
     public function css($value = null)
     {
-        return $this->builder->getOrPush('css', $value);
+        return $this->getOrPush('css', $value);
     }
 
     public function js($value = null)
     {
-        return $this->builder->getOrPush('js', $value);
+        return $this->getOrPush('js', $value);
     }
 
     public function scripts($value = null)
     {
-        return $this->builder->getOrPush('scripts', $value);
+        return $this->getOrPush('scripts', $value);
     }
 
     public function styles($value = null)
     {
-        return $this->builder->getOrPush('styles', $value);
+        return $this->getOrPush('styles', $value);
     }
 
     public function cssVar(...$args)
@@ -100,7 +100,7 @@ trait HasAssets
         } else {
             $value = $args[0] ?? null;
         }
-        return $this->builder->getOrPush('cssVar', $value);
+        return $this->getOrPush('cssVar', $value);
     }
 
     public function menuWidth($value)

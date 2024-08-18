@@ -28,16 +28,16 @@ trait HasAttributes
     public function wrapper($value = null)
     {
         if (!empty($value)) {
-            return $this->builder->set('wrapper', $value);
+            return $this->set('wrapper', $value);
         }
 
         $this->bootHasAttributes();
-        return $this->builder->get('wrapper');
+        return $this->get('wrapper');
     }
 
     public function bootHasAttributes()
     {
-        if ($this->builder->has('wrapper')) {
+        if ($this->has('wrapper')) {
             return;
         }
 
