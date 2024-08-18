@@ -15,9 +15,7 @@
                     <div {!! $child->wrapper() !!}>
                         <label for="{{$key}}">{{$child->label()}}</label>
                         {!! render($child, ['entity' => $entity]) !!}
-                        @error($name)
-                        <p class="text-danger mt-1 flex-grow-0">{{ $message }}</p>
-                        @enderror
+                        <x-admin::fields.error :name="$child->name()"/>
                     </div>
                 @endforeach
             </div>

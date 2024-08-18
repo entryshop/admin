@@ -1,7 +1,9 @@
-<x-admin::buttons.action_button
-    size="xs"
-    color="ghost-primary"
-    icon="ri-edit-line"
-    href="{{$renderable->crud()->url($entity->getKey().'/edit')}}"
-    :label="__('admin::crud.edit')"
-/>
+@php
+    $icon ??= 'ri-edit-line';
+    $size ??= 'xs';
+    $color ??= 'ghost-primary';
+    $label ??= __('admin::crud.edit');
+    $href ??= $renderable->crud()->url('{entity.id}/edit');
+@endphp
+
+@include('admin::crud.buttons.button')

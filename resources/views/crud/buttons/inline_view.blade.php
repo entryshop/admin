@@ -1,7 +1,9 @@
-<x-admin::buttons.action_button
-    size="xs"
-    color="ghost-primary"
-    icon="ri-eye-line"
-    href="{{$renderable->crud()->url($entity->getKey())}}"
-    :label="__('admin::crud.preview')"
-/>
+@php
+    $icon ??= 'ri-eye-line';
+    $size ??= 'xs';
+    $color ??= 'ghost-primary';
+    $label ??= __('admin::crud.preview');
+    $href ??= $renderable->crud()->url('{entity.id}');
+@endphp
+
+@include('admin::crud.buttons.button')

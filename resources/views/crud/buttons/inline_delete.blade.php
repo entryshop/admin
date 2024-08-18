@@ -1,9 +1,11 @@
-<x-admin::buttons.action_button
-    size="xs"
-    color="ghost-danger"
-    icon="ri-delete-bin-line"
-    data-method="delete"
-    :data-confirm="__('admin::crud.delete_confirm')"
-    :data-action="$renderable->crud()->url($entity->getKey())"
-    :label="__('admin::crud.delete')"
-/>
+@php
+    $method ??= 'delete';
+    $icon ??= 'ri-delete-bin-line';
+    $size ??= 'xs';
+    $color ??= 'ghost-danger';
+    $label ??= __('admin::crud.delete');
+    $confirm ??= __('admin::crud.delete_confirm');
+    $action ??= $renderable->crud()->url($entity->getKey());
+@endphp
+
+@include('admin::crud.buttons.button')
