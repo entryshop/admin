@@ -41,7 +41,7 @@ class Renderable
             $this->setContext($args[0]);
         }
 
-        $this->__callMethods('build', ...$args);
+        $this->__callMethods('build', '', ...$args);
 
         $this->boot();
 

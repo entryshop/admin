@@ -3,12 +3,10 @@
 namespace Entryshop\Admin\Http\Controllers;
 
 use Entryshop\Admin\Crud\CrudPanel;
-use Entryshop\Admin\Http\Controllers\Traits\CanRunAction;
 use Entryshop\Admin\Support\CanCallMethods;
 
 abstract class CrudController
 {
-    use CanRunAction;
     use CanCallMethods;
 
     /**
@@ -66,11 +64,17 @@ abstract class CrudController
 
     public function redirect($url)
     {
-        if (request()->ajax()) {
-            return admin()->response()->redirect($url)->send();
-        }
+        return admin()->redirect($url);
+    }
 
-        return redirect($url);
+    protected function _before($action = null, ...$args)
+    {
+        $this->__callMethods('before', $action ?? $this->data['action'], ...$args);
+    }
+
+    protected function _after($action = null, ...$args)
+    {
+        $this->__callMethods('after', $action ?? $this->data['action'], ...$args);
     }
 
 }

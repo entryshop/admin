@@ -7,10 +7,10 @@
     $section_after_table = $renderable->children(CrudPanel::CHILD_POSITION_AFTER_TABLE);
     $section_before_header = $renderable->children('before_header');
     $filters = $renderable->filters();
-    $models = $renderable->entities();
+    $entities = $renderable->entities();
 
-    if(method_exists($models, 'paginate')) {
-        $models = $models->paginate(10);
+    if(method_exists($entities, 'paginate')) {
+        $entities = $entities->paginate(10);
     }
 @endphp
 
@@ -61,7 +61,7 @@
             @endif
             </thead>
             <tbody>
-            @foreach($models as $entity)
+            @foreach($entities as $entity)
                 <tr {!! interpolate($renderable->get('row_attrs'), ['entity'=>$entity]) !!} data-id="{{$entity->getKey()}}">
                     @if(count($bulk_buttons))
                         <td>
@@ -87,9 +87,9 @@
             </tbody>
         </table>
     </div>
-    @if(method_exists($models, 'hasPages') && !empty($models->hasPages()))
+    @if(method_exists($entities, 'hasPages') && !empty($entities->hasPages()))
         <div class="card-footer pb-0 border-top-0">
-            {{$models->links()}}
+            {{$entities->links()}}
         </div>
     @endif
     @if(!empty($section_after_table))
@@ -116,5 +116,6 @@
         }
     </style>
 @endpushonce
+
 @include('admin::crud.scripts.crud')
 @include('admin::crud.scripts.table_scripts')

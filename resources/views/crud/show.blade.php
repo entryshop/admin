@@ -5,7 +5,8 @@
 <div class="card">
     @if(count($inline_buttons))
         <div class="card-header">
-            @include('admin::crud.inc.buttons', ['buttons' => $inline_buttons, 'entity' => $renderable->entity()])
+            <x-admin::flex :wrap="false" :items="$inline_buttons" gap="2"
+                           :params="['entity'=>$renderable->entity()]"/>
         </div>
     @endif
     <div class="card-body">
