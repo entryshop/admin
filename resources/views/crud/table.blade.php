@@ -7,10 +7,10 @@
     $section_after_table = $renderable->children(CrudPanel::CHILD_POSITION_AFTER_TABLE);
     $section_before_header = $renderable->children('before_header');
     $filters = $renderable->filters();
-    $rows = $renderable->entries();
+    $models = $renderable->entities();
 
-    if(method_exists($rows, 'paginate')) {
-        $rows = $rows->paginate(10);
+    if(method_exists($models, 'paginate')) {
+        $models = $models->paginate(10);
     }
 @endphp
 
@@ -61,22 +61,25 @@
             @endif
             </thead>
             <tbody>
-            @foreach($rows as $row)
-                <tr {!! interpolate($renderable->get('row_attrs'), ['row'=>$row]) !!} data-id="{{$row->getKey()}}">
+            @foreach($models as $entity)
+                <tr {!! interpolate($renderable->get('row_attrs'), ['entity'=>$entity]) !!} data-id="{{$entity->getKey()}}">
                     @if(count($bulk_buttons))
                         <td>
                             <div class="form-check">
                                 <input class="form-check-input row-select" type="checkbox"
-                                       data-id="{{$row->getKey()}}">
+                                       data-id="{{$entity->getKey()}}">
                             </div>
                         </td>
                     @endif
                     @foreach($renderable->columns() as $column)
-                        <td>{!! $column->render(['row' => $row]) !!}</td>
+                        <td>
+                            {!! render($column, ['entity' => $entity]) !!}
+                        </td>
                     @endforeach
                     @if(!empty($inline_buttons))
                         <td class="inline-buttons">
-                            <x-admin::flex :wrap="false" :items="$inline_buttons" gap="2" :params="['row'=>$row]"/>
+                            <x-admin::flex :wrap="false" :items="$inline_buttons" gap="2"
+                                           :params="['entity'=>$entity]"/>
                         </td>
                     @endif
                 </tr>
@@ -84,9 +87,9 @@
             </tbody>
         </table>
     </div>
-    @if(method_exists($rows, 'hasPages') && !empty($rows->hasPages()))
+    @if(method_exists($models, 'hasPages') && !empty($models->hasPages()))
         <div class="card-footer pb-0 border-top-0">
-            {{$rows->links()}}
+            {{$models->links()}}
         </div>
     @endif
     @if(!empty($section_after_table))

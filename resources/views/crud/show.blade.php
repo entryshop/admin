@@ -5,7 +5,7 @@
 <div class="card">
     @if(count($inline_buttons))
         <div class="card-header">
-            @include('admin::crud.inc.buttons', ['buttons' => $inline_buttons, 'row' => $renderable->entry()])
+            @include('admin::crud.inc.buttons', ['buttons' => $inline_buttons, 'entity' => $renderable->entity()])
         </div>
     @endif
     <div class="card-body">
@@ -14,7 +14,7 @@
                 <div {!! $column->wrapper()?? $renderable->get('default-item-wrapper') !!}>
                     <label class="{{$renderable->get('label_class', 'text-muted')}}">{{$column->getLabel()}}</label>
                     <div class="{{$renderable->get('column_class')}}">
-                        {!! $column->render(['row' => $renderable->entry()]) !!}
+                        {!! render($column, ['entity' => $renderable->entity()]) !!}
                     </div>
                 </div>
             @endforeach

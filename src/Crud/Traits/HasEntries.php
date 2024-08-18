@@ -14,37 +14,37 @@ use Illuminate\Support\Str;
  */
 trait HasEntries
 {
-    protected $_entries;
-    protected $_entry;
+    protected $_entities;
+    protected $_entity;
 
-    public function entries($value = null)
+    public function entities($value = null)
     {
         if (!empty($value)) {
-            $this->_entries = $value;
+            $this->_entities = $value;
             return $this;
         }
 
-        if (empty($this->_entries)) {
-            $this->_entries = app($this->model())->query();
+        if (empty($this->_entities)) {
+            $this->_entities = app($this->model())->query();
         }
 
-        return $this->_entries;
+        return $this->_entities;
     }
 
     public function findOrFail($id)
     {
-        $this->_entry = $this->entries()->findOrFail($id);
-        return $this->_entry;
+        $this->_entity = $this->entities()->findOrFail($id);
+        return $this->_entity;
     }
 
-    public function entry($value = null)
+    public function entity($value = null)
     {
         if (!empty($value)) {
-            $this->_entry = $value;
+            $this->_entity = $value;
             return $this;
         }
 
-        return $this->_entry;
+        return $this->_entity;
     }
 
     public function title()

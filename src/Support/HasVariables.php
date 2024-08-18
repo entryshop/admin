@@ -25,6 +25,15 @@ trait HasVariables
         return evaluate($this->variables[$key] ?? $default, $this->renderable ?? $this);
     }
 
+    public function getOriginal($key, $default = null)
+    {
+        if ($this->__built) {
+            return $this->original_variables[$key] ?? $default;
+        }
+
+        return $this->variables[$key] ?? $default;
+    }
+
     public function has($key): bool
     {
         return array_key_exists($key, $this->variables);
@@ -50,21 +59,10 @@ trait HasVariables
 
     public function variables()
     {
-        if ($this->__built) {
-            return $this->variables;
-        }
-        $this->buildVariables();
-        return $this->variables;
-    }
-
-    protected function buildVariables()
-    {
-        $this->original_variables = $this->variables;
-        $built_variable           = [];
+        $built_variable = [];
         foreach ($this->variables as $key => $variable) {
             $built_variable[$key] = evaluate($variable, $this->renderable ?? $this);
         }
-        $this->variables = $built_variable;
-        $this->__built   = true;
+        return $built_variable;
     }
 }

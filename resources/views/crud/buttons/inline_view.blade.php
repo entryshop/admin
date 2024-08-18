@@ -2,6 +2,6 @@
     size="xs"
     color="ghost-primary"
     icon="ri-eye-line"
-    href="{{$renderable->crud()->url($row->getKey())}}"
+    href="{{$renderable->crud()->url($entity->getKey())}}"
     :label="__('admin::crud.preview')"
 />

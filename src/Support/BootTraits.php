@@ -12,7 +12,9 @@ trait BootTraits
         if ($this->_booted) {
             return;
         }
+
         $self = static::class;
+
         foreach (class_uses_recursive($self) as $trait) {
             if (method_exists($self, $method = 'boot' . class_basename($trait))) {
                 $this->$method();

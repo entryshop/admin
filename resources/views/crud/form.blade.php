@@ -1,7 +1,7 @@
 @php
     $action = $renderable->get('action', '');
     $method = $renderable->get('method', 'post');
-    $entry = $renderable->entry();
+    $entity = $renderable->entity();
 @endphp
 
 <form action="{{$renderable->action() ?? ''}}" method="{{$method=='get' ? 'get':'post'}}" enctype="multipart/form-data">
@@ -13,7 +13,7 @@
             <div {!! $renderable->get('wrapper', 'class="d-flex flex-wrap gap-3"') !!}>
                 @foreach($renderable->fields() as $child)
                     <div {!! $child->wrapper() !!}>
-                        {!! $child->render(['entry' => $entry, 'value' => $child->value()]) !!}
+                        {!! $child->render(['entity' => $entity, 'value' => $child->value()]) !!}
                     </div>
                 @endforeach
             </div>

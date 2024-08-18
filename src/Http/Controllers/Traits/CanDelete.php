@@ -12,7 +12,7 @@ trait CanDelete
         $this->_before();
 
         $this->crud()->findOrFail($id);
-        $this->crud()->entry()->delete();
+        $this->crud()->entity()->delete();
 
         $this->_after();
         if (request()->ajax()) {

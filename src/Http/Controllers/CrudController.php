@@ -67,4 +67,13 @@ abstract class CrudController
         return $this->_crud;
     }
 
+    public function redirect($url)
+    {
+        if (request()->ajax()) {
+            return admin()->response()->redirect($url)->send();
+        }
+
+        return redirect($url);
+    }
+
 }

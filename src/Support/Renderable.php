@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
 class Renderable
 {
     use BootTraits;
+    use CanCallMethods;
     use HasAttributes;
     use HasChildren;
     use HasContext;
@@ -22,13 +23,13 @@ class Renderable
     public function __construct(...$args)
     {
         $this->register(...$args);
+
         if (!empty($args[0]) && is_array($args[0])) {
             foreach ($args[0] as $key => $value) {
                 $this->set($key, $value);
             }
         }
 
-        // set default key
         if (empty($this->key())) {
             $this->key($this->name() ?? Str::slug(class_basename(static::class)) . '_' . uniqid());
         }
@@ -36,10 +37,18 @@ class Renderable
 
     public function render(...$args)
     {
+        if (!empty($args[0]) && is_array($args[0])) {
+            $this->setContext($args[0]);
+        }
+
+        $this->__callMethods('build', ...$args);
+
         $this->boot();
+
         if ($this->has('display')) {
             return $this->get('display');
         }
+
         return view($this->getView(...$args), $this->getViewData(...$args));
     }
 
@@ -63,16 +72,10 @@ class Renderable
 
     public function getViewData(...$args)
     {
-        $this->boot();
-
-        $data = [
+        $data = array_merge($this->getContext(), [
             'renderable' => $this,
-        ];
+        ]);
 
-        if (!empty($args[0]) && is_array($args[0])) {
-            $this->setContext($args[0]);
-            $data = array_merge($data, $args[0]);
-        }
-        return array_merge($this->variables(), $data);
+        return array_merge($data, $this->variables());
     }
 }

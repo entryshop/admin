@@ -1,5 +1,9 @@
-@if($escape??false)
-    {!! $value !!}
+@if(empty($value))
+    @dump($renderable)
 @else
-    {{ $value }}
+    @if($escape??false)
+        {!! $value !!}
+    @else
+        {{ $value }}
+    @endif
 @endif

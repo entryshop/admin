@@ -4,6 +4,6 @@
     icon="ri-delete-bin-line"
     data-method="delete"
     :data-confirm="__('admin::crud.delete_confirm')"
-    :data-action="$renderable->crud()->url($row->getKey())"
+    :data-action="$renderable->crud()->url($entity->getKey())"
     :label="__('admin::crud.delete')"
 />

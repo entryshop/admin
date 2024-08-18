@@ -18,13 +18,11 @@ class CrudColumn extends CrudCell
     protected $view_namespace = 'admin::crud.columns.';
     protected $default_type = 'text';
 
-    public function render(...$args)
+    public function buildColumnValue(...$args)
     {
-        if (!empty($args[0]['row'])) {
-            $row = $args[0]['row'];
-            $this->set('value', data_get($row, $this->get('name')));
+        if (!empty($args[0]['entity'])) {
+            $value = data_get($args[0]['entity'], $this->name());
+            $this->set('value', $value);
         }
-
-        return parent::render(...$args);
     }
 }

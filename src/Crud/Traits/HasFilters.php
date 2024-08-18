@@ -41,13 +41,13 @@ trait HasFilters
             }
             switch ($filter->operator()) {
                 case 'like':
-                    $this->entries()->where($name, 'like', '%' . request($name) . '%');
+                    $this->entities()->where($name, 'like', '%' . request($name) . '%');
                     break;
                 case 'search':
-                    $this->entries()->search(request($name));
+                    $this->entities()->search(request($name));
                     break;
                 default:
-                    $this->entries()->where($name, request($name));
+                    $this->entities()->where($name, request($name));
                     break;
             }
         }

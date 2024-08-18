@@ -16,8 +16,11 @@ trait HasContext
         return $this;
     }
 
-    public function getContext($key, $default = null)
+    public function getContext($key = null, $default = null)
     {
+        if (empty($key)) {
+            return $this->_context;
+        }
         return $this->_context[$key] ?? $default;
     }
 }

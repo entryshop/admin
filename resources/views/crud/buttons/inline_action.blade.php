@@ -1,6 +1,6 @@
 @php
-    if(!empty($row)) {
-        $_data = ['row' => $row, 'user' => auth()->user()];
+    if(!empty($entity)) {
+        $_data = ['entity' => $entity, 'user' => auth()->user()];
         $href = interpolate($href??null, $_data);
         $action = interpolate($action??null, $_data);
     }

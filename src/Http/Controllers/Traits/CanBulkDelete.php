@@ -15,7 +15,7 @@ trait CanBulkDelete
     public function batchDelete()
     {
         $ids = request('ids');
-        $this->crud()->entries()->whereIn('id', $ids)->delete();
+        $this->crud()->entities()->whereIn('id', $ids)->delete();
         return admin()->response()->refresh()->send();
     }
 }

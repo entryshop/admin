@@ -19,7 +19,7 @@ class CrudField extends CrudCell
     public function value($value = null)
     {
         if (empty($value)) {
-            return $this->get('value', data_get($this->crud()->entry(), $this->name()));
+            return $this->get('value', data_get($this->crud()->entity(), $this->name()));
         }
 
         return $this->set('value', $value);

@@ -53,7 +53,7 @@ trait HasFields
 
     public function save()
     {
-        $model = $this->entry();
+        $model = $this->entity();
         $this->saving($model);
         $model->save();
         return $this;
