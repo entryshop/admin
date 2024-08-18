@@ -10,7 +10,7 @@
     <div class="mt-1">
         <ul class="list-group">
             <template x-for="(file,index) in file_list">
-                <li class="list-group-item" :key="index">
+                <li class="list-group-item">
                     <div class="d-flex align-items-center">
                         <div class="flex-grow-1">
                             <div class="d-flex">
@@ -22,14 +22,16 @@
                                 <div class="flex-shrink-0 ms-2">
                                     <h6 class="fs-14 mb-0">
                                         <a :href="file.url" x-text="file.name" target="_blank"></a>
+                                        <a role="button" x-on:click="updateFileName" :data-index="index">
+                                            <i class="ri-edit-line" :data-index="index"></i>
+                                        </a>
                                     </h6>
                                     <small class="text-muted" x-text="file.type"></small>
                                 </div>
                             </div>
                         </div>
                         <div class="flex-shrink-0">
-                            <a role="button" x-on:click="deleteFile"
-                               :data-index="index"
+                            <a role="button" x-on:click="deleteFile" :data-index="index"
                                class="btn btn-ghost-danger btn-sm">
                                 <i class="ri-delete-bin-line"></i>
                             </a>
@@ -94,6 +96,24 @@
                         let index = $(event.target).data('index')
                         this.file_list.splice(index, 1);
                         this.updateJsonValue();
+                    },
+                    updateFileName(event) {
+                        if (event) {
+                            event.preventDefault();
+                        }
+                        console.log(event);
+                        let index = $(event.target).data('index');
+                        console.log(index);
+                        let file = this.file_list[index];
+                        if (!file) {
+                            return;
+                        }
+                        console.log(file);
+                        let new_name = prompt('请输入新的文件名', file.name);
+                        if (new_name) {
+                            file.name = new_name;
+                            this.updateJsonValue();
+                        }
                     },
                     updateJsonValue() {
                         this.json_value_string = JSON.stringify(this.file_list);

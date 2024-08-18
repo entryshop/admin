@@ -7,6 +7,7 @@ use Entryshop\Admin\Crud\CrudColumn;
 /**
  * @method string|self action($value = null)
  * @method string|self method($value = null)
+ * @method string|self label_class($value = null)
  */
 trait HasColumns
 {
