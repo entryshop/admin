@@ -27,6 +27,7 @@ trait HasAssets
     public function bootHasAssets()
     {
         $this->bootstrapFive();
+        $this->loadAssets();
     }
 
     public function asset($path, $secure = null)
@@ -34,7 +35,7 @@ trait HasAssets
         return url('/vendor/admin/' . $path, $secure);
     }
 
-    public function theme($data = [])
+    public function loadAssets()
     {
         $this->css([
             $this->asset('css/bootstrap.min.css'),
@@ -57,12 +58,10 @@ trait HasAssets
             $this->asset('libs/sweetalert2/sweetalert2.min.js'),
         ]);
 
-        $this->themeVar(array_merge($this->default_theme_var, $data));
-
         return $this;
     }
 
-    public function themeVar(...$args)
+    public function theme(...$args)
     {
         if (count($args) === 2) {
             $value = [$args[0] => $args[1]];
@@ -70,7 +69,11 @@ trait HasAssets
             $value = $args[0] ?? null;
         }
 
-        return $this->getOrPush('themeVar', $value);
+        if (empty($args[0])) {
+            return array_merge($this->default_theme_var, $this->get('theme', []));
+        }
+
+        return $this->push('theme', $value);
     }
 
     public function css($value = null)

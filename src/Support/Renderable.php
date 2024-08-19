@@ -3,6 +3,7 @@
 namespace Entryshop\Admin\Support;
 
 use Illuminate\Support\Str;
+use Illuminate\Support\Traits\Macroable;
 
 /**
  * @method string|self view($value = null) Get/set view file
@@ -17,6 +18,10 @@ class Renderable
     use HasContext;
     use HasVariables;
     use Makable;
+    use Macroable {
+        __callStatic as macroCallStatic;
+        __call as macroCall;
+    }
 
     protected $default_view;
 
@@ -54,6 +59,11 @@ class Renderable
 
     public function __call($name, $arguments)
     {
+        // call marco
+        if ($this->hasMacro($name)) {
+            return $this->macroCall($name, $arguments);
+        }
+
         if (count($arguments) === 1) {
             return $this->set($name, $arguments[0]);
         }

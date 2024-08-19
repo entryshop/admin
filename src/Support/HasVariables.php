@@ -51,7 +51,11 @@ trait HasVariables
     public function getOrPush($key, $value = null)
     {
         if (empty($value)) {
-            return array_unique($this->get($key, []));
+            $result = $this->get($key, []);
+            if (!empty(array_keys($result))) {
+                return $result;
+            }
+            return array_unique($result);
         }
 
         return $this->push($key, $value);

@@ -10,7 +10,7 @@
 @endpush
 
 @push('html_attributes')
-    @foreach(admin()->themeVar() as $key => $value)
+    @foreach(admin()->theme() as $key => $value)
         {{$key}}="{{$value}}"
     @endforeach
 @endpush
