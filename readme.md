@@ -26,6 +26,12 @@
 composer require entryshop/admin
 ```
 
+发布资源
+
+```
+php artisan vendor:publish --tag=admin-assets
+```
+
 ### 配置
 
 在 AppServiceProvider 中添加
