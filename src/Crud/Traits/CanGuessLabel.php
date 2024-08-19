@@ -4,7 +4,7 @@ namespace Entryshop\Admin\Crud\Traits;
 
 trait CanGuessLabel
 {
-    public function bootCanGuessLabel()
+    public function buildCanGuessLabel()
     {
         if ($this->get('label')) {
             return;
@@ -28,7 +28,7 @@ trait CanGuessLabel
 
     public function getLabel()
     {
-        $this->bootCanGuessLabel();
+        $this->buildCanGuessLabel();
         return $this->get('label');
     }
 }

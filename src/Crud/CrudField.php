@@ -4,15 +4,18 @@ namespace Entryshop\Admin\Crud;
 
 use Closure;
 use Entryshop\Admin\Crud\Traits\CanGuessLabel;
+use Entryshop\Admin\Crud\Traits\HasLinkage;
 
 /**
  * @method string|self multiple($value = null)
  * @method string|self options($value = null)
  * @method string|self rules($value = null)
+ * @method string|self ignore($value = null)
  */
 class CrudField extends CrudCell
 {
     use CanGuessLabel;
+    use HasLinkage;
 
     protected $view_namespace = 'admin::crud.fields.';
     protected $default_type = 'text';

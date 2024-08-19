@@ -5,7 +5,7 @@
 ])
 
 <div id="editor_{{$id}}"></div>
-<input name="{{$name}}" id="input_{{$id}}" type="hidden" value="{{$value}}"/>
+<input name="{{$name}}" id="{{$id}}" type="hidden" value="{{$value}}"/>
 
 @once
     @push('scripts')
@@ -20,7 +20,7 @@
                 target: node_{{$id}},
                 setup: function (editor) {
                     editor.on('Change', function (e) {
-                        $('input[id=input_{{$id}}]').val(editor.getContent());
+                        $('input[id={{$id}}]').val(editor.getContent());
                     });
 
                     window.addEventListener('set_content_{{$id}}', function (e) {

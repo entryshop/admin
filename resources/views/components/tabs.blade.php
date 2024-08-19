@@ -2,7 +2,6 @@
     'items' => [],
     'params' => null,
 ])
-
 <ul class="nav nav-tabs mb-3" role="tablist">
     @foreach($items as $_item)
         <li class="nav-item">
@@ -13,11 +12,12 @@
         </li>
     @endforeach
 </ul>
+
 <!-- Tab panes -->
 <div class="tab-content  text-muted">
-    @foreach($items as $_item)
-        <div class="tab-pane {{$_item->active() ? 'active':''}}" id="{{$_item->key()}}" role="tabpanel">
-            {!! render($_item, $params) !!}
+    @foreach($items as $item)
+        <div class="tab-pane {{$item->active() ? 'active':''}}" id="{{$item->key()}}" role="tabpanel">
+            {!! render($item, $params) !!}
         </div>
     @endforeach
 </div>

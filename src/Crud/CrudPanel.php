@@ -8,6 +8,7 @@ use Entryshop\Admin\Crud\Traits\HasColumns;
 use Entryshop\Admin\Crud\Traits\HasEntries;
 use Entryshop\Admin\Crud\Traits\HasFields;
 use Entryshop\Admin\Crud\Traits\HasFilters;
+use Entryshop\Admin\Crud\Traits\HasTabs;
 use Entryshop\Admin\Support\Renderable;
 
 class CrudPanel extends Renderable
@@ -18,6 +19,7 @@ class CrudPanel extends Renderable
     use HasEntries;
     use HasFields;
     use HasFilters;
+    use HasTabs;
 
     public function __construct(...$args)
     {

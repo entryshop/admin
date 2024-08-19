@@ -14,8 +14,6 @@ use Illuminate\Validation\ValidationException;
 trait HasFields
 {
 
-    protected $_fields = [];
-
     /**
      * @param ...$args
      * @return CrudField
@@ -24,14 +22,18 @@ trait HasFields
     {
         $cell = CrudField::make(...$args);
         $cell->crud($this);
-        $this->_fields[$cell->name()] = $cell;
+        $this->child($cell);
         return $cell;
     }
 
     public function fields(...$args)
     {
         if (!count($args)) {
-            return $this->_fields;
+            $fields = $this->getFieldsFromRenderable($this);
+//            foreach ($fields as $field) {
+//                $field->crud($this);
+//            }
+            return $fields;
         }
 
         $value = $args[0];
@@ -59,9 +61,28 @@ trait HasFields
         return $this;
     }
 
+    public function getFieldsFromRenderable($renderable)
+    {
+        $fields = [];
+        foreach ($renderable->children() as $child) {
+            if ($child instanceof CrudField) {
+                $fields[$child->key()] = $child;
+                continue;
+            }
+            if ($child->children()) {
+                $sub_fields = $this->getFieldsFromRenderable($child);
+                $fields     = array_merge($fields, $sub_fields);
+            }
+        }
+        return $fields;
+    }
+
     public function saving($model)
     {
-        foreach ($this->_fields as $field) {
+        foreach ($this->fields() as $field) {
+            if ($field->ignore()) {
+                continue;
+            }
             $name  = $field->name();
             $value = $field->getValueFromRequest($model);
             if ($model->isRelation($name)) {
@@ -88,7 +109,7 @@ trait HasFields
         $rules      = [];
         $attributes = [];
 
-        foreach ($this->_fields as $field) {
+        foreach ($this->fields() as $field) {
             $fieldRules = $field->rules();
             if (!empty($fieldRules)) {
                 $rules[$field->name()]      = $fieldRules;

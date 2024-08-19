@@ -9,6 +9,6 @@ class Widget extends Renderable
 {
     use HasViewNamespace;
 
-    protected $view_namespace = 'admin::components.widgets.';
+    protected $view_namespace = 'admin::widgets.';
     protected $default_type = 'widget';
 }

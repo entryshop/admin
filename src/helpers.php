@@ -1,6 +1,8 @@
 <?php
 
 use Entryshop\Admin\Admin\AdminPanel;
+use Entryshop\Admin\Components\Container;
+use Entryshop\Admin\Crud\CrudField;
 use Entryshop\Admin\Crud\CrudPanel;
 use Entryshop\Admin\Support\Renderable;
 
@@ -25,6 +27,20 @@ if (!function_exists('renderable')) {
     function renderable(...$args)
     {
         return Renderable::make(...$args);
+    }
+}
+
+if (!function_exists('container')) {
+    function container(...$args)
+    {
+        return Container::make(...$args);
+    }
+}
+
+if (!function_exists('field')) {
+    function field(...$args)
+    {
+        return CrudField::make(...$args);
     }
 }
 

@@ -42,6 +42,11 @@ class CrudCell extends Renderable
         return $this->type('select')->set('options', $options);
     }
 
+    public function radio($options)
+    {
+        return $this->type('radio')->set('options', $options);
+    }
+
     public function crud($value = null)
     {
         if (empty($value)) {
@@ -49,6 +54,11 @@ class CrudCell extends Renderable
         }
         $this->_crud = $value;
         return $this;
+    }
+
+    public function full()
+    {
+        return $this->class('w-100 col-12');
     }
 
 }

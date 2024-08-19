@@ -23,7 +23,7 @@ class Renderable
         __call as macroCall;
     }
 
-    protected $default_view;
+    protected $default_view = 'admin::renderable';
 
     public function __construct(...$args)
     {
@@ -54,22 +54,26 @@ class Renderable
             return $this->get('display');
         }
 
-        return view($this->getView(...$args), $this->getViewData(...$args));
+        $_view = $this->getView(...$args);
+        if (!view()->exists($_view)) {
+            $_view = $this->default_view;
+        }
+        return view($_view, $this->getViewData(...$args));
     }
 
-    public function __call($name, $arguments)
+    public function __call($method, $parameters)
     {
         // call marco
-        if ($this->hasMacro($name)) {
-            return $this->macroCall($name, $arguments);
+        if ($this->hasMacro($method)) {
+            return $this->macroCall($method, $parameters);
         }
 
-        if (count($arguments) === 1) {
-            return $this->set($name, $arguments[0]);
+        if (count($parameters) === 1) {
+            return $this->set($method, $parameters[0]);
         }
 
-        if (count($arguments) === 0) {
-            return $this->get($name);
+        if (count($parameters) === 0) {
+            return $this->get($method);
         }
 
         return $this;
