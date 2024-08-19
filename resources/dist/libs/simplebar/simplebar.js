@@ -1,5 +1,5 @@
 /**
- * simplebar - v6.2.5
+ * simplebar - v6.2.7
  * Scrollbars, simpler.
  * https://grsmto.github.io/simplebar/
  *
@@ -40,14 +40,6 @@ var SimpleBar = (function () {
         function __() { this.constructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     }
-
-    var canUseDOM = !!(
-      typeof window !== 'undefined' &&
-      window.document &&
-      window.document.createElement
-    );
-
-    var canUseDom = canUseDOM;
 
     /** Detect free variable `global` from Node.js. */
     var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
@@ -604,7 +596,7 @@ var SimpleBar = (function () {
     }
 
     /**
-     * simplebar-core - v1.2.4
+     * simplebar-core - v1.2.6
      * Scrollbars, simpler.
      * https://grsmto.github.io/simplebar/
      *
@@ -637,33 +629,6 @@ var SimpleBar = (function () {
         };
         return __assign.apply(this, arguments);
     };
-
-    var cachedScrollbarWidth = null;
-    var cachedDevicePixelRatio = null;
-    if (canUseDom) {
-        window.addEventListener('resize', function () {
-            if (cachedDevicePixelRatio !== window.devicePixelRatio) {
-                cachedDevicePixelRatio = window.devicePixelRatio;
-                cachedScrollbarWidth = null;
-            }
-        });
-    }
-    function scrollbarWidth() {
-        if (cachedScrollbarWidth === null) {
-            if (typeof document === 'undefined') {
-                cachedScrollbarWidth = 0;
-                return cachedScrollbarWidth;
-            }
-            var body = document.body;
-            var box = document.createElement('div');
-            box.classList.add('simplebar-hide-scrollbar');
-            body.appendChild(box);
-            var width = box.getBoundingClientRect().right;
-            body.removeChild(box);
-            cachedScrollbarWidth = width;
-        }
-        return cachedScrollbarWidth;
-    }
 
     function getElementWindow$1(element) {
         if (!element ||
@@ -720,16 +685,47 @@ var SimpleBar = (function () {
     function classNamesToQuery$1(classNames) {
         return ".".concat(classNames.split(' ').join('.'));
     }
+    var canUseDOM$1 = !!(typeof window !== 'undefined' &&
+        window.document &&
+        window.document.createElement);
 
     var helpers = /*#__PURE__*/Object.freeze({
         __proto__: null,
-        getElementWindow: getElementWindow$1,
-        getElementDocument: getElementDocument$1,
-        getOptions: getOptions$1,
         addClasses: addClasses$1,
-        removeClasses: removeClasses$1,
-        classNamesToQuery: classNamesToQuery$1
+        canUseDOM: canUseDOM$1,
+        classNamesToQuery: classNamesToQuery$1,
+        getElementDocument: getElementDocument$1,
+        getElementWindow: getElementWindow$1,
+        getOptions: getOptions$1,
+        removeClasses: removeClasses$1
     });
+
+    var cachedScrollbarWidth = null;
+    var cachedDevicePixelRatio = null;
+    if (canUseDOM$1) {
+        window.addEventListener('resize', function () {
+            if (cachedDevicePixelRatio !== window.devicePixelRatio) {
+                cachedDevicePixelRatio = window.devicePixelRatio;
+                cachedScrollbarWidth = null;
+            }
+        });
+    }
+    function scrollbarWidth() {
+        if (cachedScrollbarWidth === null) {
+            if (typeof document === 'undefined') {
+                cachedScrollbarWidth = 0;
+                return cachedScrollbarWidth;
+            }
+            var body = document.body;
+            var box = document.createElement('div');
+            box.classList.add('simplebar-hide-scrollbar');
+            body.appendChild(box);
+            var width = box.getBoundingClientRect().right;
+            body.removeChild(box);
+            cachedScrollbarWidth = width;
+        }
+        return cachedScrollbarWidth;
+    }
 
     var getElementWindow = getElementWindow$1, getElementDocument = getElementDocument$1, getOptions$2 = getOptions$1, addClasses$2 = addClasses$1, removeClasses = removeClasses$1, classNamesToQuery = classNamesToQuery$1;
     var SimpleBarCore = /** @class */ (function () {
@@ -741,6 +737,7 @@ var SimpleBar = (function () {
             this.stopScrollDelay = 175;
             this.isScrolling = false;
             this.isMouseEntering = false;
+            this.isDragging = false;
             this.scrollXTicking = false;
             this.scrollYTicking = false;
             this.wrapperEl = null;
@@ -915,11 +912,12 @@ var SimpleBar = (function () {
                 var dragPos = eventOffset -
                     ((_h = (_g = track.rect) === null || _g === void 0 ? void 0 : _g[_this.axis[_this.draggedAxis].offsetAttr]) !== null && _h !== void 0 ? _h : 0) -
                     _this.axis[_this.draggedAxis].dragOffset;
-                dragPos = _this.draggedAxis === 'x' && _this.isRtl
-                    ? ((_k = (_j = track.rect) === null || _j === void 0 ? void 0 : _j[_this.axis[_this.draggedAxis].sizeAttr]) !== null && _k !== void 0 ? _k : 0) -
-                        scrollbar.size -
-                        dragPos
-                    : dragPos;
+                dragPos =
+                    _this.draggedAxis === 'x' && _this.isRtl
+                        ? ((_k = (_j = track.rect) === null || _j === void 0 ? void 0 : _j[_this.axis[_this.draggedAxis].sizeAttr]) !== null && _k !== void 0 ? _k : 0) -
+                            scrollbar.size -
+                            dragPos
+                        : dragPos;
                 // Convert the mouse position into a percentage of the scrollbar height/width.
                 var dragPerc = dragPos / (trackSize - scrollbar.size);
                 // Scroll the content by the same percentage.
@@ -937,11 +935,13 @@ var SimpleBar = (function () {
              * End scroll handle drag
              */
             this.onEndDrag = function (e) {
+                _this.isDragging = false;
                 var elDocument = getElementDocument(_this.el);
                 var elWindow = getElementWindow(_this.el);
                 e.preventDefault();
                 e.stopPropagation();
                 removeClasses(_this.el, _this.classNames.dragging);
+                _this.onStopScrolling();
                 elDocument.removeEventListener('mousemove', _this.drag, true);
                 elDocument.removeEventListener('mouseup', _this.onEndDrag, true);
                 _this.removePreventClickId = elWindow.setTimeout(function () {
@@ -1063,7 +1063,7 @@ var SimpleBar = (function () {
         };
         SimpleBarCore.prototype.init = function () {
             // We stop here on server-side
-            if (canUseDom) {
+            if (canUseDOM$1) {
                 this.initDOM();
                 this.rtlHelpers = SimpleBarCore.getRtlHelpers();
                 this.scrollbarWidth = this.getScrollbarWidth();
@@ -1295,6 +1295,8 @@ var SimpleBar = (function () {
         };
         SimpleBarCore.prototype.hideScrollbar = function (axis) {
             if (axis === void 0) { axis = 'y'; }
+            if (this.isDragging)
+                return;
             if (this.axis[axis].isOverflowing && this.axis[axis].scrollbar.isVisible) {
                 removeClasses(this.axis[axis].scrollbar.el, this.classNames.visible);
                 this.axis[axis].scrollbar.isVisible = false;
@@ -1351,6 +1353,7 @@ var SimpleBar = (function () {
         SimpleBarCore.prototype.onDragStart = function (e, axis) {
             var _a;
             if (axis === void 0) { axis = 'y'; }
+            this.isDragging = true;
             var elDocument = getElementDocument(this.el);
             var elWindow = getElementWindow(this.el);
             var scrollbar = this.axis[axis].scrollbar;
@@ -1484,6 +1487,7 @@ var SimpleBar = (function () {
             scrollbarMinSize: 25,
             scrollbarMaxSize: 0,
             ariaLabel: 'scrollable content',
+            tabIndex: 0,
             classNames: {
                 contentEl: 'simplebar-content',
                 contentWrapper: 'simplebar-content-wrapper',
@@ -1516,7 +1520,7 @@ var SimpleBar = (function () {
         return SimpleBarCore;
     }());
 
-    var _a = SimpleBarCore.helpers, getOptions = _a.getOptions, addClasses = _a.addClasses;
+    var _a = SimpleBarCore.helpers, getOptions = _a.getOptions, addClasses = _a.addClasses, canUseDOM = _a.canUseDOM;
     var SimpleBar = /** @class */ (function (_super) {
         __extends(SimpleBar, _super);
         function SimpleBar() {
@@ -1577,7 +1581,7 @@ var SimpleBar = (function () {
                 this.wrapperEl.appendChild(this.maskEl);
                 this.wrapperEl.appendChild(this.placeholderEl);
                 this.el.appendChild(this.wrapperEl);
-                (_a = this.contentWrapperEl) === null || _a === void 0 ? void 0 : _a.setAttribute('tabindex', '0');
+                (_a = this.contentWrapperEl) === null || _a === void 0 ? void 0 : _a.setAttribute('tabindex', this.options.tabIndex.toString());
                 (_b = this.contentWrapperEl) === null || _b === void 0 ? void 0 : _b.setAttribute('role', 'region');
                 (_c = this.contentWrapperEl) === null || _c === void 0 ? void 0 : _c.setAttribute('aria-label', this.options.ariaLabel);
             }
@@ -1643,17 +1647,17 @@ var SimpleBar = (function () {
                     }
                 });
                 mutation.removedNodes.forEach(function (removedNode) {
+                    var _a;
                     if (removedNode.nodeType === 1) {
                         if (removedNode.getAttribute('data-simplebar') === 'init') {
-                            SimpleBar.instances.has(removedNode) &&
-                                !document.documentElement.contains(removedNode) &&
-                                SimpleBar.instances.get(removedNode).unMount();
+                            !document.documentElement.contains(removedNode) &&
+                                ((_a = SimpleBar.instances.get(removedNode)) === null || _a === void 0 ? void 0 : _a.unMount());
                         }
                         else {
                             Array.prototype.forEach.call(removedNode.querySelectorAll('[data-simplebar="init"]'), function (el) {
-                                SimpleBar.instances.has(el) &&
-                                    !document.documentElement.contains(el) &&
-                                    SimpleBar.instances.get(el).unMount();
+                                var _a;
+                                !document.documentElement.contains(el) &&
+                                    ((_a = SimpleBar.instances.get(el)) === null || _a === void 0 ? void 0 : _a.unMount());
                             });
                         }
                     }
@@ -1667,7 +1671,7 @@ var SimpleBar = (function () {
      * HTML API
      * Called only in a browser env.
      */
-    if (canUseDom) {
+    if (canUseDOM) {
         SimpleBar.initHtmlApi();
     }
 

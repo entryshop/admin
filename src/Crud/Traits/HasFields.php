@@ -13,7 +13,6 @@ use Illuminate\Validation\ValidationException;
  */
 trait HasFields
 {
-
     /**
      * @param ...$args
      * @return CrudField
@@ -29,11 +28,7 @@ trait HasFields
     public function fields(...$args)
     {
         if (!count($args)) {
-            $fields = $this->getFieldsFromRenderable($this);
-//            foreach ($fields as $field) {
-//                $field->crud($this);
-//            }
-            return $fields;
+            return $this->getFieldsFromRenderable($this);
         }
 
         $value = $args[0];
@@ -43,6 +38,22 @@ trait HasFields
             }
         }
         return $this;
+    }
+
+    protected function getFieldsFromRenderable($renderable)
+    {
+        $fields = [];
+        foreach ($renderable->children() as $child) {
+            if ($child instanceof CrudField) {
+                $fields[$child->key()] = $child;
+                continue;
+            }
+            if ($child->children()) {
+                $sub_fields = $this->getFieldsFromRenderable($child);
+                $fields     = array_merge($fields, $sub_fields);
+            }
+        }
+        return $fields;
     }
 
     public function store()
@@ -59,22 +70,6 @@ trait HasFields
         $this->saving($model);
         $model->save();
         return $this;
-    }
-
-    public function getFieldsFromRenderable($renderable)
-    {
-        $fields = [];
-        foreach ($renderable->children() as $child) {
-            if ($child instanceof CrudField) {
-                $fields[$child->key()] = $child;
-                continue;
-            }
-            if ($child->children()) {
-                $sub_fields = $this->getFieldsFromRenderable($child);
-                $fields     = array_merge($fields, $sub_fields);
-            }
-        }
-        return $fields;
     }
 
     public function saving($model)

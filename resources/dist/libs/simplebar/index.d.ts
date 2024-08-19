@@ -1,7 +1,7 @@
 import SimpleBarCore from 'simplebar-core';
 export default class SimpleBar extends SimpleBarCore {
     static globalObserver: MutationObserver;
-    static instances: WeakMap<object, any>;
+    static instances: WeakMap<Node, SimpleBar>;
     constructor(...args: ConstructorParameters<typeof SimpleBarCore>);
     static initDOMLoadedElements(): void;
     static removeObserver(): void;
