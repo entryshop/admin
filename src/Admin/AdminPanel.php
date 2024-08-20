@@ -12,7 +12,7 @@ use Entryshop\Admin\Support\HasContext;
 use Entryshop\Admin\Support\Renderable;
 
 /**
- * @method string|self back($value = null) back url
+ * @method string|static back($value = null) back url
  */
 class AdminPanel extends Renderable
 {

@@ -5,9 +5,9 @@ namespace Entryshop\Admin\Crud\Traits;
 use Entryshop\Admin\Crud\CrudColumn;
 
 /**
- * @method string|self action($value = null)
- * @method string|self method($value = null)
- * @method string|self label_class($value = null)
+ * @method string|static action($value = null)
+ * @method string|static method($value = null)
+ * @method string|static label_class($value = null)
  */
 trait HasColumns
 {

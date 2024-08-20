@@ -7,10 +7,10 @@ use Entryshop\Admin\Support\Renderable;
 use Illuminate\Support\Str;
 
 /**
- * @method string|self name($value = null)
- * @method string|self label($value = null)
- * @method string|self key($value = null)
- * @method string|self type($value = null)
+ * @method string|static name($value = null)
+ * @method string|static label($value = null)
+ * @method string|static key($value = null)
+ * @method string|static type($value = null)
  */
 class CrudCell extends Renderable
 {

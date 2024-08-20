@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 
 /**
- * @method string|self action($value = null)
- * @method string|self method($value = null)
- * @method string|self messages($value = null)
+ * @method string|static action($value = null)
+ * @method string|static method($value = null)
+ * @method string|static messages($value = null)
  */
 trait HasFields
 {
@@ -56,17 +56,9 @@ trait HasFields
         return $fields;
     }
 
-    public function store()
-    {
-        $model = app($this->get('model'));
-        $this->saving($model);
-        $model->save();
-        return $this;
-    }
-
     public function save()
     {
-        $model = $this->entity();
+        $model = $this->entity() ?? app($this->get('model'));
         $this->saving($model);
         $model->save();
         return $this;

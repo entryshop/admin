@@ -6,8 +6,8 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Macroable;
 
 /**
- * @method string|self view($value = null) Get/set view file
- * @method string|self display($value = null) Get/set display content
+ * @method string|static view($value = null) Get/set view file
+ * @method string|static display($value = null) Get/set display content
  */
 class Renderable
 {
@@ -23,7 +23,7 @@ class Renderable
         __call as macroCall;
     }
 
-    protected $default_view = 'admin::renderable';
+    protected $default_view;
 
     public function __construct(...$args)
     {
@@ -55,8 +55,9 @@ class Renderable
         }
 
         $_view = $this->getView(...$args);
+
         if (!view()->exists($_view)) {
-            $_view = $this->default_view;
+            return '';
         }
         return view($_view, $this->getViewData(...$args));
     }

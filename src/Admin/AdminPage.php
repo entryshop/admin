@@ -6,8 +6,8 @@ use Entryshop\Admin\Support\HasViewNamespace;
 use Entryshop\Admin\Support\Renderable;
 
 /**
- * @method string|self url($value = null)
- * @method string|self icon($value = null)
+ * @method string|static url($value = null)
+ * @method string|static icon($value = null)
  */
 class AdminPage extends Renderable
 {

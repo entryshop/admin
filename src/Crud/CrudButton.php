@@ -3,13 +3,13 @@
 namespace Entryshop\Admin\Crud;
 
 /**
- * @method string|self icon($value = null)
- * @method string|self href($value = null)
- * @method string|self confirm($value = null)
- * @method string|self action($value = null)
- * @method string|self method($value = null)
- * @method string|self color($value = null)
- * @method string|self size($value = null)
+ * @method string|static icon($value = null)
+ * @method string|static href($value = null)
+ * @method string|static confirm($value = null)
+ * @method string|static action($value = null)
+ * @method string|static method($value = null)
+ * @method string|static color($value = null)
+ * @method string|static size($value = null)
  */
 class CrudButton extends CrudCell
 {

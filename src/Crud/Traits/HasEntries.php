@@ -6,11 +6,11 @@ namespace Entryshop\Admin\Crud\Traits;
 use Illuminate\Support\Str;
 
 /**
- * @method string|self model($value = null)
- * @method string|self route($value = null)
- * @method string|self label($value = null)
- * @method string|self labelPlural($value = null)
- * @method string|self lang($value = null) Set language prefix
+ * @method string|static model($value = null)
+ * @method string|static route($value = null)
+ * @method string|static label($value = null)
+ * @method string|static labelPlural($value = null)
+ * @method string|static lang($value = null) Set language prefix
  */
 trait HasEntries
 {

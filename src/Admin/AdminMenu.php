@@ -5,9 +5,9 @@ namespace Entryshop\Admin\Admin;
 use Entryshop\Admin\Support\Renderable;
 
 /**
- * @method string|self url($value = null)
- * @method string|self icon($value = null)
- * @method string|self order($value = null)
+ * @method string|static url($value = null)
+ * @method string|static icon($value = null)
+ * @method string|static order($value = null)
  */
 class AdminMenu extends Renderable
 {

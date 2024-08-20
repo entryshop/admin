@@ -5,10 +5,10 @@ namespace Entryshop\Admin\Crud;
 use Entryshop\Admin\Crud\Traits\CanGuessLabel;
 
 /**
- * @method string|self operator($value = null)
- * @method string|self options($value = null)
- * @method string|self placeholder($value = null)
- * @method string|self multiple($value = null)
+ * @method string|static operator($value = null)
+ * @method string|static options($value = null)
+ * @method string|static placeholder($value = null)
+ * @method string|static multiple($value = null)
  */
 class CrudFilter extends CrudCell
 {

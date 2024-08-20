@@ -6,9 +6,9 @@ use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Storage;
 
 /**
- * @method string|self favicon($value = null)
- * @method string|self title($value = null)
- * @method string|self csp($value = null)
+ * @method string|static favicon($value = null)
+ * @method string|static title($value = null)
+ * @method string|static csp($value = null)
  */
 trait HasAssets
 {

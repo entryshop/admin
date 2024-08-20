@@ -32,7 +32,7 @@ trait CanCreate
         $this->_before();
 
         $this->crud()->validate();
-        $this->crud()->store();
+        $this->crud()->save();
 
         $this->_after();
         return redirect($this->crud()->url());

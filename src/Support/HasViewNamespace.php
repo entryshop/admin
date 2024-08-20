@@ -5,7 +5,7 @@ namespace Entryshop\Admin\Support;
 /**
  * @property string $view_namespace
  * @property string $default_type
- * @method string|self type($value = null)
+ * @method string|static type($value = null)
  */
 trait HasViewNamespace
 {

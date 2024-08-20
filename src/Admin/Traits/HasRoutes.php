@@ -6,8 +6,8 @@ use Entryshop\Admin\Admin\AdminPanel;
 use Illuminate\Support\Facades\Route;
 
 /**
- * @method string|self loginUrl($value = null)
- * @method string|self logoutUrl($value = null)
+ * @method string|static loginUrl($value = null)
+ * @method string|static logoutUrl($value = null)
  */
 trait HasRoutes
 {

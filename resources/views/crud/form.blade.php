@@ -7,7 +7,7 @@
 <form action="{{$renderable->action() ?? ''}}" method="{{$method=='get' ? 'get':'post'}}" enctype="multipart/form-data">
     @csrf
     @method($renderable->method()??'post')
-    <div class="card">
+    <div class="card mb-0">
         <div class="card-body">
             @include('admin::partials.errors')
             <div {!! $renderable->get('wrapper', 'class="d-flex flex-wrap gap-3"') !!}>
