@@ -29,21 +29,14 @@
         @foreach($options as $_key => $_label)
             <option value="{{$_key}}"
             @if($multiple)
-
-                @if(is_array($value??[]))
-                    @if(in_array($_key,array_keys($value??[]))) selected @endif
-                    @if(in_array($_key, $value??[])) selected @endif
+                @if(is_object($value[0]??null))
+                    @if(in_array($_key, $value->pluck('id')->toArray())) selected @endif
                 @else
-                    @foreach($value??[] as $item)
-                        @if(data_get($item, 'id') == $_key)
-                            selected
-                            @break
-                        @endif
-                    @endforeach
+                    @if(in_array($_key, $value??[])) selected  @endif
                 @endif
             @else
                 {{$value == $_key ? 'selected':''}}
-                @endif
+            @endif
             >{!! $_label !!}</option>
         @endforeach
     @endif
