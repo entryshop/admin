@@ -5,15 +5,17 @@
             $options[data_get($item, 'id')] = data_get($item, 'name');
         }
     }
-    $id =   $key ?? $name;
+    $id = $key ?? $name;
 @endphp
 
-@include('admin::components.fields.select', [
-    'name' => $name,
-    'id' => $id,
-    'ajax' => $renderable->ajax(),
-    'value' => $renderable->value(),
-    'options' => $options,
-    'multiple' => $renderable->multiple() ?? false,
-    'placeholder' => $renderable->placeholder(),
-])
+<x-admin::fields.field :$name :$id :label="$label??''">
+    @include('admin::components.fields.select', [
+        'name' => $name,
+        'id' => $id,
+        'ajax' => $renderable->ajax(),
+        'value' => $renderable->value(),
+        'options' => $options,
+        'multiple' => $renderable->multiple() ?? false,
+        'placeholder' => $renderable->placeholder(),
+    ])
+</x-admin::fields.field>
