@@ -47,6 +47,10 @@ if (!function_exists('field')) {
 if (!function_exists('render')) {
     function render($value, ...$args)
     {
+        if (empty($value)) {
+            return '';
+        }
+
         if (is_string($value)) {
             return $value;
         }
