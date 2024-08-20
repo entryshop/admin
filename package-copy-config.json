@@ -4,6 +4,7 @@
         "@ckeditor/ckeditor5-build-classic",
         "@simonwep/pickr",
         "@tarekraafat/autocomplete.js",
+        "@tinymce/tinymce-vue",
         "aos",
         "apexcharts",
         "bootstrap",
