@@ -21,9 +21,9 @@ trait CanEdit
         $this->crud()->action($this->crud()->url($id));
         $this->crud()->method('put');
         $this->crud()->form();
-        admin()->child($this->crud());
 
         $this->_after('form');
+        admin()->child($this->crud());
         $this->_after();
 
         if (request()->ajax()) {
