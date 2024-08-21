@@ -45,7 +45,7 @@
     @endif
     <div class="table-responsive">
         <table class="table mb-0 table-hover table-crud" id="{{$name}}">
-            <thead>
+            <thead class="table-light">
             @if(count($bulk_buttons))
                 <th class="w-34px">
                     <div class="form-check">
