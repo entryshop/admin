@@ -3,7 +3,7 @@
     $section_before_header = $renderable->children('before_header');
     $section_after_header = $renderable->children('after_header');
     $section_before_body = $renderable->children('before_header');
-    $section_after_body = $renderable->children('section_after_body');
+    $section_after_body = $renderable->children('after_body');
 @endphp
 
 <div class="card">
