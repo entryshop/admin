@@ -23,6 +23,10 @@ class CrudButton extends CrudCell
 
     public function inline($type = null)
     {
+        if (empty($type)) {
+            $this->set('size', 'xs');
+            $this->set('color', 'ghost-primary');
+        }
         return $this->setPositionAndType(CrudPanel::BUTTON_POSITION_INLINE, $type);
     }
 
@@ -38,5 +42,10 @@ class CrudButton extends CrudCell
             $this->set('type', $type);
         }
         return $this;
+    }
+
+    public function dialogForm($form, $context = [])
+    {
+        return $this->set('iframe', route('admin.form.render', array_merge(['form' => $form], $context)));
     }
 }

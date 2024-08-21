@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Route;
  */
 trait HasRoutes
 {
-
     public function auth()
     {
         return auth(config('admin.auth.guard'));
@@ -63,6 +62,12 @@ trait HasRoutes
                 ->url(admin()->logoutUrl())
                 ->icon('mdi mdi-logout');
         });
+        return $this;
+    }
+
+    public function registerFormRoutes()
+    {
+        Route::group(['as' => config('admin.route.as'), 'prefix' => config('admin.route.prefix'), 'middleware' => ['web']], __DIR__ . '/../../../routes/form.php');
         return $this;
     }
 

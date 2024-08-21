@@ -140,10 +140,6 @@
     @endforeach
 @endpush
 
-@pushonce('scripts')
-    @include('admin::partials.admin_scripts')
-@endpushonce
-
 @pushonce('after_scripts')
     <script nonce="{{admin()->csp()}}" src="{{admin()->asset('js/main.js')}}"></script>
 @endpushonce

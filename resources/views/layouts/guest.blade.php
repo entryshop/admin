@@ -14,3 +14,11 @@
         {{$key}}="{{$value}}"
     @endforeach
 @endpush
+
+@push('styles')
+    <style nonce="{{admin()->csp()}}">
+        body {
+            overflow-x: hidden;
+        }
+    </style>
+@endpush

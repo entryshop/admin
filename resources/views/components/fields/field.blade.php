@@ -2,5 +2,5 @@
 <label for="{{$id??''}}">{{$label??''}}</label>
 {{$slot}}
 @error($name)
-<span class="text-center">{{$message}}</span>
+<span class="text-danger">{{$message}}</span>
 @enderror

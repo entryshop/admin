@@ -1,6 +1,11 @@
 <script nonce="{{admin()->csp()}}">
     (function () {
         class Admin {
+
+            session = () => {
+                return '{{request()->session()->getId()}}';
+            }
+
             success = (message) => {
                 this.toast({text: message, className: "success"})
             }
@@ -13,12 +18,38 @@
                 this.toast({text: message, className: "warning"})
             }
 
+            isIframe = () => {
+                if (self.frameElement && self.frameElement.tagName === "IFRAME") {
+                    return true;
+                }
+
+                if (window.frames.length !== parent.frames.length) {
+                    return true;
+                }
+
+                if (self !== top) {
+                    return true;
+                }
+
+                return false;
+            }
+
+            closeIframeModal = () => {
+                $('#iframeModal').modal('hide');
+            }
+
+            refresh = () => {
+                window.location.reload();
+            }
+
+            redirect = (url) => {
+                window.location.href = url;
+            }
+
             toast = (toastData) => {
                 Toastify({
                     newWindow: true,
                     text: toastData.text,
-                    // gravity: toastData.gravity,
-                    // position: toastData.position,
                     className: "bg-" + toastData.className,
                     stopOnFocus: true,
                     escapeMarkup: false,
@@ -57,7 +88,7 @@
                     method: method,
                     data: data,
                     success: function (response) {
-                        that.actionResponse(response);
+                        that.actionResponse(response.action);
                     },
                     error: function (error) {
                         let message = error.responseJSON.message || error.statusText;
@@ -66,25 +97,38 @@
                 });
             }
 
-            actionResponse = (response) => {
-                let action = response.action;
+            alert = (alert) => {
+                Swal.fire(alert)
+            }
+
+            actionResponse = (action) => {
+                if (action.delay) {
+                    setTimeout(() => {
+                        this._runAction(action);
+                    }, action.delay);
+                } else {
+                    this._runAction(action);
+                }
+            };
+
+            _runAction = (data) => {
+                let action = data.action;
                 switch (action) {
                     case 'redirect':
-                        window.location.href = response.url;
+                        this.redirect(data.url);
                         break;
                     case 'reload':
                     case 'refresh':
-                        window.location.reload();
+                        this.refresh();
+                        break;
+                    case 'alert':
+                        this.alert(data);
                         break;
                     case 'message':
-                        Swal.fire({
-                            title: response.title,
-                            text: response.message,
-                            icon: response.type
-                        })
+                        this.toast(data);
                         break;
                 }
-            };
+            }
         }
 
         window.admin = new Admin();

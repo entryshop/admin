@@ -20,6 +20,12 @@
 @if(!empty($href))
     href="{{$href}}" target="{{$target ?? '_self'}}"
 @endif
+
+@foreach($data as $key => $value)
+    @if(!empty($value))
+    {{$key}}="{{$value}}"
+    @endif
+@endforeach
 >
 @if(!empty($icon))
     <i class="{{$icon}} align-bottom me-1"></i>
