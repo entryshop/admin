@@ -61,6 +61,7 @@ trait HasFields
         $model = $this->entity() ?? app($this->get('model'));
         $this->saving($model);
         $model->save();
+        $this->entity($model);
         return $this;
     }
 
