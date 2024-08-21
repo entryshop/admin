@@ -2,6 +2,8 @@
 
 namespace Entryshop\Admin\Support;
 
+use Entryshop\Admin\Crud\CrudButton;
+
 trait HasVariables
 {
     protected $variables = [];

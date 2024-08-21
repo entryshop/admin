@@ -59,6 +59,12 @@ class Renderable
         if (!view()->exists($_view)) {
             return '';
         }
+
+        $data = $this->getViewData(...$args);
+
+        if ($data['hide'] ?? false) {
+            return '';
+        }
         return view($_view, $this->getViewData(...$args));
     }
 
