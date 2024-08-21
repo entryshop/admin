@@ -88,7 +88,7 @@
                     method: method,
                     data: data,
                     success: function (response) {
-                        that.actionResponse(response.action);
+                        that.actionResponse(response);
                     },
                     error: function (error) {
                         let message = error.responseJSON.message || error.statusText;
