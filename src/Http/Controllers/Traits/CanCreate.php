@@ -30,7 +30,6 @@ trait CanCreate
 
         $this->crud()->validate();
         $this->crud()->save();
-        $this->_after('form');
         $this->_after();
         return redirect($this->crud()->url());
     }
