@@ -42,7 +42,6 @@
     :$size
     :$icon
     :$color
-    :$id
     :$label
     :$data
 />
