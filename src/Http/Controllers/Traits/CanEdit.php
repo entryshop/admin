@@ -23,6 +23,7 @@ trait CanEdit
         $this->crud()->form();
         admin()->child($this->crud());
 
+        $this->_after('form');
         $this->_after();
 
         if (request()->ajax()) {

@@ -19,7 +19,7 @@ trait CanCreate
         $this->crud()->method('post');
         $this->crud()->form();
         admin()->child($this->crud());
-
+        $this->_after('form');
         $this->_after();
         return admin()->render();
     }
@@ -33,7 +33,7 @@ trait CanCreate
 
         $this->crud()->validate();
         $this->crud()->save();
-
+        $this->_after('form');
         $this->_after();
         return redirect($this->crud()->url());
     }
