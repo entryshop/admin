@@ -23,9 +23,6 @@ trait Searchable
 
     protected function addWhereLikeBinding($query, ?string $column, ?bool $or, ?string $pattern)
     {
-        if (method_exists($this, 'getColumnForQuery')) {
-            $column = $this->getColumnForQuery($column);
-        }
         $likeOperator = 'like';
         $method       = $or ? 'orWhere' : 'where';
         static::with_query_condition($query, $column, $method, [$likeOperator, $pattern]);

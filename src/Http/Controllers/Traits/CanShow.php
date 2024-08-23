@@ -15,7 +15,7 @@ trait CanShow
         $this->_before();
 
         $back_url = $this->data['back_url'] ?? null;
-        admin()->title($this->crud()->label() . ' 详情')->back($back_url);
+        admin()->title($this->crud()->label() . ' ' . __('admin::crud.preview'))->back($back_url);
         $this->crud()->findOrFail($id);
         $this->crud()->show();
         admin()->child($this->crud());
