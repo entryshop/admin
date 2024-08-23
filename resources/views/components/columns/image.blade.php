@@ -12,12 +12,12 @@
 
 <img src="{{$src}}" id="{{$id}}" {!! $attributes ?? '' !!} >
 
-@pushonce('styles')
+@push('styles')
     <style nonce="{{admin()->csp()}}">
-        #{{$id}} {
+        img#{{$id}} {
             max-width: {{$width}}{{\Illuminate\Support\Str::contains('%', $width)?'':'px'}};
             max-height: {{$height}}{{\Illuminate\Support\Str::contains('%', $width)?'':'px'}};
             object-fit: {{$object_fit}};
         }
     </style>
-@endpushonce
+@endpush

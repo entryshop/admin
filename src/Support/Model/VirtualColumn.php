@@ -3,7 +3,10 @@
 namespace Entryshop\Admin\Support\Model;
 
 use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Crypt;
+use ReflectionClass;
+use ReflectionMethod;
 
 /**
  * This trait lets you add a "data" column functionality to any Eloquent model.
@@ -184,7 +187,10 @@ trait VirtualColumn
 
     public static function getCustomColumns(): array
     {
-        return array_diff(static::getDbColumnTypes(), [static::getDataColumn()]);
+        return array_diff(
+            static::getDbColumnTypes(),
+            [static::getDataColumn()]
+        );
     }
 
     /**
@@ -192,7 +198,7 @@ trait VirtualColumn
      *
      * (`foo` or `data->foo` depending on whether `foo` is in custom columns)
      */
-    public function getColumnForQuery(string $column): string
+    public static function getColumnForQuery(string $column): string
     {
         if (in_array($column, static::getCustomColumns(), true)) {
             return $column;
