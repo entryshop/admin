@@ -10,6 +10,23 @@
     'allow_null'=> true,
 ])
 
+@php
+    if($multiple) {
+        if(is_iterable($value)) {
+            $value_keys = collect($value)->map(function ($item) {
+                if(is_object($item)) {
+                    return  data_get($item, 'id');
+                }
+                return $item;
+            })->toArray();
+        } else {
+            $value_keys = [$value];
+        }
+    } else {
+        $value_keys = [$value];
+    }
+@endphp
+
 @if($ajax)
     <div class="d-flex gap-2 float-end">
         <a role="button" data-refresh-select data-id="{{$id}}" class="text-primary"><i class="ri-refresh-line"></i></a>
@@ -28,15 +45,7 @@
         @endif
         @foreach($options as $_key => $_label)
             <option value="{{$_key}}"
-            @if($multiple)
-                @if(is_object($value[0]??null))
-                    @if(in_array($_key, $value->pluck('id')->toArray())) selected @endif
-                @else
-                    @if(in_array($_key, $value??[])) selected  @endif
-                @endif
-            @else
-                {{$value == $_key ? 'selected':''}}
-            @endif
+                    @if(in_array($_key, $value_keys)) selected @endif
             >{!! $_label !!}</option>
         @endforeach
     @endif
@@ -51,7 +60,7 @@
             placeholder: true,
             placeholderValue: '{{$placeholder}}',
             @endif
-                @if($max)
+                    @if($max)
             maxItemCount: {{$max}},
             @endif
         });

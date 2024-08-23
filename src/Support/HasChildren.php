@@ -51,7 +51,7 @@ trait HasChildren
             $child = $this->default_child::make(...$args);
         }
 
-        $key = $child->name() ?? $child->key();
+        $key = $child->key() ?? $child->name();
 
         if (!empty($this->_children[$key])) {
             return $this->_children[$key];
