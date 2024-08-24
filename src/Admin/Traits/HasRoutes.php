@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 /**
  * @method string|static loginUrl($value = null)
  * @method string|static logoutUrl($value = null)
+ * @method string|static homeUrl($value = null)
  */
 trait HasRoutes
 {
