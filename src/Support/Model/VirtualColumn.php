@@ -3,10 +3,7 @@
 namespace Entryshop\Admin\Support\Model;
 
 use Illuminate\Contracts\Encryption\DecryptException;
-use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Crypt;
-use ReflectionClass;
-use ReflectionMethod;
 
 /**
  * This trait lets you add a "data" column functionality to any Eloquent model.
@@ -32,6 +29,13 @@ trait VirtualColumn
      */
     public bool $dataEncoded = false;
 
+    protected $_original_data;
+
+    public function getOriginalData()
+    {
+        return $this->dataEncoded ? ($this->getAttribute(static::getDataColumn()) ?? []) : $this->_original_data;
+    }
+
     protected function decodeVirtualColumn(): void
     {
         if (!$this->dataEncoded) {
@@ -43,7 +47,9 @@ trait VirtualColumn
             ['encrypted', 'encrypted:array', 'encrypted:collection', 'encrypted:json', 'encrypted:object'], // Default encrypted castables
         );
 
-        foreach ($this->getAttribute(static::getDataColumn()) ?? [] as $key => $value) {
+        $this->_original_data = $this->getAttribute(static::getDataColumn()) ?? [];
+
+        foreach ($this->_original_data as $key => $value) {
             $attributeHasEncryptedCastable = in_array(data_get($this->getCasts(), $key), $encryptedCastables);
 
             if ($value && $attributeHasEncryptedCastable && $this->valueEncrypted($value)) {
