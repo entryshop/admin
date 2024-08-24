@@ -10,11 +10,11 @@ class AdminServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        include_once __DIR__.'/macros.php';
+        include_once __DIR__ . '/macros.php';
         $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'admin');
         config(Arr::dot(config('admin.auth', []), 'auth.'));
-        $this->app->scoped('admin_panel', function () {
-            return AdminPanel::make();
+        $this->app->scoped('admin_panel', function ($app) {
+            return $app->make(AdminPanel::class);
         });
     }
 
