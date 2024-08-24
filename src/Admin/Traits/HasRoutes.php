@@ -13,7 +13,7 @@ trait HasRoutes
 {
     public function auth()
     {
-        return auth(config('admin.auth.guard'));
+        return auth(config('admin.default_guard'));
     }
 
     public function url($path, $params = [])
@@ -50,10 +50,11 @@ trait HasRoutes
 
     public function registerAuthRoutes()
     {
-        admin()->loginUrl(admin()->url('login'));
-        admin()->set('homeUrl', admin()->url('/'));
-        admin()->logoutUrl(admin()->url('logout'));
-        Route::group(['prefix' => config('admin.route.prefix'), 'middleware' => ['web']], __DIR__ . '/../../../routes/auth.php');
+        Route::group([
+            'prefix'     => config('admin.route.prefix'),
+            'as'         => config('admin.route.as'),
+            'middleware' => config('admin.middleware'),
+        ], __DIR__ . '/../../../routes/auth.php');
         add_hook_action(AdminPanel::HOOK_ACTION_ADMIN_MENU, function () {
             admin()->menu('logout')
                 ->user()
@@ -62,6 +63,9 @@ trait HasRoutes
                 ->url(admin()->logoutUrl())
                 ->icon('mdi mdi-logout');
         });
+        admin()->loginUrl(admin()->url('login'));
+        admin()->set('homeUrl', admin()->url('/'));
+        admin()->logoutUrl(admin()->url('logout'));
         return $this;
     }
 
@@ -87,7 +91,7 @@ trait HasRoutes
 
         $params = array_merge_recursive([
             'prefix'     => config('admin.route.prefix'),
-            'middleware' => ['web', 'auth:' . config('admin.auth.guard')],
+            'middleware' => config('admin.auth_middleware'),
         ], $params);
         Route::group($params, $value);
         return $this;

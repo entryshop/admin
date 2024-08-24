@@ -3,6 +3,7 @@
 namespace Entryshop\Admin;
 
 use Entryshop\Admin\Admin\AdminPanel;
+use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
 
 class AdminServiceProvider extends ServiceProvider
@@ -11,7 +12,7 @@ class AdminServiceProvider extends ServiceProvider
     {
         include_once __DIR__.'/macros.php';
         $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'admin');
-
+        config(Arr::dot(config('admin.auth', []), 'auth.'));
         $this->app->scoped('admin_panel', function () {
             return AdminPanel::make();
         });
