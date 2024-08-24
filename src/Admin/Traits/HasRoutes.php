@@ -11,6 +11,27 @@ use Illuminate\Support\Facades\Route;
  */
 trait HasRoutes
 {
+    /**
+     * The callback that should be used to check if users can access the admin panel
+     *
+     * @var callable
+     */
+    protected static $canAccessUsing;
+
+    public static function canAccessUsing(callable $canAccessUsing)
+    {
+        static::$canAccessUsing = $canAccessUsing;
+    }
+
+    public static function canAccess($user)
+    {
+        if (!static::$canAccessUsing) {
+            return config('admin.default_can_access');
+        }
+
+        return call_user_func(static::$canAccessUsing, $user);
+    }
+
     public function auth()
     {
         return auth(config('admin.default_guard'));
