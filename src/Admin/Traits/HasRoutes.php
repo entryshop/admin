@@ -27,7 +27,7 @@ trait HasRoutes
     public static function canAccess($user)
     {
         if (!static::$canAccessUsing) {
-            return config('admin.default_can_access');
+            return !app()->isProduction();
         }
 
         return call_user_func(static::$canAccessUsing, $user);

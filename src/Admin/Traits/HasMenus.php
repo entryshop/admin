@@ -48,13 +48,10 @@ trait HasMenus
         return $this;
     }
 
-    public function bootHasMenus()
-    {
-        hook_action(self::HOOK_ACTION_ADMIN_MENU);
-    }
-
     public function menus($position = null)
     {
+        hook_action(static::HOOK_ACTION_ADMIN_MENU, $position);
+
         if (empty($position)) {
             $menus = $this->_menus;
         } else {

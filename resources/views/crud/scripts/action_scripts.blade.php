@@ -21,11 +21,9 @@
 
             let confirm_title = $(this).data('confirm');
             if (confirm_title) {
-
-                window.admin.confirm({
-
-                })
                 let confirm_text = $(this).data('confirm-text');
+
+                // remove 'action', 'confirm', 'confirm-text' from action
                 Swal.fire({
                     title: confirm_title,
                     text: confirm_text,
