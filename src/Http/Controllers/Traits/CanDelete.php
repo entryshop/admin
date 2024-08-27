@@ -16,10 +16,7 @@ trait CanDelete
         $this->crud()->entity()->delete();
 
         $this->_after();
-        if (request()->ajax()) {
-            return admin()->response()->refresh()->send();
-        }
 
-        return redirect($this->crud()->url());
+        return $this->redirect($this->crud()->url());
     }
 }
