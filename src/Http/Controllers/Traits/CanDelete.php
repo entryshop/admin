@@ -8,6 +8,7 @@ trait CanDelete
     {
         $id = array_pop($args);
 
+        $this->data['id']     = 'id';
         $this->data['action'] = 'delete';
         $this->_before();
 
