@@ -2,7 +2,6 @@
     <script nonce="{{admin()->csp()}}">
         (function () {
             let linkages = @json($linkages);
-
             function hideRelatedFields() {
                 for (let p in linkages) {
                     for (let i in linkages[p]) {
@@ -16,6 +15,7 @@
                 hideRelatedFields();
                 if (linkages[value]) {
                     for (let i in linkages[value]) {
+                        console.log(linkages[value][i]);
                         $("#" + linkages[value][i]).removeAttr("disabled")
                         $("#field_" + linkages[value][i]).show();
                     }

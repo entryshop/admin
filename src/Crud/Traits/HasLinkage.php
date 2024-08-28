@@ -8,6 +8,9 @@ trait HasLinkage
 
     public function when($value, $rules = [])
     {
+        if (!is_array($rules)) {
+            $rules = [$rules];
+        }
         $this->_linkages[$value] = $rules;
         return $this;
     }
