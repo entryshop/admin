@@ -131,6 +131,46 @@
     "file": "icons/materialdesignicons-webfont.woff2",
     "src": "resources/assets/fonts/materialdesignicons-webfont.woff2"
   },
+  "resources/assets/fonts/poppins/poppins-v21-latin-300.woff2": {
+    "file": "icons/poppins-v21-latin-300.woff2",
+    "src": "resources/assets/fonts/poppins/poppins-v21-latin-300.woff2"
+  },
+  "resources/assets/fonts/poppins/poppins-v21-latin-300italic.woff2": {
+    "file": "icons/poppins-v21-latin-300italic.woff2",
+    "src": "resources/assets/fonts/poppins/poppins-v21-latin-300italic.woff2"
+  },
+  "resources/assets/fonts/poppins/poppins-v21-latin-500.woff2": {
+    "file": "icons/poppins-v21-latin-500.woff2",
+    "src": "resources/assets/fonts/poppins/poppins-v21-latin-500.woff2"
+  },
+  "resources/assets/fonts/poppins/poppins-v21-latin-500italic.woff2": {
+    "file": "icons/poppins-v21-latin-500italic.woff2",
+    "src": "resources/assets/fonts/poppins/poppins-v21-latin-500italic.woff2"
+  },
+  "resources/assets/fonts/poppins/poppins-v21-latin-600.woff2": {
+    "file": "icons/poppins-v21-latin-600.woff2",
+    "src": "resources/assets/fonts/poppins/poppins-v21-latin-600.woff2"
+  },
+  "resources/assets/fonts/poppins/poppins-v21-latin-600italic.woff2": {
+    "file": "icons/poppins-v21-latin-600italic.woff2",
+    "src": "resources/assets/fonts/poppins/poppins-v21-latin-600italic.woff2"
+  },
+  "resources/assets/fonts/poppins/poppins-v21-latin-700.woff2": {
+    "file": "icons/poppins-v21-latin-700.woff2",
+    "src": "resources/assets/fonts/poppins/poppins-v21-latin-700.woff2"
+  },
+  "resources/assets/fonts/poppins/poppins-v21-latin-700italic.woff2": {
+    "file": "icons/poppins-v21-latin-700italic.woff2",
+    "src": "resources/assets/fonts/poppins/poppins-v21-latin-700italic.woff2"
+  },
+  "resources/assets/fonts/poppins/poppins-v21-latin-italic.woff2": {
+    "file": "icons/poppins-v21-latin-italic.woff2",
+    "src": "resources/assets/fonts/poppins/poppins-v21-latin-italic.woff2"
+  },
+  "resources/assets/fonts/poppins/poppins-v21-latin-regular.woff2": {
+    "file": "icons/poppins-v21-latin-regular.woff2",
+    "src": "resources/assets/fonts/poppins/poppins-v21-latin-regular.woff2"
+  },
   "resources/assets/fonts/remixicon.eot": {
     "file": "icons/remixicon.eot",
     "src": "resources/assets/fonts/remixicon.eot"
@@ -150,6 +190,62 @@
   "resources/assets/fonts/remixicon.woff2": {
     "file": "icons/remixicon.woff2",
     "src": "resources/assets/fonts/remixicon.woff2"
+  },
+  "resources/assets/fonts/saira/saira-v20-latin-100.woff2": {
+    "file": "icons/saira-v20-latin-100.woff2",
+    "src": "resources/assets/fonts/saira/saira-v20-latin-100.woff2"
+  },
+  "resources/assets/fonts/saira/saira-v20-latin-100italic.woff2": {
+    "file": "icons/saira-v20-latin-100italic.woff2",
+    "src": "resources/assets/fonts/saira/saira-v20-latin-100italic.woff2"
+  },
+  "resources/assets/fonts/saira/saira-v20-latin-200.woff2": {
+    "file": "icons/saira-v20-latin-200.woff2",
+    "src": "resources/assets/fonts/saira/saira-v20-latin-200.woff2"
+  },
+  "resources/assets/fonts/saira/saira-v20-latin-200italic.woff2": {
+    "file": "icons/saira-v20-latin-200italic.woff2",
+    "src": "resources/assets/fonts/saira/saira-v20-latin-200italic.woff2"
+  },
+  "resources/assets/fonts/saira/saira-v20-latin-300.woff2": {
+    "file": "icons/saira-v20-latin-300.woff2",
+    "src": "resources/assets/fonts/saira/saira-v20-latin-300.woff2"
+  },
+  "resources/assets/fonts/saira/saira-v20-latin-300italic.woff2": {
+    "file": "icons/saira-v20-latin-300italic.woff2",
+    "src": "resources/assets/fonts/saira/saira-v20-latin-300italic.woff2"
+  },
+  "resources/assets/fonts/saira/saira-v20-latin-500.woff2": {
+    "file": "icons/saira-v20-latin-500.woff2",
+    "src": "resources/assets/fonts/saira/saira-v20-latin-500.woff2"
+  },
+  "resources/assets/fonts/saira/saira-v20-latin-500italic.woff2": {
+    "file": "icons/saira-v20-latin-500italic.woff2",
+    "src": "resources/assets/fonts/saira/saira-v20-latin-500italic.woff2"
+  },
+  "resources/assets/fonts/saira/saira-v20-latin-600.woff2": {
+    "file": "icons/saira-v20-latin-600.woff2",
+    "src": "resources/assets/fonts/saira/saira-v20-latin-600.woff2"
+  },
+  "resources/assets/fonts/saira/saira-v20-latin-600italic.woff2": {
+    "file": "icons/saira-v20-latin-600italic.woff2",
+    "src": "resources/assets/fonts/saira/saira-v20-latin-600italic.woff2"
+  },
+  "resources/assets/fonts/saira/saira-v20-latin-700.woff2": {
+    "file": "icons/saira-v20-latin-700.woff2",
+    "src": "resources/assets/fonts/saira/saira-v20-latin-700.woff2"
+  },
+  "resources/assets/fonts/saira/saira-v20-latin-700italic.woff2": {
+    "file": "icons/saira-v20-latin-700italic.woff2",
+    "src": "resources/assets/fonts/saira/saira-v20-latin-700italic.woff2"
+  },
+  "resources/assets/fonts/saira/saira-v20-latin-italic.woff2": {
+    "file": "icons/saira-v20-latin-italic.woff2",
+    "src": "resources/assets/fonts/saira/saira-v20-latin-italic.woff2"
+  },
+  "resources/assets/fonts/saira/saira-v20-latin-regular.woff2": {
+    "file": "icons/saira-v20-latin-regular.woff2",
+    "src": "resources/assets/fonts/saira/saira-v20-latin-regular.woff2"
   },
   "resources/assets/images/auth-one-bg.jpg": {
     "file": "icons/auth-one-bg.jpg",

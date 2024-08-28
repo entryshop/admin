@@ -50,11 +50,8 @@ trait HasAssets
             $this->asset('libs/bootstrap/js/bootstrap.bundle.min.js'),
             $this->asset('libs/simplebar/simplebar.min.js'),
             $this->asset('libs/jquery/jquery.js'),
-            $this->asset('libs/node-waves/waves.min.js'),
-            $this->asset('libs/feather-icons/feather.min.js'),
             $this->asset('libs/toastify-js/src/toastify.js'),
             $this->asset('libs/choices.js/public/assets/scripts/choices.min.js'),
-            $this->asset('libs/flatpickr/flatpickr.min.js'),
             $this->asset('libs/sweetalert2/sweetalert2.min.js'),
         ]);
 

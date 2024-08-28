@@ -3,6 +3,7 @@
 namespace Entryshop\Admin;
 
 use Entryshop\Admin\Admin\AdminPanel;
+use Entryshop\Admin\Console\Commands\PublishAssets;
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
 
@@ -24,10 +25,16 @@ class AdminServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__ . '/../resources/dist/' => public_path('vendor/admin'),
             ], 'admin-assets');
+
+            // register command
+            $this->commands([
+                PublishAssets::class,
+            ]);
         }
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'admin');
         $this->loadTranslationsFrom(__DIR__ . '/../lang', 'admin');
+
     }
 
 }

@@ -27,6 +27,47 @@
         }
     }
 
+    function initActiveMenu() {
+        // var currentPath = location.pathname == "/" ? "index" : location.pathname.substring(1);
+        // currentPath = currentPath.substring(currentPath.lastIndexOf("/") + 1);
+        var currentPath = location.pathname;
+        if (currentPath) {
+            // navbar-nav
+            var a = document.getElementById("navbar-nav").querySelector('[href="' + currentPath + '"]');
+            if (!a) {
+                currentPath = location.href;
+                a = document.getElementById("navbar-nav").querySelector('[href="' + currentPath + '"]');
+            }
+            if (a) {
+                a.classList.add("active");
+                var parentCollapseDiv = a.closest(".collapse.menu-dropdown");
+                if (parentCollapseDiv) {
+                    parentCollapseDiv.classList.add("show");
+                    parentCollapseDiv.parentElement.children[0].classList.add("active");
+                    parentCollapseDiv.parentElement.children[0].setAttribute("aria-expanded", "true");
+                    if (parentCollapseDiv.parentElement.closest(".collapse.menu-dropdown")) {
+                        parentCollapseDiv.parentElement.closest(".collapse").classList.add("show");
+                        if (parentCollapseDiv.parentElement.closest(".collapse").previousElementSibling)
+                            parentCollapseDiv.parentElement.closest(".collapse").previousElementSibling.classList.add("active");
+
+                        if (parentCollapseDiv.parentElement.parentElement.parentElement.parentElement.closest(".collapse.menu-dropdown")) {
+                            parentCollapseDiv.parentElement.parentElement.parentElement.parentElement.closest(".collapse").classList.add("show");
+                            if (parentCollapseDiv.parentElement.parentElement.parentElement.parentElement.closest(".collapse").previousElementSibling) {
+
+                                parentCollapseDiv.parentElement.parentElement.parentElement.parentElement.closest(".collapse").previousElementSibling.classList.add("active");
+                                if ((document.documentElement.getAttribute("data-layout") == "horizontal") && parentCollapseDiv.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.closest(".collapse")) {
+                                    parentCollapseDiv.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.closest(".collapse").previousElementSibling.classList.add("active")
+                                }
+                            }
+                        }
+                    }
+                }
+            } else {
+                console.log('can not set active menu:' + currentPath);
+            }
+        }
+    }
+
     function _setAttribute(key, value) {
         sessionStorage.setItem(key, value);
         document.documentElement.setAttribute(key, value);
@@ -72,6 +113,7 @@
     function init() {
         initAjaxSetup();
         initLayout();
+        initActiveMenu();
     }
 
     init();
