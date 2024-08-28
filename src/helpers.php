@@ -108,14 +108,28 @@ if (!function_exists('interpolate')) {
         if (empty($template)) {
             return '';
         }
-        $allowedFunctions = ['mb_strtolower', 'time', 'add_one'];
-        return preg_replace_callback('/\{([\w\.]+(?:\([\w\.\s,]*\))?)\}/', function ($matches) use ($data, $allowedFunctions) {
-            $expression = $matches[1];
+        return preg_replace_callback('/\{([\w\.]+(?:\([\w\.\s,]*\))?)\}/', function ($matches) use ($data) {
+            $allowedFunctions = [
+                'mb_strtolower',
+                'mb_strtoupper',
+                'time',
+                'bcadd',
+                'bcmod',
+                'bcsub',
+                'bcdiv',
+                'bcmul',
+                'bcsqrt',
+                'bcpow',
+                'intval',
+                'strval',
+                'floatval',
+                'date',
+            ];
+            $expression       = $matches[1];
 
             // 匹配函数调用
             if (preg_match('/^(\w+)\(([\w\.\s,]*)\)$/', $expression, $funcMatches)) {
                 $function = $funcMatches[1];
-
 
                 // 检查函数是否在白名单中
                 if (!in_array($function, $allowedFunctions)) {
@@ -147,31 +161,28 @@ if (!function_exists('interpolate')) {
                 }
 
                 // 执行白名单内的函数
-                if (function_exists($function) || function_exists('App\\Helpers\\' . $function)) {
+                if (function_exists($function)) {
                     return call_user_func_array($function, $arguments);
                 }
-
-                echo $function . ' 不存在';
 
                 return $matches[0]; // 如果函数不存在，则保留原始占位符
             }
 
             // 非函数调用的占位符处理
-            $keys  = explode('.', $expression);
-            $value = $data;
-
-            foreach ($keys as $key) {
-                if (is_array($value) && isset($value[$key])) {
-                    $value = $value[$key];
-                } elseif (is_object($value) && isset($value->{$key})) {
-                    $value = $value->{$key};
-                } else {
-                    return $matches[0]; // 如果找不到对应的值，则保留原始占位符
-                }
-            }
-
-            return $value;
+            return data_get($data, $expression);
         }, $template);
     }
 }
 
+
+if (!function_exists('interpolate_recursive')) {
+    function interpolate_recursive($input = [], $data = [])
+    {
+        array_walk_recursive($input, function (&$value) use ($data) {
+            if (is_string($value) && preg_match('/\{[^}]+\}/', $value)) {
+                $value = interpolate($value, $data);
+            }
+        });
+        return $input;
+    }
+}
