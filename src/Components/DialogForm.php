@@ -18,15 +18,17 @@ abstract class DialogForm extends Renderable
     public function submit()
     {
         $this->save();
-        admin()->child(renderable()->view('admin::partials.dialog_action_scripts'));
-        admin()->guest();
+
         return $this->returnAction();
     }
 
-    public function returnAction()
+    public function returnAction($action = [], $close = true)
     {
+        admin()->child(renderable()->view('admin::partials.dialog_action_scripts'));
+        admin()->guest();
         return admin()->render([
-            'close' => true,
+            'close'  => $close,
+            'action' => $action,
         ]);
     }
 

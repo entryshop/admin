@@ -16,6 +16,11 @@ class CrudButton extends CrudCell
     protected $view_namespace = 'admin::crud.buttons.';
     protected $default_type = 'button';
 
+    /**
+     * 上方按钮
+     *
+     * @param  string  $type  button type, can be top_create, inline_delete, and ...
+     */
     public function top($type = null)
     {
         return $this->setPositionAndType(CrudPanel::BUTTON_POSITION_TOP, $type);
