@@ -157,5 +157,15 @@ class PostController extends CrudController
             ->method('delete')                          // 删除动作 HTTP 方法
             ->action($this->crud()->path("{row.id}"));  // 删除动作 url
     }
+    
+    
+    // 设置表单信息，适用于 create 和 edit
+    public function beforeForm()
+    {
+        $this->crud()->field('name')
+            ->label(__('admin::post.title')) // 设置 label
+            ->type('text')                   // 设置类型
+            ->rules('required|min:3');       // 设置验证规则
+    }
 }
 ```
