@@ -108,7 +108,7 @@ if (!function_exists('interpolate')) {
         if (empty($template)) {
             return '';
         }
-        return preg_replace_callback('/\{([\w\.]+(?:\([\w\.\s,]*\))?)\}/', function ($matches) use ($data) {
+        return preg_replace_callback('/\{([\w\.]+(?:\([\w\.\s,]*\))?)\}/', function ($matches) use ($data, $template) {
             $allowedFunctions = [
                 'mb_strtolower',
                 'mb_strtoupper',
@@ -169,7 +169,7 @@ if (!function_exists('interpolate')) {
             }
 
             // 非函数调用的占位符处理
-            return data_get($data, $expression);
+            return data_get($data, $expression) ?? $template;
         }, $template);
     }
 }
@@ -180,7 +180,7 @@ if (!function_exists('interpolate_recursive')) {
     {
         array_walk_recursive($input, function (&$value) use ($data) {
             if (is_string($value) && preg_match('/\{[^}]+\}/', $value)) {
-                $value = interpolate($value, $data);
+                $value = data_get($data, trim($value, '{}'));
             }
         });
         return $input;
