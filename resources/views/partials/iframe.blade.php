@@ -14,7 +14,6 @@
 
 <script nonce="{{admin()->csp()}}">
     $('[data-iframe]').on('click', function () {
-
         let iframe_url = $(this).data('iframe');
         if ($(this).data('bulk')) {
             let selected = getSelectedRows();
