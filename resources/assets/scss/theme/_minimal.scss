@@ -3,7 +3,7 @@
     // Google Font
     @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
 
-    [data-theme="minimal"] { 
+    [data-theme="minimal"] {
 
         $primary:                   #25a0e2;
         $secondary:                 #878a99;
@@ -13,7 +13,7 @@
         $success:                   #00bd9d;
         $dark:                      #343a40;
         $light:                     #f1f4f7;
-        
+
         //Typography
         $font-sizes: (
             "10":          0.625rem,
@@ -31,7 +31,7 @@
             "21":          1.3125rem,
             "22":          1.375rem,
             "23":          0.8125rem,
-            "24":          1.5rem,            
+            "24":          1.5rem,
             "36":          2.25rem,
             "48":          3rem,
         );
@@ -47,11 +47,11 @@
         // Font Family
         --#{$prefix}font-family-primary:                                     'Open Sans', sans-serif;
         --#{$prefix}font-family-secondary:                                   'Open Sans', sans-serif;
-        
+
         --#{$prefix}grid-gutter-width:                              1.5rem;
 
         --#{$prefix}body-bg:                                        #ffffff;
-        --#{$prefix}body-bg-rgb:                                    #(to-rgb(#ffffff));
+        --#{$prefix}body-bg-rgb:                                    (to-rgb(#ffffff));
 
         --#{$prefix}headings-font-weight:                           600;
         --#{$prefix}btn-font-weight-custom:                         500;
@@ -62,7 +62,7 @@
         --#{$prefix}card-border-width-custom:                       1px;
         --#{$prefix}card-header-border-width:                       1px;
         --#{$prefix}card-shadow:                                    none;
-        
+
         //sidebar menu
         --#{$prefix}vertical-menu-item-font-size:                   0.9375rem;
         --#{$prefix}vertical-menu-sub-item-font-size:               0.875rem;
@@ -114,7 +114,7 @@
         --#{$prefix}topbar-search-bg:                                   #f3f3f9;
         --#{$prefix}topbar-user-bg:                                     #f3f3f9;
         --#{$prefix}topbar-search-color:                                #{$gray-700};
-        
+
         // Topbar - Dark
         &[data-topbar="dark"] {
             --#{$prefix}header-bg:                                      #133b50;
@@ -132,36 +132,36 @@
             --#{$prefix}vertical-menu-border:                           var(--#{$prefix}success);
             --#{$prefix}twocolumn-menu-iconview-bg:                     var(--#{$prefix}primary);
         }
-        
+
         &[data-sidebar="gradient-2"] {
             --#{$prefix}vertical-menu-bg:                               #{linear-gradient(to right, var(--#{$prefix}info), var(--#{$prefix}secondary))};
-            --#{$prefix}vertical-menu-border:                           var(--#{$prefix}secondary); 
+            --#{$prefix}vertical-menu-border:                           var(--#{$prefix}secondary);
             --#{$prefix}twocolumn-menu-iconview-bg:                     var(--#{$prefix}info);
         }
-        
+
         &[data-sidebar="gradient-3"] {
             --#{$prefix}vertical-menu-bg:                               #{linear-gradient(to right, var(--#{$prefix}info), var(--#{$prefix}success))};
             --#{$prefix}vertical-menu-border:                           var(--#{$prefix}success);
             --#{$prefix}twocolumn-menu-iconview-bg:                     var(--#{$prefix}info);
         }
-        
+
         &[data-sidebar="gradient-4"] {
             --#{$prefix}vertical-menu-bg:                               #{linear-gradient(to right, #1a1d21, var(--#{$prefix}primary))};
             --#{$prefix}vertical-menu-border:                           var(--#{$prefix}primary);
             --#{$prefix}twocolumn-menu-iconview-bg:                     #1a1d21;
         }
 
-        //page title 
+        //page title
         --#{$prefix}page-title-box-shadow:                              none;
         --#{$prefix}page-title-border:                                  var(--#{$prefix}border-color);
 
         //footer
         --#{$prefix}footer-bg:                                          #f6f8fa;
         --#{$prefix}footer-color:                                       #98a6ad;
-        
+
         //Boxed layout
         --#{$prefix}boxed-body-bg:                                      #f5f5f5;
-        
+
         --#{$prefix}timeline-color:                                     var(--#{$prefix}border-color);
 
         --#{$prefix}chat-primary-bg:                                    var(--#{$prefix}light);
@@ -178,8 +178,8 @@
             "dark":             $dark,
             "light":            $light
         );
-        
-        @each $name, $value in $custom-theme-colors {   
+
+        @each $name, $value in $custom-theme-colors {
             --#{$prefix}#{$name}:                                        #{$value};
             --#{$prefix}#{$name}-rgb:                                    #{to-rgb($value)};
             --#{$prefix}#{$name}-bg-subtle:                              #{rgba($value, 0.15)};
@@ -192,11 +192,11 @@
         --#{$prefix}link-hover-color:                                   #{shade-color($primary, 20%)};
         --#{$prefix}link-hover-color-rgb:                               #{to-rgb(shade-color($primary, 20%))};
 
-        @each $name, $value in $font-sizes { 
+        @each $name, $value in $font-sizes {
             --#{$prefix}font-#{$name}:          #{$value};
         }
-    
-        @each $name, $value in $font-weights { 
+
+        @each $name, $value in $font-weights {
             --#{$prefix}font-weight-#{$name}:   #{$value};
         }
 
@@ -235,15 +235,15 @@
                 }
 
                 &[for="themeColor-02"] {
-                    background-color: $green-600; 
+                    background-color: $green-600;
                 }
 
                 &[for="themeColor-03"] {
-                    background-color: $purple-600; 
+                    background-color: $purple-600;
                 }
 
                 &[for="themeColor-04"] {
-                    background-color: $blue-600; 
+                    background-color: $blue-600;
                 }
             }
         }

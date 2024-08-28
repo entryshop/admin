@@ -8,8 +8,6 @@ use Illuminate\Support\Str;
 /**
  * @method string|static model($value = null)
  * @method string|static route($value = null)
- * @method string|static label($value = null)
- * @method string|static labelPlural($value = null)
  * @method string|static lang($value = null) Set language prefix
  */
 trait HasEntries
@@ -47,14 +45,35 @@ trait HasEntries
         return $this->_entity;
     }
 
-    public function title()
+    public function labelPlural($value = null)
     {
-        return $this->get('labelPlural', $this->get('label'));
+        if (!empty($value)) {
+            return $this->set('labelPlural', $value);
+        }
+        return $this->get('labelPlural', $this->guessLabelFromModel(true));
+    }
+
+    protected function guessLabelFromModel($plural = false)
+    {
+        $label = class_basename($this->get('model') ?? 'Model');
+        if ($plural) {
+            return Str::plural($label);
+        }
+        return $label;
+    }
+
+    public function label($value = null)
+    {
+        if (!empty($value)) {
+            return $this->set('label', $value);
+        }
+
+        return $this->get('label', $this->guessLabelFromModel());
     }
 
     public function labels($label, $labelPlural = null)
     {
-        return $this->set('label', $label)->set('labelPlural', $labelPlural ?? $label);
+        return $this->set('label', $label)->set('labelPlural', $labelPlural);
     }
 
     public function trans($key)
@@ -64,7 +83,6 @@ trait HasEntries
             return trans($lang_key);
         }
 
-        // load common lang
         if (trans()->has('admin::crud.attributes.' . $key)) {
             return trans('admin::crud.attributes.' . $key);
         }

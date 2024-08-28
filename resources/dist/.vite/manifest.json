@@ -19,6 +19,46 @@
     "file": "icons/boxicons.woff2",
     "src": "resources/assets/fonts/boxicons.woff2"
   },
+  "resources/assets/fonts/fontawesome/fa-duotone-900.ttf": {
+    "file": "icons/fa-duotone-900.ttf",
+    "src": "resources/assets/fonts/fontawesome/fa-duotone-900.ttf"
+  },
+  "resources/assets/fonts/fontawesome/fa-duotone-900.woff2": {
+    "file": "icons/fa-duotone-900.woff2",
+    "src": "resources/assets/fonts/fontawesome/fa-duotone-900.woff2"
+  },
+  "resources/assets/fonts/fontawesome/fa-light-300.ttf": {
+    "file": "icons/fa-light-300.ttf",
+    "src": "resources/assets/fonts/fontawesome/fa-light-300.ttf"
+  },
+  "resources/assets/fonts/fontawesome/fa-light-300.woff2": {
+    "file": "icons/fa-light-300.woff2",
+    "src": "resources/assets/fonts/fontawesome/fa-light-300.woff2"
+  },
+  "resources/assets/fonts/fontawesome/fa-regular-400.ttf": {
+    "file": "icons/fa-regular-400.ttf",
+    "src": "resources/assets/fonts/fontawesome/fa-regular-400.ttf"
+  },
+  "resources/assets/fonts/fontawesome/fa-regular-400.woff2": {
+    "file": "icons/fa-regular-400.woff2",
+    "src": "resources/assets/fonts/fontawesome/fa-regular-400.woff2"
+  },
+  "resources/assets/fonts/fontawesome/fa-solid-900.ttf": {
+    "file": "icons/fa-solid-900.ttf",
+    "src": "resources/assets/fonts/fontawesome/fa-solid-900.ttf"
+  },
+  "resources/assets/fonts/fontawesome/fa-solid-900.woff2": {
+    "file": "icons/fa-solid-900.woff2",
+    "src": "resources/assets/fonts/fontawesome/fa-solid-900.woff2"
+  },
+  "resources/assets/fonts/fontawesome/fa-thin-100.ttf": {
+    "file": "icons/fa-thin-100.ttf",
+    "src": "resources/assets/fonts/fontawesome/fa-thin-100.ttf"
+  },
+  "resources/assets/fonts/fontawesome/fa-thin-100.woff2": {
+    "file": "icons/fa-thin-100.woff2",
+    "src": "resources/assets/fonts/fontawesome/fa-thin-100.woff2"
+  },
   "resources/assets/fonts/hkgrotesk-bold.woff": {
     "file": "icons/hkgrotesk-bold.woff",
     "src": "resources/assets/fonts/hkgrotesk-bold.woff"
