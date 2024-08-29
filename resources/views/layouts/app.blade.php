@@ -15,6 +15,7 @@
                             </span>
                                 <span class="logo-lg">
                              <img src="{{admin()->logo()}}" alt="Logo" height="34">
+                                    {{admin()->getLogoText()}}
                         </span>
                             </a>
                             <a href="{{admin()->homeUrl()}}" class="logo logo-light">
