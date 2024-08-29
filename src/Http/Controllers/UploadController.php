@@ -26,7 +26,7 @@ class UploadController
             return $this->success($result);
         }
 
-        $result = $this->upload($file);
+        $result = $this->upload($file, request('key'));
 
         return $this->success($result);
     }
