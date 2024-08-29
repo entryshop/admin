@@ -57,7 +57,9 @@ abstract class CrudController
     {
         if (empty($this->_crud)) {
             $this->_crud = crud($this->getCrudDefaults());
-            $this->crud()->labels($this->labels[0] ?? null, $this->labels[1] ?? null);
+            if (!empty($this->labels)) {
+                $this->crud()->labels($this->labels[0] ?? null, $this->labels[1] ?? null);
+            }
         }
         return $this->_crud;
     }

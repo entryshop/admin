@@ -50,7 +50,7 @@ trait HasEntries
         if (!empty($value)) {
             return $this->set('labelPlural', $value);
         }
-        return $this->get('labelPlural', $this->guessLabelFromModel(true));
+        return $this->get('labelPlural', $this->trans('labelPlural', $this->guessLabelFromModel(true)));
     }
 
     protected function guessLabelFromModel($plural = false)
@@ -68,7 +68,7 @@ trait HasEntries
             return $this->set('label', $value);
         }
 
-        return $this->get('label', $this->guessLabelFromModel());
+        return $this->get('label', $this->trans('label', $this->guessLabelFromModel()));
     }
 
     public function labels($label, $labelPlural = null)
@@ -76,7 +76,7 @@ trait HasEntries
         return $this->set('label', $label)->set('labelPlural', $labelPlural);
     }
 
-    public function trans($key)
+    public function trans($key, $fallback = null)
     {
         $lang_key = $this->get('lang') . '.' . $key;
         if (trans()->has($lang_key)) {
@@ -87,6 +87,6 @@ trait HasEntries
             return trans('admin::crud.attributes.' . $key);
         }
 
-        return Str::headline($key);
+        return $fallback ?? Str::headline($key);
     }
 }
