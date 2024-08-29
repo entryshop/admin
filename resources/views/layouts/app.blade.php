@@ -11,21 +11,21 @@
                             <a href="{{admin()->homeUrl()}}" class="logo logo-dark">
                             <span class="logo-sm">
                                 <img src="{{admin()->get('miniLogo', admin()->logo())}}" alt="" height="22">
-                                {{admin()->getLogoText()}}
+                                {{admin()->logoText()}}
                             </span>
                                 <span class="logo-lg">
                              <img src="{{admin()->logo()}}" alt="Logo" height="34">
-                                    {{admin()->getLogoText()}}
+                                    {{admin()->logoText()}}
                         </span>
                             </a>
                             <a href="{{admin()->homeUrl()}}" class="logo logo-light">
                         <span class="logo-sm">
                             <img src="{{admin()->get('miniLogo', admin()->logo())}}" alt="" height="22">
-                            {{admin()->getLogoText()}}
+                            {{admin()->logoText()}}
                         </span>
                                 <span class="logo-lg">
                             <img src="{{admin()->logo()}}" alt="Logo" height="34">
-                            {{admin()->getLogoText()}}
+                            {{admin()->logoText()}}
                         </span>
                             </a>
                         </div>
