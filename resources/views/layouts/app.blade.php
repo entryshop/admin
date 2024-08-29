@@ -23,9 +23,11 @@
                             <img src="{{admin()->get('miniLogo', admin()->logo())}}" alt="" height="22">
                             {{admin()->logoText()}}
                         </span>
-                                <span class="logo-lg fs-4 text-white">
-                            <img src="{{admin()->logo()}}" alt="Logo" height="34">
-                            {{admin()->logoText()}}
+                            <span class="logo-lg fs-4 text-white">
+                                @if(admin()->logo())
+                                    <img src="{{admin()->logo()}}" alt="Logo" height="34">
+                                @endif
+                                {{admin()->logoText()}}
                         </span>
                             </a>
                         </div>
