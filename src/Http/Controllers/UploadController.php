@@ -11,12 +11,12 @@ class UploadController
 
     public function __invoke()
     {
-        if (!request()->hasFile('file')) {
-            return request()->all();
+        $file_field = request('file_field') ?? 'file';
+        if (!request()->hasFile($file_field)) {
             return $this->error('File not found');
         }
 
-        $file = request()->file('file');
+        $file = request()->file($file_field);
 
         if (is_array($file)) {
             $result = [];
