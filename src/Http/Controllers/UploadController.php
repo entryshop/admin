@@ -21,7 +21,7 @@ class UploadController
         if (is_array($file)) {
             $result = [];
             foreach ($file as $item) {
-                $result[] = $this->upload($item);
+                $result[] = $this->upload($item, request('key'));
             }
             return $this->success($result);
         }
