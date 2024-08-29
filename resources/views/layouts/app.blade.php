@@ -23,7 +23,7 @@
                             <img src="{{admin()->get('miniLogo', admin()->logo())}}" alt="" height="22">
                             {{admin()->logoText()}}
                         </span>
-                                <span class="logo-lg">
+                                <span class="logo-lg fs-4 text-white">
                             <img src="{{admin()->logo()}}" alt="Logo" height="34">
                             {{admin()->logoText()}}
                         </span>
@@ -62,7 +62,7 @@
                                         @endif
                                         <span class="text-start ms-xl-2">
                                             <span
-                                                    class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">
+                                                class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">
                                                 {{auth()->user()?->name ?? __('admin::auth.guest')}}
                                             </span>
                                             <span class="d-none d-xl-block ms-1 fs-12 user-name-sub-text"></span>
