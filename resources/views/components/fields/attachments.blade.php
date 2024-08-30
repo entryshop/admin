@@ -75,7 +75,7 @@
                         {{--});--}}
                     },
                     file_list: @json(to_json($value??[])),
-                    json_value_string: '{{json_encode($value ?? [])}}',
+                    json_value_string: '',
                     submit(event) {
                         if (event) {
                             event.preventDefault();
