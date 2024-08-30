@@ -49,8 +49,6 @@
 
 @pushonce('scripts')
     <script defer nonce="{{admin()->csp()}}" src="{{admin()->asset('libs/@alpinejs/csp/cdn.min.js')}}"></script>
-    <script nonce="{{admin()->csp()}}" src="{{admin()->asset('libs/sortablejs/Sortable.min.js')}}"></script>
-    <script nonce="{{admin()->csp()}}" src="{{admin()->asset('libs/jquery-sortablejs/jquery-sortable.js')}}"></script>
 @endpushonce
 
 @push('scripts')
@@ -64,15 +62,6 @@
                             _this.submit();
                         });
                         this.updateJsonValue();
-                        {{--let sortable = $('#attachments_{{$name}}_list').sortable({--}}
-                        {{--    handle: ".move-handle",--}}
-                        {{--    animation: 150,--}}
-                        {{--    dataIdAttr: "data-index",--}}
-                        {{--    onEnd: function (/**Event*/evt) {--}}
-                        {{--        let oldIndex = evt.oldIndex;--}}
-                        {{--        let newIndex = evt.newIndex;--}}
-                        {{--    },--}}
-                        {{--});--}}
                     },
                     file_list: @json(to_json($value??[])),
                     json_value_string: '{{json_encode(to_json($value ?? []))}}',
