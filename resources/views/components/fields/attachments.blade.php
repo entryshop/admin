@@ -14,9 +14,6 @@
                     <div class="d-flex align-items-center gap-2">
                         <div class="flex-grow-1">
                             <div class="d-flex align-items-center gap-1">
-                                <div class="move-handle cursor-pointer">
-                                    <i class="ri-drag-move-2-line"></i>
-                                </div>
                                 <div class="flex-shrink-0 avatar-xs">
                                     <div class="avatar-title bg-primary-subtle text-primary rounded">
                                         <i class="ri-file-line"></i>
