@@ -1,0 +1,7 @@
+{
+  "branch": "master",
+  "SHA1": "f40e19f44",
+  "message": "修复#10041，赋值事件，args.value值为object时初始化加载不显示的bug (#10684)",
+  "author": "xiukun",
+  "date": "2024-08-06 09:40:30"
+}

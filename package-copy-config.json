@@ -6,6 +6,7 @@
         "@tarekraafat/autocomplete.js",
         "@tinymce/tinymce-vue",
         "aos",
+        "amis",
         "apexcharts",
         "bootstrap",
         "card",

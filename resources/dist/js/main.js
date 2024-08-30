@@ -38,6 +38,18 @@
                 currentPath = location.href;
                 a = document.getElementById("navbar-nav").querySelector('[href="' + currentPath + '"]');
             }
+
+            if (!a) {
+                currentPath = location.pathname;
+                let links = $("#navbar-nav a").map(function (index, element) {
+                    let _href = $(element).attr('href');
+                    if (currentPath.indexOf(_href) > -1) {
+                        return element;
+                    }
+                });
+                a = links[0] || null;
+            }
+
             if (a) {
                 a.classList.add("active");
                 var parentCollapseDiv = a.closest(".collapse.menu-dropdown");

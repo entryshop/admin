@@ -29,6 +29,7 @@
         "@simonwep/pickr": "^1.8.2",
         "@tarekraafat/autocomplete.js": "^10.2.7",
         "@tinymce/tinymce-vue": "^6.0.1",
+        "amis": "^6.7.0",
         "aos": "^2.3.4",
         "apexcharts": "^3.41.0",
         "bootstrap": "^5.3.0",
