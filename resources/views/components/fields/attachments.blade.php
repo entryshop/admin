@@ -33,7 +33,7 @@
                         <div class="flex-shrink-0">
                             <a role="button" x-on:click="deleteFile" :data-index="index"
                                class="btn btn-ghost-danger btn-sm">
-                                <i class="ri-delete-bin-line"></i>
+                                <i class="ri-delete-bin-line" :data-index="index"></i>
                             </a>
                         </div>
                     </div>
@@ -105,14 +105,11 @@
                         if (event) {
                             event.preventDefault();
                         }
-                        console.log(event);
                         let index = $(event.target).data('index');
-                        console.log(index);
                         let file = this.file_list[index];
                         if (!file) {
                             return;
                         }
-                        console.log(file);
                         let new_name = prompt('请输入新的文件名', file.name);
                         if (new_name) {
                             file.name = new_name;
