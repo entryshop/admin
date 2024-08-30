@@ -31,8 +31,9 @@ class UploadController
         return $this->success($result);
     }
 
-    protected function upload($file, $key = 'url')
+    protected function upload($file, $key = null)
     {
+        $key ??= 'url';
         $url = Storage::url($file->store('uploads'));
         return [
             $key   => $url,
