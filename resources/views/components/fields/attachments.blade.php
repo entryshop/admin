@@ -10,7 +10,7 @@
     <div class="mt-1">
         <ul class="list-group" id="attachments_{{$name}}_list">
             <template x-for="(file,index) in file_list">
-                <li class="list-group-item" :data-index="index">
+                <li class="list-group-item">
                     <div class="d-flex align-items-center gap-2">
                         <div class="flex-grow-1">
                             <div class="d-flex align-items-center gap-1">
