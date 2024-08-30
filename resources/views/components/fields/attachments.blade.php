@@ -8,12 +8,15 @@
 <div x-data="attachments_{{$name}}">
     <input type="file" {{$multiple?'multiple':''}} class="form-control" id="upload_{{$name}}">
     <div class="mt-1">
-        <ul class="list-group">
+        <ul class="list-group" id="attachments_{{$name}}_list">
             <template x-for="(file,index) in file_list">
-                <li class="list-group-item">
-                    <div class="d-flex align-items-center">
+                <li class="list-group-item" :data-index="index">
+                    <div class="d-flex align-items-center gap-2">
                         <div class="flex-grow-1">
-                            <div class="d-flex">
+                            <div class="d-flex align-items-center gap-1">
+                                <div class="move-handle cursor-pointer">
+                                    <i class="ri-drag-move-2-line"></i>
+                                </div>
                                 <div class="flex-shrink-0 avatar-xs">
                                     <div class="avatar-title bg-primary-subtle text-primary rounded">
                                         <i class="ri-file-line"></i>
@@ -46,6 +49,11 @@
 
 @pushonce('scripts')
     <script defer nonce="{{admin()->csp()}}" src="{{admin()->asset('libs/@alpinejs/csp/cdn.min.js')}}"></script>
+    <script nonce="{{admin()->csp()}}" src="{{admin()->asset('libs/sortablejs/Sortable.min.js')}}"></script>
+    <script nonce="{{admin()->csp()}}" src="{{admin()->asset('libs/jquery-sortablejs/jquery-sortable.js')}}"></script>
+@endpushonce
+
+@push('scripts')
     <script nonce="{{admin()->csp()}}">
         document.addEventListener('alpine:init', () => {
             Alpine.data('attachments_{{$name}}', () => {
@@ -55,6 +63,16 @@
                         $('#upload_{{$name}}').on('change', function () {
                             _this.submit();
                         });
+                        this.updateJsonValue();
+                        {{--let sortable = $('#attachments_{{$name}}_list').sortable({--}}
+                        {{--    handle: ".move-handle",--}}
+                        {{--    animation: 150,--}}
+                        {{--    dataIdAttr: "data-index",--}}
+                        {{--    onEnd: function (/**Event*/evt) {--}}
+                        {{--        let oldIndex = evt.oldIndex;--}}
+                        {{--        let newIndex = evt.newIndex;--}}
+                        {{--    },--}}
+                        {{--});--}}
                     },
                     file_list: @json(to_json($value??[])),
                     json_value_string: '{{json_encode($value ?? [])}}',
@@ -122,4 +140,4 @@
             })
         })
     </script>
-@endpushonce
+@endpush

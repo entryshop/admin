@@ -32,6 +32,7 @@
         "gridjs",
         "isotope-layout",
         "jquery",
+        "jquery-sortablejs",
         "jsvectormap",
         "leaflet",
         "list.js",
