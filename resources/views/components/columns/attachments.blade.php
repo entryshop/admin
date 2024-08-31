@@ -15,7 +15,12 @@
                             <div class="d-flex">
                                 <div class="flex-shrink-0 avatar-xs">
                                     <div class="avatar-title bg-primary-subtle text-primary rounded">
-                                        <i class="ri-file-line"></i>
+                                        <template x-if="file.is_image">
+                                            <img :src="file.url" class="w-100 h-100 object-fit-cover">
+                                        </template>
+                                        <template x-if="file.preview_icon">
+                                            <i :class="file.preview_icon"></i>
+                                        </template>
                                     </div>
                                 </div>
                                 <div class="flex-shrink-0 ms-2">
@@ -37,6 +42,8 @@
     </div>
 </div>
 
+@include('admin::components.partials.file_icons')
+
 @pushonce('scripts')
     <script defer nonce="{{admin()->csp()}}" src="{{admin()->asset('libs/@alpinejs/csp/cdn.min.js')}}"></script>
     <script nonce="{{admin()->csp()}}">
@@ -45,6 +52,7 @@
                 return {
                     init() {
                         let _this = this;
+                        this.file_list = mapFilePreviewIcon(this.file_list);
                     },
                     file_list: @json(to_json($value??[])),
                 }

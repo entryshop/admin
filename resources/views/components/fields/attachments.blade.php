@@ -16,7 +16,12 @@
                             <div class="d-flex align-items-center gap-1">
                                 <div class="flex-shrink-0 avatar-xs">
                                     <div class="avatar-title bg-primary-subtle text-primary rounded">
-                                        <i class="ri-file-line"></i>
+                                        <template x-if="file.is_image">
+                                            <img :src="file.url" class="w-100 h-100 object-fit-cover">
+                                        </template>
+                                        <template x-if="file.preview_icon">
+                                            <i :class="file.preview_icon"></i>
+                                        </template>
                                     </div>
                                 </div>
                                 <div class="flex-shrink-0 ms-2">
@@ -48,6 +53,8 @@
     <script defer nonce="{{admin()->csp()}}" src="{{admin()->asset('libs/@alpinejs/csp/cdn.min.js')}}"></script>
 @endpushonce
 
+@include('admin::components.partials.file_icons')
+
 @push('scripts')
     <script nonce="{{admin()->csp()}}">
         document.addEventListener('alpine:init', () => {
@@ -59,6 +66,7 @@
                             _this.submit();
                         });
                         this.updateJsonValue();
+                        this.file_list = mapFilePreviewIcon(this.file_list);
                     },
                     file_list: @json(to_json($value??[])),
                     json_value_string: '{{json_encode(to_json($value ?? []))}}',
@@ -87,6 +95,7 @@
                                 @endif
                                 _this.updateJsonValue();
                                 $('#upload_{{$name}}').val('');
+                                _this.file_list = mapFilePreviewIcon(_this.file_list);
                             },
                             error: function (data) {
                                 console.log(data);
