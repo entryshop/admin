@@ -36,6 +36,15 @@
             'ri-file-excel-line': [
                 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
             ],
+            'ri-file-word-line': [
+                'application/msword',
+                'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                'application/vnd.ms-word.document.macroEnabled.12',
+                'application/vnd.ms-word.template.macroEnabled.12',
+                'application/vnd.ms-word.document.12',
+                'application/vnd.ms-word.template.12',
+                'application/vnd.ms-word.template.macroEnabledTemplate.12',
+            ],
             'ri-video-line': [
                 'video/mp4',
                 'video/x-msvideo',
@@ -49,8 +58,22 @@
                 'video/x-m4v',
                 'video/x-matroska',
                 'video/webm',
+            ],
+            'ri-music-line': [
+                'audio/mpeg',
+                'audio/x-wav',
+                'audio/x-ms-wma',
+                'audio/x-ms-wax',
+                'audio/x-ms-wmz',
+                'audio/x-ms-wm',
+                'audio/x-ms-wax',
+                'audio/x-ms-wma',
+                'audio/x-ms-wax',
+                'audio/x-ms-wma',
+                'audio/x-ms-wax',
             ]
         }
+
         function mapFilePreviewIcon(file_list) {
             for (let p in file_list) {
                 let file_type = file_list[p].type;
@@ -65,6 +88,8 @@
                         }
                         break;
                     }
+                    file_list[p].is_image = false;
+                    file_list[p].preview_icon = 'ri-file-line';
                 }
             }
             return file_list;
