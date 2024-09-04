@@ -36,7 +36,7 @@ class UploadController
     {
         $key ??= 'url';
         if (Str::contains(config('app.url'), 'localhost')) {
-            $url = request()->getSchemeAndHttpHost() . '/' . $file->store('uploads');
+            $url = request()->getSchemeAndHttpHost() . '/storage/' . $file->store('uploads');
         } else {
             $url = Storage::url($file->store('uploads'));
         }
