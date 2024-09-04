@@ -20,6 +20,7 @@
         tinymce.init({
             license_key: 'gpl',
             target: node_{{$id}},
+            relative_urls: true,
             setup: function (editor) {
                 editor.on('Change', function (e) {
                     $('input[id={{$id}}]').val(editor.getContent());
