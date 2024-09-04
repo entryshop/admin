@@ -4,6 +4,7 @@ namespace Entryshop\Admin\Http\Controllers;
 
 use Entryshop\Admin\Http\Controllers\Traits\HasApiResponse;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class UploadController
 {
@@ -34,7 +35,11 @@ class UploadController
     protected function upload($file, $key = null)
     {
         $key ??= 'url';
-        $url = Storage::url($file->store('uploads'));
+        if (Str::contains(config('app.url'), 'localhost')) {
+            $url = request()->getSchemeAndHttpHost() . '/' . $file->store('uploads');
+        } else {
+            $url = Storage::url($file->store('uploads'));
+        }
         return [
             $key   => $url,
             'name' => $file->getClientOriginalName(),
