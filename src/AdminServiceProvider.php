@@ -34,7 +34,6 @@ class AdminServiceProvider extends ServiceProvider
 
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'admin');
         $this->loadTranslationsFrom(__DIR__ . '/../lang', 'admin');
-
     }
 
 }

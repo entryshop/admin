@@ -22,7 +22,12 @@ if (!Route::hasMacro('crud')) {
                         $attributeClass = $attribute->newInstance();
                         $route_method   = $attributeClass->method;
                         $route_name     = $attribute->getArguments()['name'] ?? Str::kebab($method->getName());
-                        Route::$route_method($name . '/' . $route_uri, [$controller, $method->getName()])->name($name . '.' . $route_name);
+                        if (\Illuminate\Support\Str::startsWith($route_uri, '/')) {
+                            $full_route = Str::replaceStart('/', '', $route_uri);
+                        } else {
+                            $full_route = $name . '/' . $route_uri;
+                        }
+                        Route::$route_method($full_route, [$controller, $method->getName()])->name($name . '.' . $route_name);
                     }
                 }
             }
