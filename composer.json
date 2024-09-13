@@ -11,6 +11,9 @@
             "hook/helpers.php"
         ]
     },
+    "require": {
+        "lorisleiva/laravel-actions": "*"
+    },
     "extra": {
         "laravel": {
             "providers": [
