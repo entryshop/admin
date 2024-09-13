@@ -25,6 +25,10 @@
         }
     }
 
+    foreach ($renderable->getAttributes() as $key =>$value) {
+        $data[$key] = interpolate($value, $_data);
+    }
+
     $id  ??= $key;
     $name  ??= $key;
     $icon ??= null;

@@ -35,6 +35,11 @@ trait HasAttributes
         return $this->get('wrapper');
     }
 
+    public function getAttributes()
+    {
+        return $this->_attributes;
+    }
+
     public function bootHasAttributes()
     {
         if ($this->has('wrapper')) {
