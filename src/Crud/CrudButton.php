@@ -37,6 +37,7 @@ class CrudButton extends CrudCell
 
     public function bulk($type = null)
     {
+        $this->attr('data-bulk', 'crud_' . $this->crud()->name());
         return $this->setPositionAndType(CrudPanel::BUTTON_POSITION_BULK, $type);
     }
 
