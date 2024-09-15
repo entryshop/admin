@@ -36,11 +36,6 @@ trait VirtualColumn
         return $this->dataEncoded ? ($this->getAttribute(static::getDataColumn()) ?? []) : $this->_original_data;
     }
 
-    public function newEloquentBuilder($query)
-    {
-        return new BuilderWithVirtualColumn($query);
-    }
-
     protected function decodeVirtualColumn(): void
     {
         if (!$this->dataEncoded) {

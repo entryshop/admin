@@ -3,6 +3,7 @@
 namespace Entryshop\Admin\Support\Model;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Str;
 
 class BuilderWithVirtualColumn extends Builder
 {
@@ -26,7 +27,7 @@ class BuilderWithVirtualColumn extends Builder
 
     protected function getColumnForQuery($column)
     {
-        if (is_string($column)) {
+        if (is_string($column) && !Str::contains($column, ' ') && !Str::contains($column, '.')) {
             $column = $this->model->getColumnForQuery($column);
         }
         return $column;
