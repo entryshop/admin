@@ -12,7 +12,6 @@
     "require": {
         "entryshop/utils": "*"
     },
-    "minimum-stability": "dev",
     "extra": {
         "laravel": {
             "providers": [
