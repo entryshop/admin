@@ -10,8 +10,9 @@
         ]
     },
     "require": {
-        "entryshop/utils": "self"
+        "entryshop/utils": "*"
     },
+    "minimum-stability": "dev",
     "extra": {
         "laravel": {
             "providers": [
