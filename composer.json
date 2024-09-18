@@ -3,12 +3,10 @@
     "type": "library",
     "autoload": {
         "psr-4": {
-            "Entryshop\\Admin\\": "src/",
-            "Entryshop\\Hook\\": "hook/"
+            "Entryshop\\Admin\\": "src/"
         },
         "files": [
-            "src/helpers.php",
-            "hook/helpers.php"
+            "src/helpers.php"
         ]
     },
     "require": {
@@ -17,7 +15,6 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Entryshop\\Hook\\Providers\\HookServiceProvider",
                 "Entryshop\\Admin\\AdminServiceProvider"
             ]
         }
