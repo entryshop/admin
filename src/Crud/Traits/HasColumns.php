@@ -18,7 +18,11 @@ trait HasColumns
 
     public function column(...$args)
     {
-        $cell = CrudColumn::make(...$args);
+        if (!empty($args[0]) && $args[0] instanceof CrudColumn) {
+            $cell = $args[0];
+        } else {
+            $cell = CrudColumn::make(...$args);
+        }
         if (isset($this->_columns[$cell->name()])) {
             return $this->_columns[$cell->name()];
         }
