@@ -77,6 +77,7 @@ trait HasRoutes
             'as'         => config('admin.route.as'),
             'middleware' => config('admin.middleware'),
         ], __DIR__ . '/../../../routes/auth.php');
+
         add_hook_action(AdminPanel::HOOK_ACTION_ADMIN_MENU, function () {
             admin()->menu('logout')
                 ->user()

@@ -10,7 +10,7 @@
         ]
     },
     "require": {
-        "entryshop/utils": "*"
+        "entryshop/utils": "self"
     },
     "extra": {
         "laravel": {
