@@ -2,6 +2,8 @@
 
 namespace Entryshop\Admin\Http\Controllers\Traits;
 
+use Entryshop\Admin\Attributes\Get;
+
 trait CanShow
 {
     public function show(...$args)
@@ -27,5 +29,12 @@ trait CanShow
         }
 
         return admin()->render();
+    }
+
+    #[Get('{id}/raw')]
+    public function showRawData(...$args)
+    {
+        $id = array_pop($args);
+        return $this->crud()->findOrFail($id);
     }
 }
