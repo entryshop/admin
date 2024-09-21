@@ -2,15 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 
-if (!Route::hasMacro('crud')) {
-    Route::macro('crud', function ($name, $controller, array $options = []) {
-        Route::resource($name, $controller, $options);
+if (!Route::hasMacro('auto')) {
+    Route::macro('auto', function ($name, $controller, array $options = []) {
         $controllerReflection = new ReflectionClass($controller);
         foreach ($controllerReflection->getMethods() as $method) {
             if (!$method->isPublic()) {
                 continue;
             }
-
             if ($attributes = $method->getAttributes()) {
                 foreach ($attributes as $attribute) {
                     if (is_subclass_of($attribute->getName(), \Entryshop\Admin\Attributes\Route::class)) {
@@ -34,3 +32,12 @@ if (!Route::hasMacro('crud')) {
         }
     });
 }
+
+if (!Route::hasMacro('crud')) {
+    Route::macro('crud', function ($name, $controller, array $options = []) {
+        Route::resource($name, $controller, $options);
+        Route::auto($name, $controller, $options);
+    });
+}
+
+
