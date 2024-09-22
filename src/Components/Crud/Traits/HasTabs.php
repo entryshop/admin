@@ -1,6 +1,6 @@
 <?php
 
-namespace Entryshop\Admin\Crud\Traits;
+namespace Entryshop\Admin\Components\Crud\Traits;
 
 use Closure;
 use Entryshop\Admin\Components\Tabs;

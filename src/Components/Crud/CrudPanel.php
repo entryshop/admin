@@ -1,14 +1,14 @@
 <?php
 
-namespace Entryshop\Admin\Crud;
+namespace Entryshop\Admin\Components\Crud;
 
-use Entryshop\Admin\Crud\Traits\AsContainer;
-use Entryshop\Admin\Crud\Traits\HasButtons;
-use Entryshop\Admin\Crud\Traits\HasColumns;
-use Entryshop\Admin\Crud\Traits\HasEntries;
-use Entryshop\Admin\Crud\Traits\HasFields;
-use Entryshop\Admin\Crud\Traits\HasFilters;
-use Entryshop\Admin\Crud\Traits\HasTabs;
+use Entryshop\Admin\Components\Crud\Traits\HasButtons;
+use Entryshop\Admin\Components\Crud\Traits\HasColumns;
+use Entryshop\Admin\Components\Crud\Traits\HasEntries;
+use Entryshop\Admin\Components\Crud\Traits\HasFields;
+use Entryshop\Admin\Components\Crud\Traits\HasFilters;
+use Entryshop\Admin\Components\Crud\Traits\HasTabs;
+use Entryshop\Admin\Components\Traits\AsContainer;
 use Entryshop\Admin\Support\Renderable;
 
 class CrudPanel extends Renderable

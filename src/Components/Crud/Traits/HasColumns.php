@@ -1,8 +1,8 @@
 <?php
 
-namespace Entryshop\Admin\Crud\Traits;
+namespace Entryshop\Admin\Components\Crud\Traits;
 
-use Entryshop\Admin\Crud\CrudColumn;
+use Entryshop\Admin\Components\Crud\CrudColumn;
 
 /**
  * @method string|static action($value = null)

@@ -1,5 +1,5 @@
 @php
-    use Entryshop\Admin\Crud\CrudPanel;
+    use Entryshop\Admin\Components\Crud\CrudPanel;
     $top_buttons = $renderable->buttons('top');
     $inline_buttons = $renderable->buttons('inline');
     $bulk_buttons = $renderable->buttons('bulk');

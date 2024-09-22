@@ -1,10 +1,10 @@
 <?php
 
-namespace Entryshop\Admin\Crud;
+namespace Entryshop\Admin\Components\Crud;
 
 use Closure;
-use Entryshop\Admin\Crud\Traits\CanGuessLabel;
-use Entryshop\Admin\Crud\Traits\HasLinkage;
+use Entryshop\Admin\Components\Crud\Traits\CanGuessLabel;
+use Entryshop\Admin\Components\Crud\Traits\HasLinkage;
 
 /**
  * @method string|static multiple($value = null)

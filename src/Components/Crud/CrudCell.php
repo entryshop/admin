@@ -1,6 +1,6 @@
 <?php
 
-namespace Entryshop\Admin\Crud;
+namespace Entryshop\Admin\Components\Crud;
 
 use Entryshop\Admin\Support\HasViewNamespace;
 use Entryshop\Admin\Support\Renderable;

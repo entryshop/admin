@@ -1,6 +1,6 @@
 <?php
 
-namespace Entryshop\Admin\Crud;
+namespace Entryshop\Admin\Components\Crud;
 
 /**
  * @method string|static icon($value = null)

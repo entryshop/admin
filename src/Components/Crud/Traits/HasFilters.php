@@ -1,8 +1,8 @@
 <?php
 
-namespace Entryshop\Admin\Crud\Traits;
+namespace Entryshop\Admin\Components\Crud\Traits;
 
-use Entryshop\Admin\Crud\CrudFilter;
+use Entryshop\Admin\Components\Crud\CrudFilter;
 
 trait HasFilters
 {

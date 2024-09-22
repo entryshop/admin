@@ -1,8 +1,8 @@
 <?php
 
-namespace Entryshop\Admin\Crud;
+namespace Entryshop\Admin\Components\Crud;
 
-use Entryshop\Admin\Crud\Traits\CanGuessLabel;
+use Entryshop\Admin\Components\Crud\Traits\CanGuessLabel;
 
 /**
  * @method string|static style($value = null)

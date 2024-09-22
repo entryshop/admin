@@ -1,8 +1,8 @@
 <?php
 
-namespace Entryshop\Admin\Crud\Traits;
+namespace Entryshop\Admin\Components\Crud\Traits;
 
-use Entryshop\Admin\Crud\CrudButton;
+use Entryshop\Admin\Components\Crud\CrudButton;
 
 trait HasButtons
 {

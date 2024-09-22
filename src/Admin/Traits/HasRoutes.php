@@ -94,7 +94,11 @@ trait HasRoutes
 
     public function registerFormRoutes()
     {
-        Route::group(['as' => config('admin.route.as'), 'prefix' => config('admin.route.prefix'), 'middleware' => ['web']], __DIR__ . '/../../../routes/form.php');
+        Route::group([
+            'as'         => config('admin.route.as'),
+            'prefix'     => config('admin.route.prefix'),
+            'middleware' => ['web'],
+        ], __DIR__ . '/../../../routes/form.php');
         return $this;
     }
 

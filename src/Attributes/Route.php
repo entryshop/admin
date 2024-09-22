@@ -8,13 +8,11 @@ use Illuminate\Support\Arr;
 #[Attribute(Attribute::TARGET_METHOD)]
 class Route implements RouteAttribute
 {
-    public string $method;
-
     public array $middleware;
 
     public function __construct(
         public string $uri,
-        string $method = null,
+        public string $method = 'get',
         public ?string $name = null,
         array|string $middleware = [],
     ) {

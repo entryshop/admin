@@ -1,8 +1,8 @@
 <?php
 
-namespace Entryshop\Admin\Crud\Traits;
+namespace Entryshop\Admin\Components\Crud\Traits;
 
-use Entryshop\Admin\Crud\CrudField;
+use Entryshop\Admin\Components\Crud\CrudField;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 

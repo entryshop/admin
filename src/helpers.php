@@ -2,8 +2,8 @@
 
 use Entryshop\Admin\Admin\AdminPanel;
 use Entryshop\Admin\Components\Container;
-use Entryshop\Admin\Crud\CrudField;
-use Entryshop\Admin\Crud\CrudPanel;
+use Entryshop\Admin\Components\Crud\CrudField;
+use Entryshop\Admin\Components\Crud\CrudPanel;
 use Entryshop\Admin\Support\Renderable;
 
 if (!function_exists('admin')) {

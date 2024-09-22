@@ -1,6 +1,7 @@
+<!-- Container -->
 <div {!! $renderable->wrapper() !!}>
     @foreach($renderable->children() as $child)
-        <div {!! $renderable->wrapper() !!}>
+        <div {!! $child->wrapper() !!}>
             {!! render($child) !!}
         </div>
     @endforeach
