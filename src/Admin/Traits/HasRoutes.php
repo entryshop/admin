@@ -2,7 +2,6 @@
 
 namespace Entryshop\Admin\Admin\Traits;
 
-use Entryshop\Admin\Admin\AdminPanel;
 use Illuminate\Support\Facades\Route;
 
 /**
@@ -78,14 +77,13 @@ trait HasRoutes
             'middleware' => config('admin.middleware'),
         ], __DIR__ . '/../../../routes/auth.php');
 
-        add_hook_action(AdminPanel::HOOK_ACTION_ADMIN_MENU, function () {
-            admin()->menu('logout')
-                ->user()
-                ->label('退出登录')
-                ->order(100)
-                ->url(admin()->logoutUrl())
-                ->icon('mdi mdi-logout');
-        });
+        admin()->menu('logout')
+            ->user()
+            ->label('退出登录')
+            ->order(100)
+            ->url(admin()->logoutUrl())
+            ->icon('mdi mdi-logout');
+
         admin()->loginUrl(admin()->url('login'));
         admin()->set('homeUrl', admin()->url('/'));
         admin()->logoutUrl(admin()->url('logout'));

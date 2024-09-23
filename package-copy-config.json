@@ -33,6 +33,7 @@
         "isotope-layout",
         "jquery",
         "jquery-sortablejs",
+        "jsoneditor",
         "jsvectormap",
         "leaflet",
         "list.js",
