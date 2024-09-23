@@ -15,7 +15,7 @@ if (!Route::hasMacro('auto')) {
             }
             if ($attributes = $method->getAttributes()) {
                 foreach ($attributes as $attribute) {
-                    if (is_subclass_of($attribute->getName(), \Entryshop\Admin\Attributes\Route::class)) {
+                    if (is_subclass_of($attribute->getName(), \Entryshop\Utils\Attributes\Route::class)) {
                         $route_uri = $attribute->getArguments()[0] ?? null;
                         if (is_null($route_uri)) {
                             continue;

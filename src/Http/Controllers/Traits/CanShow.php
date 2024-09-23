@@ -2,7 +2,7 @@
 
 namespace Entryshop\Admin\Http\Controllers\Traits;
 
-use Entryshop\Admin\Attributes\Get;
+use Entryshop\Utils\Attributes\Get;
 
 trait CanShow
 {

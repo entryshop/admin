@@ -2,7 +2,7 @@
 
 namespace Entryshop\Admin\Http\Controllers\Traits;
 
-use Entryshop\Admin\Attributes\Post;
+use Entryshop\Utils\Attributes\Post;
 
 trait CanBulkDelete
 {
