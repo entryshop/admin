@@ -2,7 +2,7 @@
 
 namespace Entryshop\Admin\Components;
 
-use Entryshop\Admin\Support\Renderable;
+use Entryshop\Utils\Components\Renderable;
 
 class Container extends Renderable
 {

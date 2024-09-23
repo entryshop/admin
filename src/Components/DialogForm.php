@@ -2,8 +2,8 @@
 
 namespace Entryshop\Admin\Components;
 
-use Entryshop\Admin\Support\CanCallMethods;
-use Entryshop\Admin\Support\Renderable;
+use Entryshop\Utils\Components\Renderable;
+use Entryshop\Utils\Support\CanCallMethods;
 
 abstract class DialogForm extends Renderable
 {

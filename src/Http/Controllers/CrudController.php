@@ -3,7 +3,7 @@
 namespace Entryshop\Admin\Http\Controllers;
 
 use Entryshop\Admin\Components\Crud\CrudPanel;
-use Entryshop\Admin\Support\CanCallMethods;
+use Entryshop\Utils\Support\CanCallMethods;
 
 abstract class CrudController
 {

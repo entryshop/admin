@@ -2,8 +2,8 @@
 
 namespace Entryshop\Admin\Components;
 
-use Entryshop\Admin\Support\HasViewNamespace;
-use Entryshop\Admin\Support\Renderable;
+use Entryshop\Utils\Components\HasViewNamespace;
+use Entryshop\Utils\Components\Renderable;
 
 class Widget extends Renderable
 {

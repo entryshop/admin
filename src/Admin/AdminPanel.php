@@ -8,8 +8,7 @@ use Entryshop\Admin\Admin\Traits\HasBrand;
 use Entryshop\Admin\Admin\Traits\HasMenus;
 use Entryshop\Admin\Admin\Traits\HasRoutes;
 use Entryshop\Admin\Admin\Traits\HasToasts;
-use Entryshop\Admin\Support\HasContext;
-use Entryshop\Admin\Support\Renderable;
+use Entryshop\Utils\Components\Renderable;
 
 /**
  * @method string|static back($value = null) back url

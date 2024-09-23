@@ -9,7 +9,7 @@ use Entryshop\Admin\Components\Crud\Traits\HasFields;
 use Entryshop\Admin\Components\Crud\Traits\HasFilters;
 use Entryshop\Admin\Components\Crud\Traits\HasTabs;
 use Entryshop\Admin\Components\Traits\AsContainer;
-use Entryshop\Admin\Support\Renderable;
+use Entryshop\Utils\Components\Renderable;
 
 class CrudPanel extends Renderable
 {

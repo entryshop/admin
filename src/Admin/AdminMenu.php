@@ -2,7 +2,7 @@
 
 namespace Entryshop\Admin\Admin;
 
-use Entryshop\Admin\Support\Renderable;
+use Entryshop\Utils\Components\Renderable;
 
 /**
  * @method string|static url($value = null)
