@@ -287,6 +287,18 @@
     "file": "icons/saira-v20-latin-regular.woff2",
     "src": "resources/assets/fonts/saira/saira-v20-latin-regular.woff2"
   },
+  "resources/assets/fonts/tabler/tabler-icons.ttf": {
+    "file": "icons/tabler-icons.ttf",
+    "src": "resources/assets/fonts/tabler/tabler-icons.ttf"
+  },
+  "resources/assets/fonts/tabler/tabler-icons.woff": {
+    "file": "icons/tabler-icons.woff",
+    "src": "resources/assets/fonts/tabler/tabler-icons.woff"
+  },
+  "resources/assets/fonts/tabler/tabler-icons.woff2": {
+    "file": "icons/tabler-icons.woff2",
+    "src": "resources/assets/fonts/tabler/tabler-icons.woff2"
+  },
   "resources/assets/images/auth-one-bg.jpg": {
     "file": "icons/auth-one-bg.jpg",
     "src": "resources/assets/images/auth-one-bg.jpg"
