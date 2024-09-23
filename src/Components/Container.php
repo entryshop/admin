@@ -16,6 +16,6 @@ class Container extends Renderable
 
     public function row($default_child_class = 'col')
     {
-        return $this->class('row')->set('$default_child_class', $default_child_class);
+        return $this->class('row')->set('default_child_class', $default_child_class);
     }
 }
