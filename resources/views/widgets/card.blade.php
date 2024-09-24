@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card {{$class??''}}">
     @if(!empty($title) || !empty($right))
         <div class="card-header">
             @if(!empty($right))
