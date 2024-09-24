@@ -1,3 +1,7 @@
+@php
+    $value = interpolate($value, $renderable->getContext());
+@endphp
+
 @if(empty($value))
     {{to_string($value)}}
 @else

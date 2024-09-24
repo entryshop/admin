@@ -1,3 +1,8 @@
+@php
+    $href = interpolate($href, $renderable->getContext());
+    $value = interpolate($value, $renderable->getContext());
+@endphp
+
 @if(empty($value))
     {{to_string($value)}}
 @else
