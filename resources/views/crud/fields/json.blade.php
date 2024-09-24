@@ -1,5 +1,5 @@
 <div id="jsoneditor_{{$name}}"></div>
-<input type="hidden" name="{{$name}}" value="{{$value}}">
+<input type="hidden" name="{{$name}}" value="{{$value??"[]"}}">
 
 @once
     @push('styles')
@@ -17,7 +17,7 @@
         const editor_{{$name}} = new JSONEditor(document.getElementById("jsoneditor_{{$name}}"), {});
 
         // set json
-        editor_{{$name}}.set(@json(to_json($value)))
+        editor_{{$name}}.set(@json(to_json($value??[])))
 
         // get json
         const updatedJson = editor_{{$name}}.get()
