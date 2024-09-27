@@ -16,4 +16,8 @@ return [
             ],
         ],
     ],
+    'upload'             => [
+        'path'       => 'upload',
+        'middleware' => [\Entryshop\Admin\Http\Middleware\AdminAuthenticate::class],
+    ],
 ];

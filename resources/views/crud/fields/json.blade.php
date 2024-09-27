@@ -1,5 +1,7 @@
-<div id="jsoneditor_{{$name}}"></div>
-<input type="hidden" name="{{$name}}" value="{{$value??"[]"}}">
+<x-admin::fields.field :$name :$id :label="$label??''">
+    <div id="jsoneditor_{{$name}}"></div>
+    <input type="hidden" name="{{$name}}" value="{{$value??"[]"}}">
+</x-admin::fields.field>
 
 @once
     @push('styles')
