@@ -1,6 +1,9 @@
 @php
     $id = $renderable->key() ?? $renderable->name();
     $value = to_json($value??[]);
+
+    $mode = $renderable->mode() ?? 'tree';
+    $modes = $renderable->modes() ??['code', 'tree', 'form', 'view', 'preview'];
 @endphp
 <x-admin::fields.field :$name :$id :label="$label??''">
     <div id="jsoneditor_{{$name}}"></div>
@@ -23,7 +26,9 @@
         const editor_{{$name}} = new JSONEditor(document.getElementById("jsoneditor_{{$name}}"), {
             onChangeText: function (changedText) {
                 document.querySelector('input[name="{{$name}}"]').value = changedText;
-            }
+            },
+            mode: "{{$mode??'tree'}}",
+            modes: @json($modes),
         });
         // set json
         editor_{{$name}}.set(@json($value));
