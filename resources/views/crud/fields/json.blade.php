@@ -19,12 +19,12 @@
 @push('scripts')
     <script>
         // create the editor
-        const editor_{{$name}} = new JSONEditor(document.getElementById("jsoneditor_{{$name}}"), {});
-
+        const editor_{{$name}} = new JSONEditor(document.getElementById("jsoneditor_{{$name}}"), {
+            onChangeText: function (changedText) {
+                document.querySelector('input[name="{{$name}}"]').value = changedText;
+            }
+        });
         // set json
         editor_{{$name}}.set(@json(to_json($value??[])))
-
-        // get json
-        const updatedJson = editor_{{$name}}.get()
     </script>
 @endpush
