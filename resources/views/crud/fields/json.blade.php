@@ -1,3 +1,6 @@
+@php
+    $id = $renderable->key() ?? $renderable->name();
+@endphp
 <x-admin::fields.field :$name :$id :label="$label??''">
     <div id="jsoneditor_{{$name}}"></div>
     <input type="hidden" name="{{$name}}" value="{{$value??"[]"}}">
