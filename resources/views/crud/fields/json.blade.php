@@ -1,9 +1,10 @@
 @php
     $id = $renderable->key() ?? $renderable->name();
+    $value = to_json($value??[]);
 @endphp
 <x-admin::fields.field :$name :$id :label="$label??''">
     <div id="jsoneditor_{{$name}}"></div>
-    <input type="hidden" name="{{$name}}" value="{{$value??"[]"}}">
+    <input type="hidden" name="{{$name}}" value="{{json_encode($value)}}">
 </x-admin::fields.field>
 
 @once
@@ -25,6 +26,6 @@
             }
         });
         // set json
-        editor_{{$name}}.set(@json(to_json($value??[])))
+        editor_{{$name}}.set(@json($value));
     </script>
 @endpush
