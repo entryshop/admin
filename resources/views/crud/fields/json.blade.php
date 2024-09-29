@@ -27,6 +27,10 @@
             .jsoneditor-contextmenu .jsoneditor-menu button {
                 color: #cfcfcf !important;
             }
+
+            .jsoneditor-contextmenu .jsoneditor-menu li button.jsoneditor-selected,.jsoneditor-contextmenu .jsoneditor-menu li button.jsoneditor-selected:focus,.jsoneditor-contextmenu .jsoneditor-menu li button.jsoneditor-selected:hover {
+                background-color: #000271 !important;
+            }
         </style>
     @endpush
 
