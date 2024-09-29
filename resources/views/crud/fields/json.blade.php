@@ -19,6 +19,10 @@
                 background-color: var(--vz-primary) !important;
                 border-bottom: 1px solid var(--vz-primary) !important;
             }
+
+            .jsoneditor {
+                border: thin solid var(--vz-primary) !important;
+            }
         </style>
     @endpush
 
