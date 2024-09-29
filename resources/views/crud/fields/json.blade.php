@@ -23,6 +23,10 @@
             .jsoneditor {
                 border: thin solid var(--vz-primary) !important;
             }
+
+            .jsoneditor-contextmenu .jsoneditor-menu button {
+                color: #cfcfcf !important;
+            }
         </style>
     @endpush
 
