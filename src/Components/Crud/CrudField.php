@@ -36,6 +36,10 @@ class CrudField extends CrudCell
 
     public function getValueFromRequest($model = null)
     {
+        $callback = $this->get('getValueFromRequest');
+        if (is_callable($callback)) {
+            return $callback($model);
+        }
         $name = $this->name();
         switch ($this->get('type')) {
             case 'file':

@@ -8,6 +8,9 @@
 @endphp
 
 @if($fields_only)
+    @if(!empty($section_before_body))
+        {!! render($section_before_body) !!}
+    @endif
     <div {!! $renderable->get('wrapper', 'class="d-flex flex-wrap gap-3"') !!}>
         @foreach($renderable->children() as $child)
             <div
@@ -16,6 +19,9 @@
             </div>
         @endforeach
     </div>
+    @if(!empty($section_after_body))
+        {!! render($section_after_body) !!}
+    @endif
 @else
     <form action="{{$renderable->action() ?? ''}}" method="{{$method=='get' ? 'get':'post'}}"
           enctype="multipart/form-data">
