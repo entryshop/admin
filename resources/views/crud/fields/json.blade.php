@@ -12,16 +12,23 @@
 
 @once
     @push('styles')
-        <link href="{{admin()->asset('libs/jsoneditor/jsoneditor.min.css')}}" rel="stylesheet" type="text/css">
+        <link nonce="{{admin()->csp()}}" href="{{admin()->asset('libs/jsoneditor/jsoneditor.min.css')}}"
+              rel="stylesheet" type="text/css">
+        <style nonce="{{admin()->csp()}}">
+            .jsoneditor-menu {
+                background-color: var(--vz-primary) !important;
+                border-bottom: 1px solid var(--vz-primary) !important;
+            }
+        </style>
     @endpush
 
     @push('scripts')
-        <script src="{{admin()->asset('libs/jsoneditor/jsoneditor.min.js')}}"></script>
+        <script nonce="{{admin()->csp()}}" src="{{admin()->asset('libs/jsoneditor/jsoneditor.min.js')}}"></script>
     @endpush
 @endonce
 
 @push('scripts')
-    <script>
+    <script nonce="{{admin()->csp()}}">
         // create the editor
         const editor_{{$name}} = new JSONEditor(document.getElementById("jsoneditor_{{$name}}"), {
             onChangeText: function (changedText) {
