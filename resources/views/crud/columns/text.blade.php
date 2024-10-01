@@ -14,7 +14,6 @@
     <a href="{{$href}}" target="{{$target}}">
 @endif
         @if(empty($value))
-            @dump($value)
             {{to_string($value)}}
         @else
             @if($escape??false)
