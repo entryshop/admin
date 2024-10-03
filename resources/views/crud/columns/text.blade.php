@@ -13,6 +13,7 @@
 @if($link)
     <a href="{{$href}}" target="{{$target}}">
 @endif
+        @dump($value)
         @if(empty($value))
             {{to_string($value)}}
         @else
