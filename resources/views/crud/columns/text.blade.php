@@ -7,21 +7,15 @@
     } else {
         $link = false;
     }
-
 @endphp
 
 @if($link)
     <a href="{{$href}}" target="{{$target}}">
 @endif
-        @dump($value)
-        @if(empty($value))
-            {{to_string($value)}}
+        @if($escape??false)
+            {!! to_string($value) !!}
         @else
-            @if($escape??false)
-                {!! $value !!}
-            @else
-                {{ $value }}
-            @endif
+            {{ to_string($value) }}
         @endif
 @if($link)
     </a>
