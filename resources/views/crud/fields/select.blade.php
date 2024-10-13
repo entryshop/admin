@@ -28,6 +28,10 @@
             choice_{{$id}}.passedElement.element.addEventListener('change', function (event) {
                 valueChanged(event.detail.value);
             });
+
+            @if(!empty($value))
+            valueChanged("{{$value}}");
+            @endif
         </script>
     @endpush
 @endif
