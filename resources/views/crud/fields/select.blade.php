@@ -6,6 +6,7 @@
         }
     }
     $id = $key ?? $name;
+    $linkages = $renderable->linkages();
 @endphp
 
 <x-admin::fields.field :$name :$id :label="$label??''">
@@ -22,4 +23,13 @@
 
 @if(!empty($linkages))
     @include('admin::crud.scripts.linkage', ['linkages' => $linkages, 'value' => $renderable->value()])
+    @push('scripts')
+        <script nonce="{{admin()->csp()}}">
+            choice_{{$id}}.passedElement.element.addEventListener('change', function (event) {
+                valueChanged(event.detail.value);
+            });
+        </script>
+    @endpush
 @endif
+
+
