@@ -4,6 +4,7 @@
     'name' => '',
     'id' => '',
     'value' => null,
+    'step' => 1,
 ])
 
-<input id="{{$id}}" class="{{$class}}" type="{{$type}}" name="{{$name}}" value="{{$value}}">
+<input id="{{$id}}" step="{{$step}}" class="{{$class}}" type="{{$type}}" name="{{$name}}" value="{{$value}}">
