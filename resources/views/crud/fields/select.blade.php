@@ -19,3 +19,7 @@
         'placeholder' => $renderable->placeholder(),
     ])
 </x-admin::fields.field>
+
+@if(!empty($linkages))
+    @include('admin::crud.scripts.linkage', ['linkages' => $linkages, 'value' => $renderable->value()])
+@endif
