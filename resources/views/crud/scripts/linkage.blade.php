@@ -1,6 +1,6 @@
-@push('scripts')
-    <script nonce="{{admin()->csp()}}">
-        (function () {
+@once
+    @push('scripts')
+        <script nonce="{{admin()->csp()}}">
             let linkages = @json($linkages);
 
             function hideRelatedFields() {
@@ -22,20 +22,14 @@
                 }
             }
 
-            $("input[name={{$name}}]").on('change', function () {
-                valueChanged($(this).val());
-            });
-
             hideRelatedFields();
-
-            @if(!empty($value))
-            valueChanged("{{$value}}");
-            @endif
-        })();
-    </script>
-    <style nonce="{{admin()->csp()}}">
-        .linkage-hidden {
-            display: none;
-        }
-    </style>
-@endpush
+        </script>
+    @endpush
+    @push('styles')
+        <style nonce="{{admin()->csp()}}">
+            .linkage-hidden {
+                display: none;
+            }
+        </style>
+    @endpush
+@endonce

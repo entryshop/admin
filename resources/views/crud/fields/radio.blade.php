@@ -15,4 +15,14 @@
 
 @if(!empty($linkages))
     @include('admin::crud.scripts.linkage', ['linkages' => $linkages, 'value' => $renderable->value()])
+    <script nonce="{{admin()->csp()}}">
+        $("input[name={{$name}}]").on('change', function () {
+            valueChanged($(this).val());
+        });
+        @if(!empty($value))
+        valueChanged("{{$value}}");
+        @endif
+    </script>
 @endif
+
+
