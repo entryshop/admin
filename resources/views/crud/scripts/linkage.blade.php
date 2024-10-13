@@ -6,18 +6,32 @@
             function hideRelatedFields() {
                 for (let p in linkages) {
                     for (let i in linkages[p]) {
-                        $("#field_" + linkages[p][i]).addClass('linkage-hidden');
-                        $("#" + linkages[p][i]).attr("disabled", "disabled")
+                        let _id = linkages[p][i];
+                        hideField(_id);
                     }
                 }
+            }
+
+            function hideField(_id) {
+                $("#field_" + _id).addClass('linkage-hidden');
+                $("#field_" + _id).find("input").each(function () {
+                    $(this).attr("disabled", "disabled")
+                });
+            }
+
+            function showField(_id) {
+                $("#field_" + _id).removeClass('linkage-hidden');
+                $("#field_" + _id).find("input").each(function () {
+                    $(this).removeAttr("disabled");
+                });
             }
 
             function valueChanged(value) {
                 hideRelatedFields();
                 if (linkages[value]) {
                     for (let i in linkages[value]) {
-                        $("#" + linkages[value][i]).removeAttr("disabled")
-                        $("#field_" + linkages[value][i]).removeClass('linkage-hidden');
+                        let _id = linkages[value][i];
+                        showField(_id);
                     }
                 }
             }
