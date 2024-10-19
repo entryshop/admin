@@ -47,10 +47,25 @@ abstract class CrudController
     protected function getCrudDefaults()
     {
         return [
-            'model' => $this->model,
-            'route' => $this->route,
-            'lang'  => $this->lang,
+            'model' => $this->getModel(),
+            'route' => $this->getRoute(),
+            'lang'  => $this->getLang(),
         ];
+    }
+
+    public function getModel()
+    {
+        return $this->model;
+    }
+
+    public function getRoute()
+    {
+        return $this->route;
+    }
+
+    public function getLang()
+    {
+        return $this->lang;
     }
 
     public function crud()
