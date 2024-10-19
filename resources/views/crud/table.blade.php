@@ -3,21 +3,20 @@
     $top_buttons = $renderable->buttons('top');
     $inline_buttons = $renderable->buttons('inline');
     $bulk_buttons = $renderable->buttons('bulk');
-    $section_before_table = $renderable->children(CrudPanel::CHILD_POSITION_BEFORE_TABLE);
-    $section_after_table = $renderable->children(CrudPanel::CHILD_POSITION_AFTER_TABLE);
-    $section_before_header = $renderable->children('before_header');
+
     $filters = $renderable->filters();
     $entities = $renderable->entities();
 
     if(method_exists($entities, 'paginate')) {
         $entities = $entities->paginate(10);
     }
+
+    $has_paginates = method_exists($entities, 'hasPages') && !empty($entities->hasPages());
 @endphp
 
-<div class="card">
-    @if(!empty($section_before_header))
-        {!! render($section_before_header) !!}
-    @endif
+{!! render($renderable->children(CrudPanel::POSITION_BEFORE_CONTENT)) !!}
+
+<div class="card mb-0">
     @if(!empty($top_buttons) || !empty($bulk_buttons) || !empty($filters))
         <div class="card-header">
             <div data-filters class="d-flex justify-content-between align-items-center">
@@ -40,9 +39,8 @@
             @endif
         </div>
     @endif
-    @if(!empty($section_before_table))
-        {!! render($section_before_table) !!}
-    @endif
+
+    {!! render($renderable->children(CrudPanel::POSITION_BEFORE_TABLE)) !!}
     <div class="table-responsive">
         <table class="table mb-0 table-hover table-crud" id="{{$name}}">
             <thead class="table-light">
@@ -87,15 +85,17 @@
             </tbody>
         </table>
     </div>
-    @if(method_exists($entities, 'hasPages') && !empty($entities->hasPages()))
+    {!! render($renderable->children(CrudPanel::POSITION_AFTER_TABLE)) !!}
+
+    @if($has_paginates)
         <div class="card-footer pb-0 border-top-0">
             {{$entities->links()}}
         </div>
     @endif
-    @if(!empty($section_after_table))
-        {!! render($section_after_table) !!}
-    @endif
+
 </div>
+
+{!! render($renderable->children(CrudPanel::POSITION_AFTER_CONTENT)) !!}
 
 @pushonce('styles')
     <style nonce="{{admin()->csp()}}">

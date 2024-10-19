@@ -21,6 +21,15 @@ class CrudPanel extends Renderable
     use HasFilters;
     use HasTabs;
 
+    const POSITION_BEFORE_CONTENT = 'before_content';
+    const POSITION_AFTER_CONTENT  = 'after_content';
+    const POSITION_BEFORE_HEADER  = 'before_header';
+    const POSITION_AFTER_HEADER   = 'after_header';
+    const POSITION_BEFORE_FOOTER  = 'before_footer';
+    const POSITION_AFTER_FOOTER   = 'after_footer';
+    const POSITION_BEFORE_BODY    = 'before_body';
+    const POSITION_AFTER_BODY     = 'after_body';
+
     public function __construct(...$args)
     {
         parent::__construct(...$args);
