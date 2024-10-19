@@ -17,7 +17,6 @@
         @method($renderable->method()??'post')
         <div class="card mb-0">
             <div class="card-body">
-                @include('admin::partials.errors')
                 @include('admin::crud.form.fields')
             </div>
             <div class="card-footer">

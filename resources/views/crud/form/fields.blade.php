@@ -1,3 +1,4 @@
+@include('admin::partials.errors')
 <div {!! $renderable->get('wrapper', 'class="d-flex flex-wrap gap-3"') !!}>
     @foreach($renderable->children() as $child)
         <div
