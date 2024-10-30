@@ -2,7 +2,7 @@
 
 namespace Entryshop\Admin\Http\Controllers\Traits;
 
-use Entryshop\Utils\Attributes\Post;
+use Spatie\RouteAttributes\Attributes\Post;
 
 trait CanBulkDelete
 {

@@ -15,7 +15,15 @@
     <div class="card-body">
         <div class="d-flex align-items-center">
             <div class="flex-grow-1">
-                <p class="fw-medium text-muted mb-0">{!! $title !!}</p>
+                <p class="fw-medium text-muted mb-0">
+                    @if(isset($link))
+                        <a href="{{$link}}">
+                    @endif
+                    {!! $title !!}
+                    @if(isset($link))
+                        </a>
+                    @endif
+                </p>
             </div>
             @if(isset($right))
                 <div class="flex-shrink-0">

@@ -13,7 +13,6 @@ trait CanList
         admin()->title($this->crud()->labelPlural());
         $this->crud()->table()->applyFilters();
         admin()->child($this->crud());
-
         $this->_after();
 
         return admin()->render();

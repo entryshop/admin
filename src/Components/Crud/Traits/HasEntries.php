@@ -1,8 +1,8 @@
 <?php
 
-
 namespace Entryshop\Admin\Components\Crud\Traits;
 
+use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Str;
 
 /**
@@ -15,6 +15,10 @@ trait HasEntries
     protected $_entities;
     protected $_entity;
 
+    /**
+     * @param $value
+     * @return Builder|static
+     */
     public function entities($value = null)
     {
         if (!empty($value)) {

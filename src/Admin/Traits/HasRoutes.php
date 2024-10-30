@@ -79,7 +79,7 @@ trait HasRoutes
 
         admin()->menu('logout')
             ->user()
-            ->label('退出登录')
+            ->label(__('admin::auth.logout'))
             ->order(100)
             ->url(admin()->logoutUrl())
             ->icon('mdi mdi-logout');
