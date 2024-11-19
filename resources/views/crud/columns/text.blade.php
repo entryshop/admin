@@ -29,7 +29,7 @@
 @endif
 
 @if($copyable??false)
-    <span data-copy data-value="{{to_string($value)}}" role="button" title="copy"><i
+    <span data-copy data-value="{{to_string($value)}}" role="button" title="@lang('admin::crud.copy')"><i
             class="ri-clipboard-line"></i></span>
     @pushonce('scripts')
         <script nonce="{{admin()->csp()}}">

@@ -8,6 +8,7 @@ return [
     'confirm'        => 'Confirm',
     'confirm_cancel' => 'Cancel',
     'confirm_ok'     => 'Confirm',
+    'copy'           => 'Copy',
     'edit'           => 'Edit',
     'delete'         => 'Delete',
     'delete_confirm' => 'Are you sure to delete this?',

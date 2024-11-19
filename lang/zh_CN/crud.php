@@ -8,6 +8,7 @@ return [
     'confirm'        => '确认',
     'confirm_cancel' => '取消',
     'confirm_ok'     => '确认',
+    'copy'           => '复制',
     'edit'           => '编辑',
     'delete'         => '删除',
     'delete_confirm' => '确定要删除吗?',
