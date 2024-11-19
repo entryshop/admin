@@ -13,15 +13,17 @@
             }
 
             function hideField(_id) {
-                $("#field_" + _id).addClass('linkage-hidden');
-                $("#field_" + _id).find("input").each(function () {
+                let _field = $("#field_" + _id);
+                _field.addClass('linkage-hidden');
+                _field.find("input").each(function () {
                     $(this).attr("disabled", "disabled")
                 });
             }
 
             function showField(_id) {
-                $("#field_" + _id).removeClass('linkage-hidden');
-                $("#field_" + _id).find("input").each(function () {
+                let _field = $("#field_" + _id);
+                _field.removeClass('linkage-hidden');
+                _field.find("input").each(function () {
                     $(this).removeAttr("disabled");
                 });
             }
