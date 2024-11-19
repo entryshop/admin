@@ -61,4 +61,30 @@ class CrudCell extends Renderable
         return $this->class('w-100 col-12');
     }
 
+    public function break()
+    {
+        return $this->view('admin::crud.blank')->hideLabel()->full();
+    }
+
+    public function divider()
+    {
+        return $this->display('<hr>')->hideLabel()->full();
+    }
+
+    public function hideLabel()
+    {
+        return $this->set('show_label', false);
+    }
+
+    public function col($value = null)
+    {
+        if (empty($value)) {
+            return $this->get('col');
+        }
+        if (is_numeric($value)) {
+            $value = "col-{$value}";
+        }
+        return $this->class($value);
+    }
+
 }

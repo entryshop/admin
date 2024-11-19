@@ -32,7 +32,9 @@
         <div {!! $renderable->wrapper() ?? 'class="d-flex flex-wrap gap-3"' !!} >
             @foreach($renderable->columns() as $column)
                 <div {!! $column->wrapper()?? $renderable->get('default-item-wrapper') !!}>
-                    <label class="{{$renderable->get('label_class', 'text-muted')}}">{{$column->getLabel()}}</label>
+                    @if($column->get('show_label', true))
+                        <label class="{{$renderable->get('label_class', 'text-muted')}}">{{$column->getLabel()}}</label>
+                    @endif
                     <div class="{{$renderable->get('column_class')}}">
                         {!! render($column, ['entity' => $renderable->entity()]) !!}
                     </div>

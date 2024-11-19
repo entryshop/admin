@@ -25,4 +25,5 @@ class CrudColumn extends CrudCell
             $this->set('value', $value);
         }
     }
+
 }

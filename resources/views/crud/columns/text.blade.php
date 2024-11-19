@@ -22,8 +22,6 @@
         @else
             {{ to_string($value) }}
         @endif
-
-
         @if($link)
     </a>
 @endif
