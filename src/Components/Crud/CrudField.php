@@ -11,6 +11,7 @@ use Entryshop\Admin\Components\Crud\Traits\HasLinkage;
  * @method string|static options($value = null)
  * @method string|static rules($value = null)
  * @method string|static ignore($value = null)
+ * @method string|static placeholder($value) Set the placeholder of the input.
  */
 class CrudField extends CrudCell
 {

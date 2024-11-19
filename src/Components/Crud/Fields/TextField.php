@@ -6,7 +6,6 @@ use Entryshop\Admin\Components\Crud\CrudField;
 use Entryshop\Admin\Components\Crud\Traits\HasPrefixAndSuffix;
 
 /**
- * @method self placeholder($value) Set the placeholder of the input.
  */
 class TextField extends CrudField
 {
