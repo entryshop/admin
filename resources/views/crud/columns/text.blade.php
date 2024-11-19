@@ -9,7 +9,9 @@
     }
 
     if($is_currency??false) {
-        $value = currency($value, $currency_in??'', $currency_locale??null);
+        if(!empty($value)) {
+            $value = currency($value, $currency_in??'', $currency_locale??null);
+        }
     }
 
 @endphp
@@ -28,7 +30,7 @@
 
 @if($copyable??false)
     <span data-copy data-value="{{to_string($value)}}" role="button" title="@lang('admin::crud.copy')"><i
-            class="ri-clipboard-line"></i></span>
+                class="ri-clipboard-line"></i></span>
     @pushonce('scripts')
         <script nonce="{{admin()->csp()}}">
             async function copyTextToClipboard(text) {

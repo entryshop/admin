@@ -1,6 +1,6 @@
 @php
     $id = $id??$key;
-
+    $value = old($name, $value??'');
 @endphp
 <x-admin::fields.field :$name :$id :label="$label??''">
     <input
