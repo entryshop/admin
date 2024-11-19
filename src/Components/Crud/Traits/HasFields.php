@@ -19,7 +19,12 @@ trait HasFields
      */
     public function field(...$args)
     {
-        $cell = CrudField::make(...$args);
+        if (!empty($args[0]) && $args[0] instanceof CrudField) {
+            $cell = $args[0];
+        } else {
+            $cell = CrudField::make(...$args);
+        }
+
         $cell->crud($this);
         $this->child($cell);
         return $cell;

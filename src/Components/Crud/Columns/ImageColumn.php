@@ -5,7 +5,7 @@ namespace Entryshop\Admin\Components\Crud\Columns;
 use Entryshop\Admin\Components\Crud\CrudColumn;
 
 /**
- * @method static defaultImageUrl($value) Default image url when no image is available
+ * @method self defaultImageUrl($value) Default image url when no image is available
  * @method self limit($value) Limit the number of images to display
  */
 class ImageColumn extends CrudColumn
