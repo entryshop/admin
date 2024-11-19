@@ -24,4 +24,14 @@ class DateField extends CrudField
     {
         return $this->set('time_only', $value);
     }
+
+    public function hasSeconds($value = true)
+    {
+        return $this->set('has_seconds', $value);
+    }
+
+    public function displayFormat($value)
+    {
+        return $this->set('display_format', $value);
+    }
 }

@@ -1,19 +1,22 @@
 @php
     $id = $id??$key;
+
 @endphp
 <x-admin::fields.field :$name :$id :label="$label??''">
     <input
         @if($time_only??false)
             data-provider="timepickr"
         @else
-            data-provider="flatpickr" data-date-format="Y-m-d"
-            @if($has_time??false)
-                data-enable-time="true"
-            @endif
+            data-provider="flatpickr" data-date-format="{{$format??'Y-m-d'}}"
+        @if($has_time??false) data-enable-time="true" @endif
         @endif
 
-        @if($has_seconds??true)
+        @if($has_seconds??false)
             data-enable-seconds="true"
+        @endif
+
+        @if($display_format??false)
+            data-altFormat="{{$display_format}}"
         @endif
 
         class="form-control" value="{{$value}}" name="{{$name}}" id="{{$id}}">
@@ -39,8 +42,10 @@
                 };
                 var isFlatpickerVal = item.attributes;
                 dateData.disableMobile = "true";
-                if (isFlatpickerVal["data-date-format"])
+                if (isFlatpickerVal["data-date-format"]) {
                     dateData.dateFormat = isFlatpickerVal["data-date-format"].value.toString();
+                }
+
                 if (isFlatpickerVal["data-enable-time"]) {
                     dateData.enableTime = true;
                     dateData.dateFormat = isFlatpickerVal["data-date-format"].value.toString() + " H:i";
@@ -51,45 +56,12 @@
                     dateData.dateFormat = isFlatpickerVal["data-date-format"].value.toString() + " H:i:S";
                 }
                 if (isFlatpickerVal["data-altFormat"]) {
-                    (dateData.altInput = true),
-                        (dateData.altFormat = isFlatpickerVal["data-altFormat"].value.toString());
+                    dateData.altInput = true;
+                    dateData.altFormat = isFlatpickerVal["data-altFormat"].value.toString();
                 }
-                if (isFlatpickerVal["data-minDate"]) {
-                    dateData.minDate = isFlatpickerVal["data-minDate"].value.toString();
-                    dateData.dateFormat = isFlatpickerVal["data-date-format"].value.toString();
-                }
-                if (isFlatpickerVal["data-maxDate"]) {
-                    dateData.maxDate = isFlatpickerVal["data-maxDate"].value.toString();
-                    dateData.dateFormat = isFlatpickerVal["data-date-format"].value.toString();
-                }
-                if (isFlatpickerVal["data-default-date"]) {
-                    dateData.defaultDate = isFlatpickerVal["data-default-date"].value.toString();
-                    dateData.dateFormat = isFlatpickerVal["data-date-format"].value.toString();
-                }
-                if (isFlatpickerVal["data-multiple-date"]) {
-                    dateData.mode = "multiple";
-                    dateData.dateFormat = isFlatpickerVal["data-date-format"].value.toString();
-                }
-                if (isFlatpickerVal["data-range-date"]) {
-                    dateData.mode = "range";
-                    dateData.dateFormat = isFlatpickerVal["data-date-format"].value.toString();
-                }
-                if (isFlatpickerVal["data-inline-date"]) {
-                    (dateData.inline = true),
-                        (dateData.defaultDate = isFlatpickerVal["data-default-date"].value.toString());
-                    dateData.dateFormat = isFlatpickerVal["data-date-format"].value.toString();
-                }
-                if (isFlatpickerVal["data-disable-date"]) {
-                    var dates = [];
-                    dates.push(isFlatpickerVal["data-disable-date"].value);
-                    dateData.disable = dates.toString().split(",");
-                }
-                if (isFlatpickerVal["data-week-number"]) {
-                    var dates = [];
-                    dates.push(isFlatpickerVal["data-week-number"].value);
-                    dateData.weekNumbers = true
-                }
+
                 flatpickr(item, dateData);
+                console.log(dateData);
             } else if (item.getAttribute("data-provider") === "timepickr") {
                 var timeData = {
                     locale: '{{$locale[1]}}',
