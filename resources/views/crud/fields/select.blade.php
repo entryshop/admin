@@ -10,12 +10,12 @@
 @endphp
 
 <x-admin::fields.field :$name :$id :label="$label??''">
-    <x-admin::fields.select :$name
-            :ajax="$renderable->ajax()"
-            :options="$renderable->options()"
-            :multiple="$renderable->multiple()??false"
-            :prefix="$prefix??null" :suffix="$suffix??null" :placeholder="$placeholder??null"
-            :value="$renderable->value()" :id="$id"
+    <x-admin::fields.select :$name :id="$id"
+        :ajax="$renderable->ajax()"
+        :options="$renderable->options()"
+        :multiple="$renderable->multiple()??false"
+        :placeholder="$placeholder??null"
+        :value="$renderable->value()"
     />
 </x-admin::fields.field>
 
