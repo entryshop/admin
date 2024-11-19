@@ -23,7 +23,7 @@
 </x-admin::fields.field>
 
 @pushonce('scripts')
-    <script src="{{admin()->asset('libs/flatpickr/flatpickr.min.js')}}"></script>
+    <script nonce="{{admin()->csp()}}" src="{{admin()->asset('libs/flatpickr/flatpickr.min.js')}}"></script>
     @php
         $locale_map = [
             'zh_CN' => ['zh','zh'],
@@ -32,7 +32,7 @@
         ];
         $locale = $locale_map[app()->getLocale()]??['default','default'];
     @endphp
-    <script src="{{admin()->asset('libs/flatpickr/l10n/'.$locale[0].'.js')}}"></script>
+    <script nonce="{{admin()->csp()}}" src="{{admin()->asset('libs/flatpickr/l10n/'.$locale[0].'.js')}}"></script>
     <script nonce="{{admin()->csp()}}">
         const flatpickrs = document.querySelectorAll("[data-provider]");
         Array.from(flatpickrs).forEach(function (item) {
@@ -59,9 +59,7 @@
                     dateData.altInput = true;
                     dateData.altFormat = isFlatpickerVal["data-altFormat"].value.toString();
                 }
-
                 flatpickr(item, dateData);
-                console.log(dateData);
             } else if (item.getAttribute("data-provider") === "timepickr") {
                 var timeData = {
                     locale: '{{$locale[1]}}',
@@ -73,7 +71,6 @@
                 if (isTimepickerVal["data-enable-seconds"]) {
                     timeData.dateFormat = "H:i:S"
                 }
-                console.log(timeData);
                 flatpickr(item, timeData);
             }
         });
