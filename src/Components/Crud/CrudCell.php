@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
  * @method string|static label($value = null)
  * @method string|static key($value = null)
  * @method string|static type($value = null)
+ * @method string|static value($value = null)
  */
 class CrudCell extends Renderable
 {

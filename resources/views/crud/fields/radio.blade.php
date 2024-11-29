@@ -10,6 +10,7 @@
         'id' => $id,
         'value' => $renderable->value(),
         'options' => $options,
+        'native_type' => $native_type??($type??'radio')
     ])
 </x-admin::fields.field>
 

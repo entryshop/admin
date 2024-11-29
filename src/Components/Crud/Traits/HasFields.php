@@ -10,6 +10,7 @@ use Illuminate\Validation\ValidationException;
  * @method string|static action($value = null)
  * @method string|static method($value = null)
  * @method string|static messages($value = null)
+ * @method string|static fields_only($value = null)
  */
 trait HasFields
 {
