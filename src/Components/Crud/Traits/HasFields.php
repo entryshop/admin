@@ -3,6 +3,11 @@
 namespace Entryshop\Admin\Components\Crud\Traits;
 
 use Entryshop\Admin\Components\Crud\CrudField;
+use Entryshop\Admin\Components\Crud\Fields\CheckboxField;
+use Entryshop\Admin\Components\Crud\Fields\DateField;
+use Entryshop\Admin\Components\Crud\Fields\SelectField;
+use Entryshop\Admin\Components\Crud\Fields\SwitchField;
+use Entryshop\Admin\Components\Crud\Fields\TextField;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 
@@ -11,9 +16,32 @@ use Illuminate\Validation\ValidationException;
  * @method string|static method($value = null)
  * @method string|static messages($value = null)
  * @method string|static fields_only($value = null)
+ * @method TextField text(...$args)
+ * @method SelectField select(...$args)
+ * @method SwitchField switch (...$args)
+ * @method CheckboxField checkbox (...$args)
  */
 trait HasFields
 {
+
+    protected $fields_map = [
+        'text'     => TextField::class,
+        'select'   => SelectField::class,
+        'date'     => DateField::class,
+        'switch'   => SwitchField::class,
+        'checkbox' => CheckboxField::class,
+    ];
+
+    public function __call($method, $parameters)
+    {
+        if (!empty($this->fields_map[$method])) {
+            $field = call_user_func_array([$this->fields_map[$method], 'make'], $parameters);
+            return $this->field($field);
+        }
+
+        return parent::__call($method, $parameters);
+    }
+
     /**
      * @param ...$args
      * @return CrudField

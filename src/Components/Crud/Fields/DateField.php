@@ -12,7 +12,6 @@ class DateField extends CrudField
 {
     use HasPrefixAndSuffix;
 
-    protected $view_namespace = 'admin::crud.fields.';
     protected $default_type = 'datetime';
 
     public function hasTime($value = true)
