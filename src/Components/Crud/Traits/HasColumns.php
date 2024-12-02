@@ -2,6 +2,7 @@
 
 namespace Entryshop\Admin\Components\Crud\Traits;
 
+use Entryshop\Admin\Components\Crud\Columns\ImageColumn;
 use Entryshop\Admin\Components\Crud\Columns\SelectColumn;
 use Entryshop\Admin\Components\Crud\Columns\TextColumn;
 use Entryshop\Admin\Components\Crud\CrudColumn;
@@ -23,6 +24,7 @@ trait HasColumns
     protected $columns_map = [
         'text'   => TextColumn::class,
         'select' => SelectColumn::class,
+        'image'  => ImageColumn::class,
     ];
 
     public function column(...$args)

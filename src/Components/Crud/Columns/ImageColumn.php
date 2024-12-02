@@ -10,7 +10,6 @@ use Entryshop\Admin\Components\Crud\CrudColumn;
  */
 class ImageColumn extends CrudColumn
 {
-    protected $view_namespace = 'admin::crud.columns.';
     protected $default_type = 'image';
 
     /**
