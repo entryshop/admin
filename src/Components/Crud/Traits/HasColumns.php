@@ -2,12 +2,16 @@
 
 namespace Entryshop\Admin\Components\Crud\Traits;
 
+use Entryshop\Admin\Components\Crud\Columns\SelectColumn;
+use Entryshop\Admin\Components\Crud\Columns\TextColumn;
 use Entryshop\Admin\Components\Crud\CrudColumn;
 
 /**
  * @method string|static action($value = null)
  * @method string|static method($value = null)
  * @method string|static label_class($value = null)
+ * @method TextColumn text(...$args)
+ * @method SelectColumn select(...$args)
  */
 trait HasColumns
 {
@@ -15,6 +19,11 @@ trait HasColumns
 
     const POSITION_BEFORE_TABLE = 'before_table';
     const POSITION_AFTER_TABLE  = 'after_table';
+
+    protected $columns_map = [
+        'text'   => TextColumn::class,
+        'select' => SelectColumn::class,
+    ];
 
     public function column(...$args)
     {

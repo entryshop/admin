@@ -12,6 +12,8 @@ trait CanEdit
         $this->data['id']       = $id;
         $this->data['back_url'] = $this->crud()->url();
 
+        $this->crud()->form();
+
         $this->_before('form');
         $this->_before();
 
@@ -20,7 +22,7 @@ trait CanEdit
         $this->crud()->findOrFail($id);
         $this->crud()->action($this->crud()->url($id));
         $this->crud()->method('put');
-        $this->crud()->form();
+
 
         $this->_after('form');
         admin()->child($this->crud());
@@ -40,7 +42,7 @@ trait CanEdit
         $this->data['action'] = 'update';
         $this->data['id']     = $id;
 
-        $this->crud()->findOrFail($id);
+        $this->crud()->form()->findOrFail($id);
 
         $this->_before('form');
         $this->_before('edit');

@@ -14,12 +14,14 @@ trait CanShow
         $this->data['id']       = $id;
         $this->data['back_url'] = $this->crud()->url();
 
+        $this->crud()->show();
+
         $this->_before();
 
         $back_url = $this->data['back_url'] ?? null;
         admin()->title($this->crud()->label() . ' ' . __('admin::crud.preview'))->back($back_url);
         $this->crud()->findOrFail($id);
-        $this->crud()->show();
+
         admin()->child($this->crud());
 
         $this->_after();

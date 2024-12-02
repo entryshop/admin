@@ -30,6 +30,10 @@ class CrudPanel extends Renderable
     const POSITION_BEFORE_BODY    = 'before_body';
     const POSITION_AFTER_BODY     = 'after_body';
 
+    public $is_form = false;
+    public $is_table = false;
+    public $is_show = false;
+
     public function __construct(...$args)
     {
         parent::__construct(...$args);
@@ -41,18 +45,36 @@ class CrudPanel extends Renderable
         $this->set('name', $name ?? 'crud_' . uniqid());
     }
 
+    public function __call($method, $parameters)
+    {
+        if (($this->is_table || $this->is_show) && !empty($this->columns_map[$method])) {
+            $column = call_user_func_array([$this->columns_map[$method], 'make'], $parameters);
+            return $this->column($column);
+        }
+
+        if ($this->is_form && !empty($this->fields_map[$method])) {
+            $field = call_user_func_array([$this->fields_map[$method], 'make'], $parameters);
+            return $this->field($field);
+        }
+
+        return parent::__call($method, $parameters);
+    }
+
     public function form()
     {
+        $this->is_form = true;
         return $this->set('view', 'admin::crud.form');
     }
 
     public function table()
     {
+        $this->is_table = true;
         return $this->set('view', 'admin::crud.table');
     }
 
     public function show()
     {
+        $this->is_show = true;
         return $this->set('view', 'admin::crud.show');
     }
 

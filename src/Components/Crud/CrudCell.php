@@ -38,16 +38,6 @@ class CrudCell extends Renderable
         }
     }
 
-    public function select($options)
-    {
-        return $this->type('select')->set('options', $options);
-    }
-
-    public function radio($options)
-    {
-        return $this->type('radio')->set('options', $options);
-    }
-
     public function crud($value = null)
     {
         if (empty($value)) {

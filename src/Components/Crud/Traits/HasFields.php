@@ -5,6 +5,7 @@ namespace Entryshop\Admin\Components\Crud\Traits;
 use Entryshop\Admin\Components\Crud\CrudField;
 use Entryshop\Admin\Components\Crud\Fields\CheckboxField;
 use Entryshop\Admin\Components\Crud\Fields\DateField;
+use Entryshop\Admin\Components\Crud\Fields\RadioField;
 use Entryshop\Admin\Components\Crud\Fields\SelectField;
 use Entryshop\Admin\Components\Crud\Fields\SwitchField;
 use Entryshop\Admin\Components\Crud\Fields\TextField;
@@ -20,6 +21,7 @@ use Illuminate\Validation\ValidationException;
  * @method SelectField select(...$args)
  * @method SwitchField switch (...$args)
  * @method CheckboxField checkbox (...$args)
+ * @method RadioField radio (...$args)
  */
 trait HasFields
 {
@@ -30,17 +32,8 @@ trait HasFields
         'date'     => DateField::class,
         'switch'   => SwitchField::class,
         'checkbox' => CheckboxField::class,
+        'radio'    => RadioField::class,
     ];
-
-    public function __call($method, $parameters)
-    {
-        if (!empty($this->fields_map[$method])) {
-            $field = call_user_func_array([$this->fields_map[$method], 'make'], $parameters);
-            return $this->field($field);
-        }
-
-        return parent::__call($method, $parameters);
-    }
 
     /**
      * @param ...$args
