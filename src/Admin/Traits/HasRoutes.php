@@ -77,6 +77,10 @@ trait HasRoutes
             'middleware' => config('admin.middleware'),
         ], __DIR__ . '/../../../routes/auth.php');
 
+        admin()->loginUrl(admin()->url('login'));
+        admin()->set('homeUrl', admin()->url('/'));
+        admin()->logoutUrl(admin()->url('logout'));
+
         admin()->menu('logout')
             ->user()
             ->label(__('admin::auth.logout'))
@@ -84,9 +88,6 @@ trait HasRoutes
             ->url(admin()->logoutUrl())
             ->icon('mdi mdi-logout');
 
-        admin()->loginUrl(admin()->url('login'));
-        admin()->set('homeUrl', admin()->url('/'));
-        admin()->logoutUrl(admin()->url('logout'));
         return $this;
     }
 
