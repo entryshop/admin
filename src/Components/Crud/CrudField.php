@@ -45,7 +45,8 @@ class CrudField extends CrudCell
         switch ($this->get('type')) {
             case 'file':
                 if (request()->hasFile($name)) {
-                    $value = \Storage::url(request()->file($name)->store('uploads'));
+	                // $value = \Storage::url(request()->file($name)->store('uploads'));
+	                $value = '/storage/' . request()->file($name)->store('uploads');
                 } else {
                     $value = data_get($model, $name);
                 }
