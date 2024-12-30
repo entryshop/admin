@@ -34,17 +34,19 @@ class UploadController
 
     protected function upload($file, $key = null)
     {
-        $key ??= 'url';
-        if (Str::contains(config('app.url'), 'localhost')) {
-            $url = request()->getSchemeAndHttpHost() . '/storage/' . $file->store('uploads');
-        } else {
-            $url = Storage::url($file->store('uploads'));
-        }
-        return [
-            $key   => $url,
-            'name' => $file->getClientOriginalName(),
-            'size' => $file->getSize(),
-            'type' => $file->getMimeType(),
-        ];
+	    $key ??= 'url';
+	    $path = $file->storeAs('uploads', date('Y_m_d_') . uniqid() . '_' . $file->getClientOriginalName());
+	    if (Str::contains(config('app.url'), 'localhost')) {
+		    $url = request()->getSchemeAndHttpHost() . '/storage/' . $path;
+	    } else {
+		    $url = Storage::url($path);
+	    }
+	    return [
+		    $key   => $url,
+		    'path' => $path,
+		    'name' => $file->getClientOriginalName(),
+		    'size' => $file->getSize(),
+		    'type' => $file->getMimeType(),
+	    ];
     }
 }
