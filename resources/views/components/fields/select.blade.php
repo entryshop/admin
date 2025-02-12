@@ -69,21 +69,21 @@
             @endif
         });
 
-        // 调整 Choices 容器宽度以适应内容
-        const container = document.querySelector('#{{$id}}').closest('.choices');
-        const dropdown = container.querySelector('.choices__list--dropdown');
-        
-        // 获取最大选项宽度
-        let maxWidth = 0;
-        const items = dropdown.querySelectorAll('.choices__item');
-        items.forEach(item => {
-            const width = item.offsetWidth;
-            maxWidth = Math.max(maxWidth, width);
-        });
-        
-        // 设置容器宽度
-        container.style.width = (maxWidth + 50) + 'px'; // 额外添加一些空间用于箭头和内边距
-
+        if(!$multiple) {
+            const container = document.querySelector('#{{$id}}').closest('.choices');
+            const dropdown = container.querySelector('.choices__list--dropdown');
+            
+            // 获取最大选项宽度
+            let maxWidth = 0;
+            const items = dropdown.querySelectorAll('.choices__item');
+            items.forEach(item => {
+                const width = item.offsetWidth;
+                maxWidth = Math.max(maxWidth, width);
+            });
+            
+            // 设置容器宽度
+            container.style.width = (maxWidth + 50) + 'px'; // 额外添加一些空间用于箭头和内边距
+        }   
         @if($ajax)
         choice_{{$id}}.setChoices(function () {
             return fetch('{{$ajax}}')
