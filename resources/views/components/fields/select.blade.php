@@ -69,7 +69,7 @@
             @endif
         });
 
-        if({{$multiple}} == 'false') {
+        if('{{$multiple}}' == 'false') {
             const container = document.querySelector('#{{$id}}').closest('.choices');
             const dropdown = container.querySelector('.choices__list--dropdown');
             
