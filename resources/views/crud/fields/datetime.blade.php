@@ -19,6 +19,10 @@
             data-altFormat="{{$display_format}}"
         @endif
 
+        @if($range??false)
+            data-range-date="{{$range}}"
+        @endif
+
         class="form-control" value="{{$value}}" name="{{$name}}" id="{{$id}}">
 </x-admin::fields.field>
 
@@ -58,6 +62,9 @@
                 if (isFlatpickerVal["data-altFormat"]) {
                     dateData.altInput = true;
                     dateData.altFormat = isFlatpickerVal["data-altFormat"].value.toString();
+                }
+                if (isFlatpickerVal["data-range-date"]) {
+                    dateData.mode = "range";
                 }
                 flatpickr(item, dateData);
             } else if (item.getAttribute("data-provider") === "timepickr") {
